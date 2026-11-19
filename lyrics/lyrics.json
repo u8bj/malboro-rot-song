@@ -1,0 +1,173 @@
+[
+ {
+  "line": 0,
+  "text": "Marlboro Rot, aber fühle mich wie John Player",
+  "start": 0.84,
+  "end": 3.34,
+  "words": [
+   {
+    "w": "Marlboro",
+    "s": 0.84,
+    "e": 1.36,
+    "p": 0.911,
+    "check": false
+   },
+   {
+    "w": "Rot,",
+    "s": 1.347,
+    "e": 1.82,
+    "p": 0.627,
+    "check": false
+   },
+   {
+    "w": "aber",
+    "s": 1.9,
+    "e": 2.1,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "fühle",
+    "s": 2.159,
+    "e": 2.46,
+    "p": 0.983,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 2.461,
+    "e": 2.6,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "wie",
+    "s": 2.647,
+    "e": 2.78,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "John",
+    "s": 2.78,
+    "e": 2.98,
+    "p": 0.959,
+    "check": false
+   },
+   {
+    "w": "Player",
+    "s": 2.949,
+    "e": 3.34,
+    "p": 0.988,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 1,
+  "text": "Circa vier, fünf Mille in der Moncler",
+  "start": 3.56,
+  "end": 5.82,
+  "words": [
+   {
+    "w": "Circa",
+    "s": 3.56,
+    "e": 4.04,
+    "p": 0.874,
+    "check": false
+   },
+   {
+    "w": "vier,",
+    "s": 4.087,
+    "e": 4.32,
+    "p": 0.177,
+    "check": true
+   },
+   {
+    "w": "fünf",
+    "s": 4.42,
+    "e": 4.68,
+    "p": 0.986,
+    "check": false
+   },
+   {
+    "w": "Mille",
+    "s": 4.714,
+    "e": 4.98,
+    "p": 0.76,
+    "check": false
+   },
+   {
+    "w": "in",
+    "s": 5.016,
+    "e": 5.18,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "der",
+    "s": 5.201,
+    "e": 5.36,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "Moncler",
+    "s": 5.387,
+    "e": 5.82,
+    "p": 0.616,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 2,
+  "text": "Brandloch im Leder, Fluchtfahrt im Panamera",
+  "start": 6.08,
+  "end": 8.22,
+  "words": [
+   {
+    "w": "Brandloch",
+    "s": 6.08,
+    "e": 6.6,
+    "p": 0.968,
+    "check": false
+   },
+   {
+    "w": "im",
+    "s": 6.6,
+    "e": 6.66,
+    "p": 0.95,
+    "check": false
+   },
+   {
+    "w": "Leder,",
+    "s": 6.66,
+    "e": 6.94,
+    "p": 0.887,
+    "check": false
+   },
+   {
+    "w": "Fluchtfahrt",
+    "s": 6.94,
+    "e": 7.48,
+    "p": 0.952,
+    "check": false
+   },
+   {
+    "w": "im",
+    "s": 7.43,
+    "e": 7.58,
+    "p": 0.868,
+    "check": true
+   },
+   {
+    "w": "Panamera",
+    "s": 7.57,
+    "e": 8.22,
+    "p": 0.995,
+    "check": false
+   }
+  ]
+ }
+]

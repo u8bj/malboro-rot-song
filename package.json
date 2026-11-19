@@ -1,0 +1,27 @@
+{
+  "name": "malboro-rot-lyrics-video",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "preview": "remotion render src/index.ts TestScene previews/test-scene.mp4 --scale=0.5",
+    "render:test": "remotion render src/index.ts TestScene output/test-scene.mp4",
+    "still": "remotion still src/index.ts TestScene previews/still.png"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@react-three/drei": "^9.122.0",
+    "@react-three/fiber": "^8.18.0",
+    "@react-three/postprocessing": "^2.19.1",
+    "@remotion/cli": "^4.0.545",
+    "@remotion/three": "^4.0.545",
+    "@types/react": "^18.3.31",
+    "@types/three": "^0.170.0",
+    "postprocessing": "^6.39.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.545",
+    "three": "^0.170.0",
+    "typescript": "^7.0.2"
+  }
+}
