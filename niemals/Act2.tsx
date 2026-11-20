@@ -155,7 +155,7 @@ export const Act2: React.FC<{ t: number; d: ShardData; cv: HTMLCanvasElement; te
             <mesh material={metal} rotation={[0, 0, hA]} position={[Math.sin(-hA) * 0.28, Math.cos(-hA) * 0.28, 0.05]}><boxGeometry args={[0.07, 0.6, 0.03]} /></mesh>
             <mesh material={metal} rotation={[0, 0, mA]} position={[Math.sin(-mA) * 0.42, Math.cos(-mA) * 0.42, 0.07]}><boxGeometry args={[0.04, 0.86, 0.03]} /></mesh>
             <mesh material={metal}><torusGeometry args={[CLOCK_R * 0.99, 0.045, 24, 128]} /></mesh>
-            <pointLight intensity={30} color="#9fb4ff" distance={5} />
+            {/* no point light here: vortex shards pass through the centre → 1/d² → Inf/NaN pixels */}
           </group>
         );
       })()}

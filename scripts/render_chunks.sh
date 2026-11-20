@@ -16,6 +16,7 @@ for ((a=0; a<TOTAL; a+=CHUNK)); do
   i=$((i+1))
 done
 ls "$OUT"/c_*.mp4 | sed "s#^#file '$PWD/#; s#\$#'#" > "$OUT/list.txt"
-ffmpeg -y -loglevel error -f concat -safe 0 -i "$OUT/list.txt" -c copy "$OUT/video_only.mp4"
-ffmpeg -y -loglevel error -i "$OUT/video_only.mp4" -i "$AUDIO" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 320k -movflags +faststart -shortest "$FINAL"
+# re-encode while concatenating (stream copy can drop frames at chunk joins)
+ffmpeg -y -loglevel error -f concat -safe 0 -i "$OUT/list.txt" -c:v libx264 -crf 15 -preset slow -pix_fmt yuv420p -r 60 -fps_mode cfr "$OUT/video_only.mp4"
+ffmpeg -y -loglevel error -i "$OUT/video_only.mp4" -i "$AUDIO" -map 0:v -map 1:a -c:v copy -c:a aac -b:a 320k -movflags +faststart "$FINAL"
 echo "DONE $FINAL"
