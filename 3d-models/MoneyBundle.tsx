@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import * as THREE from "three";
-import { bandTexture, banknoteTexture, paperEdgeTexture } from "./textures";
+import { bandTexture, banknoteTexture, note500Texture, paperEdgeTexture } from "./textures";
 
 const W = 1.6, H = 0.8, D = 0.26;
 
@@ -32,7 +32,7 @@ export const MoneyBundle: React.FC<JSX.IntrinsicElements["group"] & { label?: st
 };
 
 /** Single loose bill (thin plane with subtle curl). */
-export const Bill: React.FC<JSX.IntrinsicElements["group"] & { curl?: number }> = ({ curl = 0.15, ...props }) => {
+export const Bill: React.FC<JSX.IntrinsicElements["group"] & { curl?: number; purple?: boolean }> = ({ curl = 0.15, purple = false, ...props }) => {
   const geo = useMemo(() => {
     const g = new THREE.PlaneGeometry(W, H, 24, 1);
     const p = g.attributes.position as THREE.BufferAttribute;
@@ -40,6 +40,6 @@ export const Bill: React.FC<JSX.IntrinsicElements["group"] & { curl?: number }> 
     g.computeVertexNormals();
     return g;
   }, [curl]);
-  const mat = useMemo(() => new THREE.MeshStandardMaterial({ map: banknoteTexture(), roughness: 0.6, side: THREE.DoubleSide }), []);
+  const mat = useMemo(() => new THREE.MeshStandardMaterial({ map: purple ? note500Texture() : banknoteTexture(), roughness: 0.55, side: THREE.DoubleSide }), [purple]);
   return <group {...props}><mesh geometry={geo} material={mat} castShadow /></group>;
 };

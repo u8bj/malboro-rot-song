@@ -5,7 +5,6 @@ import { ContactShadows } from "@react-three/drei";
 import { Stage3D, CameraRig, StudioEnv } from "../../components/Stage3D";
 import { PufferJacket } from "../../3d-models/PufferJacket";
 import { Word, LightLine } from "../../components/KineticText";
-import { GlassPill } from "../../components/Glass";
 import { beatPulse } from "../../animations/beat";
 import { ez, lerp, prog, spr } from "../../animations/ease";
 import { COLORS } from "../../presets/theme";
@@ -58,9 +57,6 @@ export const JacketShot: React.FC = () => {
           <Word text="MONCLER" at={F.moncler} size={128} weight={300} reveal="track" dur={30} tracking={0.32} color={COLORS.white} />
         </div>
         <div style={{ marginTop: 30 }}><LightLine at={F.moncler + 8} width={420} color={COLORS.silver} dur={30} thickness={1.5} /></div>
-      </AbsoluteFill>
-      <AbsoluteFill style={{ top: 170, alignItems: "center" }}>
-        <GlassPill at={F.moncler + 4} label="4–5 Mille" sub="inside" />
       </AbsoluteFill>
     </AbsoluteFill>
   );

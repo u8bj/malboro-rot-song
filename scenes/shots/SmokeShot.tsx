@@ -5,12 +5,13 @@ import { AbsoluteFill, interpolate, useCurrentFrame } from "remotion";
 import * as THREE from "three";
 import { Stage3D, CameraRig, StudioEnv } from "../../components/Stage3D";
 import { Cigarette } from "../../3d-models/Cigarette";
+import { CigPack } from "../../3d-models/CigPack";
 import { Smoke } from "../../components/Smoke";
 import { Sparks } from "../../components/Sparks";
 import { Word, LightLine } from "../../components/KineticText";
 import { hexA } from "../../components/Background";
 import { beatPulse } from "../../animations/beat";
-import { ez, lerp, prog } from "../../animations/ease";
+import { ez, lerp, prog, spr } from "../../animations/ease";
 import { COLORS } from "../../presets/theme";
 import { wf } from "../../lyrics/timing";
 
@@ -41,10 +42,23 @@ const World: React.FC = () => {
       <ambientLight intensity={0.04} />
       <spotLight position={[3.5, 5, 4]} angle={0.5} penumbra={1} intensity={32 * intro} color="#fff2e6" castShadow />
       <pointLight position={[-3, -2.5, 1.5]} intensity={(25 + rotHit * 60) * intro} color={accent} distance={12} />
+      <spotLight position={[3, 1.5, 6]} angle={0.35} penumbra={1} intensity={45 * intro * (f < F.john ? 1 : 0)} color="#ffffff" target-position={[0.4, 0, 1.9]} />
       <pointLight position={[2.5, 1.5, -2.5]} intensity={30 * intro} color={accent} distance={10} />
       <group position={E} rotation={[0.1, lerp(-0.45, 0.35, f / SMOKE_END), -0.5]}>
         <Cigarette position={[2.73, 0, 0]} glow={(0.4 + pulse * 0.6 + rotHit) * intro} burn={0} />
       </group>
+      {/* hero pack: spins in on „Marlboro“, lid opens on „Rot“, flies out before „John“ */}
+      {(() => {
+        const inn = spr(f, F.marlboro - 8, { damping: 17, stiffness: 70 });
+        const out = prog(f, F.mich - 4, 22, ez.in);
+        const lid = spr(f, F.rot + 4, { damping: 14, stiffness: 90 }) * 0.45;
+        if (inn < 0.001 || out >= 1) return null;
+        return (
+          <CigPack position={[lerp(2.4, 0.42, inn) + out * 3.2, 0.3 + Math.sin(t * 1.4) * 0.04 + out * 0.9, 1.9 - out * 0.5]}
+            rotation={[0.12 + out * 0.6, lerp(-3.4, -0.45, inn) + t * 0.12 + out * 2.4, lerp(0.5, -0.06, inn) - out * 0.5]}
+            scale={0.66} lidOpen={lid * (1 - out)} />
+        );
+      })()}
       <Smoke t={t + 4} origin={[E[0], E[1] + 0.12, E[2]]} count={46} rise={0.75} spread={0.55} size={1.25} color={mix("#ffe1dc", "#f6e7c4", gold)} opacity={0.32 * intro} life={4.5} seed={2} />
       <Smoke t={t + 9} origin={[E[0] - 0.4, E[1] + 1.3, -1.2]} count={18} rise={0.35} spread={1.2} size={2.6} color={accent} opacity={0.12 * intro} life={6} seed={4} />
       <Sparks t={t} origin={[E[0], E[1] + 0.05, E[2]]} color={mix("#ff5a1f", "#ffd27a", gold)} intensity={(1 + rotHit * 2) * intro} spread={0.5} speed={0.7} />

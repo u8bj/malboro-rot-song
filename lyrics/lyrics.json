@@ -156,9 +156,9 @@
    },
    {
     "w": "im",
-    "s": 7.43,
-    "e": 7.58,
-    "p": 0.868,
+    "s": 7.48,
+    "e": 7.57,
+    "p": 0,
     "check": true
    },
    {
@@ -166,6 +166,1816 @@
     "s": 7.57,
     "e": 8.22,
     "p": 0.995,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 3,
+  "text": "Eine Stunde später fließt Blut durch den Katheter",
+  "start": 8.36,
+  "end": 10.76,
+  "words": [
+   {
+    "w": "Eine",
+    "s": 8.36,
+    "e": 8.72,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "Stunde",
+    "s": 8.731,
+    "e": 9.04,
+    "p": 0.986,
+    "check": false
+   },
+   {
+    "w": "später",
+    "s": 9.04,
+    "e": 9.36,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "fließt",
+    "s": 9.334,
+    "e": 9.86,
+    "p": 0.837,
+    "check": false
+   },
+   {
+    "w": "Blut",
+    "s": 9.822,
+    "e": 10.16,
+    "p": 0.915,
+    "check": false
+   },
+   {
+    "w": "durch",
+    "s": 10.16,
+    "e": 10.124,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "den",
+    "s": 10.124,
+    "e": 10.32,
+    "p": 0.899,
+    "check": false
+   },
+   {
+    "w": "Katheter",
+    "s": 10.286,
+    "e": 10.76,
+    "p": 0.991,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 4,
+  "text": "Siehst du diese Siegernarben?",
+  "start": 10.98,
+  "end": 12.3,
+  "words": [
+   {
+    "w": "Siehst",
+    "s": 10.98,
+    "e": 11.38,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "du",
+    "s": 11.38,
+    "e": 11.46,
+    "p": 0.989,
+    "check": false
+   },
+   {
+    "w": "diese",
+    "s": 11.46,
+    "e": 11.66,
+    "p": 0.987,
+    "check": false
+   },
+   {
+    "w": "Siegernarben?",
+    "s": 11.66,
+    "e": 12.3,
+    "p": 0.763,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 5,
+  "text": "Ich akzeptiere keine Niederlagen",
+  "start": 12.516,
+  "end": 14.24,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 12.516,
+    "e": 12.72,
+    "p": 0.867,
+    "check": false
+   },
+   {
+    "w": "akzeptiere",
+    "s": 12.678,
+    "e": 13.26,
+    "p": 0.871,
+    "check": false
+   },
+   {
+    "w": "keine",
+    "s": 13.328,
+    "e": 13.5,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "Niederlagen",
+    "s": 13.491,
+    "e": 14.24,
+    "p": 0.993,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 6,
+  "text": "Deutsche Rapper ficken sich mit Visagisten",
+  "start": 14.34,
+  "end": 16.28,
+  "words": [
+   {
+    "w": "Deutsche",
+    "s": 14.34,
+    "e": 14.58,
+    "p": 0.988,
+    "check": false
+   },
+   {
+    "w": "Rapper",
+    "s": 14.629,
+    "e": 14.92,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "ficken",
+    "s": 14.907,
+    "e": 15.2,
+    "p": 0.981,
+    "check": false
+   },
+   {
+    "w": "sich",
+    "s": 15.232,
+    "e": 15.4,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "mit",
+    "s": 15.418,
+    "e": 15.6,
+    "p": 0.993,
+    "check": false
+   },
+   {
+    "w": "Visagisten",
+    "s": 15.6,
+    "e": 16.28,
+    "p": 0,
+    "check": true
+   }
+  ]
+ },
+ {
+  "line": 7,
+  "text": "Fans hab' ich mittlerweile eine Million",
+  "start": 16.28,
+  "end": 18.28,
+  "words": [
+   {
+    "w": "Fans",
+    "s": 16.28,
+    "e": 16.56,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "hab'",
+    "s": 16.56,
+    "e": 16.76,
+    "p": 0.961,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 16.76,
+    "e": 16.9,
+    "p": 0.967,
+    "check": false
+   },
+   {
+    "w": "mittlerweile",
+    "s": 16.904,
+    "e": 17.22,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "eine",
+    "s": 17.22,
+    "e": 17.82,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "Million",
+    "s": 17.786,
+    "e": 18.28,
+    "p": 0.981,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 8,
+  "text": "Wir sind Hertha BSC, aber bleiben Union",
+  "start": 18.46,
+  "end": 20.78,
+  "words": [
+   {
+    "w": "Wir",
+    "s": 18.46,
+    "e": 18.6,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "sind",
+    "s": 18.6,
+    "e": 18.78,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "Hertha",
+    "s": 18.78,
+    "e": 19.133,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "BSC,",
+    "s": 19.133,
+    "e": 19.48,
+    "p": 0.983,
+    "check": false
+   },
+   {
+    "w": "aber",
+    "s": 19.66,
+    "e": 19.96,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "bleiben",
+    "s": 20.016,
+    "e": 20.42,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "Union",
+    "s": 20.341,
+    "e": 20.78,
+    "p": 0.998,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 9,
+  "text": "Ich muss nie mehr mit dem Bus fahren",
+  "start": 20.991,
+  "end": 22.44,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 20.991,
+    "e": 21.2,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "muss",
+    "s": 21.177,
+    "e": 21.32,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "nie",
+    "s": 21.32,
+    "e": 21.48,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "mehr",
+    "s": 21.48,
+    "e": 21.66,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "mit",
+    "s": 21.664,
+    "e": 21.78,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "dem",
+    "s": 21.804,
+    "e": 21.96,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "Bus",
+    "s": 21.943,
+    "e": 22.16,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "fahren",
+    "s": 22.082,
+    "e": 22.44,
+    "p": 0.994,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 10,
+  "text": "Lieber Gott, Schukran",
+  "start": 22.57,
+  "end": 23.72,
+  "words": [
+   {
+    "w": "Lieber",
+    "s": 22.57,
+    "e": 22.92,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "Gott,",
+    "s": 22.895,
+    "e": 23.24,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "Schukran",
+    "s": 23.26,
+    "e": 23.72,
+    "p": 0.622,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 11,
+  "text": "Playmates aus Russland jagen mich im Mustang",
+  "start": 23.86,
+  "end": 26.18,
+  "words": [
+   {
+    "w": "Playmates",
+    "s": 23.86,
+    "e": 24.32,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "aus",
+    "s": 24.311,
+    "e": 24.56,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "Russland",
+    "s": 24.636,
+    "e": 25.08,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "jagen",
+    "s": 25.124,
+    "e": 25.48,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 25.449,
+    "e": 25.64,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "im",
+    "s": 25.612,
+    "e": 25.82,
+    "p": 0.987,
+    "check": false
+   },
+   {
+    "w": "Mustang",
+    "s": 25.82,
+    "e": 26.18,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 12,
+  "text": "Bei mei'm Friseur schnei' ich wöchentlich rein",
+  "start": 26.18,
+  "end": 28.44,
+  "words": [
+   {
+    "w": "Bei",
+    "s": 26.18,
+    "e": 26.74,
+    "p": 0.825,
+    "check": false
+   },
+   {
+    "w": "mei'm",
+    "s": 26.773,
+    "e": 26.94,
+    "p": 0.397,
+    "check": true
+   },
+   {
+    "w": "Friseur",
+    "s": 26.94,
+    "e": 27.32,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "schnei'",
+    "s": 27.32,
+    "e": 27.6,
+    "p": 0.58,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 27.678,
+    "e": 27.72,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "wöchentlich",
+    "s": 27.678,
+    "e": 28.06,
+    "p": 0.983,
+    "check": false
+   },
+   {
+    "w": "rein",
+    "s": 28.06,
+    "e": 28.44,
+    "p": 0.941,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 13,
+  "text": "Monster-Hype, doch ich meide diese Öffentlichkeit",
+  "start": 28.94,
+  "end": 31.08,
+  "words": [
+   {
+    "w": "Monster-Hype,",
+    "s": 28.94,
+    "e": 29.34,
+    "p": 0.854,
+    "check": false
+   },
+   {
+    "w": "doch",
+    "s": 29.34,
+    "e": 29.5,
+    "p": 0.987,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 29.443,
+    "e": 29.62,
+    "p": 0.943,
+    "check": false
+   },
+   {
+    "w": "meide",
+    "s": 29.62,
+    "e": 29.9,
+    "p": 0.972,
+    "check": false
+   },
+   {
+    "w": "diese",
+    "s": 29.9,
+    "e": 30.16,
+    "p": 0.976,
+    "check": false
+   },
+   {
+    "w": "Öffentlichkeit",
+    "s": 30.232,
+    "e": 31.08,
+    "p": 0.996,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 14,
+  "text": "Ich bin fresh, meine Kleidung sitzt",
+  "start": 31.208,
+  "end": 32.72,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 31.208,
+    "e": 31.4,
+    "p": 0.994,
+    "check": false
+   },
+   {
+    "w": "bin",
+    "s": 31.417,
+    "e": 31.52,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "fresh,",
+    "s": 31.52,
+    "e": 31.84,
+    "p": 0.899,
+    "check": false
+   },
+   {
+    "w": "meine",
+    "s": 31.927,
+    "e": 32.04,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "Kleidung",
+    "s": 32.09,
+    "e": 32.52,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "sitzt",
+    "s": 32.52,
+    "e": 32.72,
+    "p": 0.988,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 15,
+  "text": "Nachdem ich einkiff', setze ich im Wettbüro einen Lilanen auf Hajduk Split",
+  "start": 32.96,
+  "end": 36.76,
+  "words": [
+   {
+    "w": "Nachdem",
+    "s": 32.96,
+    "e": 33.36,
+    "p": 0.987,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 33.36,
+    "e": 33.5,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "einkiff',",
+    "s": 33.506,
+    "e": 34.1,
+    "p": 0.761,
+    "check": false
+   },
+   {
+    "w": "setze",
+    "s": 34.14,
+    "e": 34.46,
+    "p": 0.91,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 34.46,
+    "e": 34.58,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "im",
+    "s": 34.551,
+    "e": 34.76,
+    "p": 0.929,
+    "check": false
+   },
+   {
+    "w": "Wettbüro",
+    "s": 34.76,
+    "e": 35.2,
+    "p": 0.87,
+    "check": false
+   },
+   {
+    "w": "einen",
+    "s": 35.2,
+    "e": 35.38,
+    "p": 0.929,
+    "check": false
+   },
+   {
+    "w": "Lilanen",
+    "s": 35.341,
+    "e": 35.84,
+    "p": 0.576,
+    "check": false
+   },
+   {
+    "w": "auf",
+    "s": 35.828,
+    "e": 36.02,
+    "p": 0.953,
+    "check": false
+   },
+   {
+    "w": "Hajduk",
+    "s": 36.02,
+    "e": 36.339,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "Split",
+    "s": 36.339,
+    "e": 36.76,
+    "p": 0.823,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 16,
+  "text": "Richtung Graz hab' ich den Flug verpasst",
+  "start": 36.92,
+  "end": 38.78,
+  "words": [
+   {
+    "w": "Richtung",
+    "s": 36.92,
+    "e": 37.26,
+    "p": 0.985,
+    "check": false
+   },
+   {
+    "w": "Graz",
+    "s": 37.26,
+    "e": 37.5,
+    "p": 0.985,
+    "check": false
+   },
+   {
+    "w": "hab'",
+    "s": 37.5,
+    "e": 37.64,
+    "p": 0.95,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 37.593,
+    "e": 37.78,
+    "p": 0.965,
+    "check": false
+   },
+   {
+    "w": "den",
+    "s": 37.756,
+    "e": 37.9,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "Flug",
+    "s": 37.895,
+    "e": 38.14,
+    "p": 0.952,
+    "check": false
+   },
+   {
+    "w": "verpasst",
+    "s": 38.22,
+    "e": 38.78,
+    "p": 0.999,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 17,
+  "text": "Wegen drei Jacky-Cola-Dosen und Hustensaft",
+  "start": 38.847,
+  "end": 41.34,
+  "words": [
+   {
+    "w": "Wegen",
+    "s": 38.847,
+    "e": 39.16,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "drei",
+    "s": 39.16,
+    "e": 39.28,
+    "p": 0.907,
+    "check": false
+   },
+   {
+    "w": "Jacky-Cola-Dosen",
+    "s": 39.28,
+    "e": 40.287,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "und",
+    "s": 40.287,
+    "e": 40.48,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "Hustensaft",
+    "s": 40.449,
+    "e": 41.34,
+    "p": 0.978,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 18,
+  "text": "Nie wieder häng' ich ab in schmutzigen Diskos",
+  "start": 41.82,
+  "end": 44.14,
+  "words": [
+   {
+    "w": "Nie",
+    "s": 41.82,
+    "e": 42.1,
+    "p": 0.994,
+    "check": false
+   },
+   {
+    "w": "wieder",
+    "s": 42.121,
+    "e": 42.38,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "häng'",
+    "s": 42.423,
+    "e": 42.58,
+    "p": 0.726,
+    "check": true
+   },
+   {
+    "w": "ich",
+    "s": 42.58,
+    "e": 42.764,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "ab",
+    "s": 42.764,
+    "e": 42.887,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "in",
+    "s": 42.887,
+    "e": 43.06,
+    "p": 0.975,
+    "check": false
+   },
+   {
+    "w": "schmutzigen",
+    "s": 43.003,
+    "e": 43.64,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "Diskos",
+    "s": 43.64,
+    "e": 44.14,
+    "p": 0.975,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 19,
+  "text": "Baller Hits, als wär's ein Schutzmechanismus",
+  "start": 44.489,
+  "end": 46.64,
+  "words": [
+   {
+    "w": "Baller",
+    "s": 44.489,
+    "e": 44.86,
+    "p": 0.742,
+    "check": false
+   },
+   {
+    "w": "Hits,",
+    "s": 44.86,
+    "e": 44.98,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "als",
+    "s": 44.98,
+    "e": 45.14,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "wär's",
+    "s": 45.07,
+    "e": 45.44,
+    "p": 0.935,
+    "check": false
+   },
+   {
+    "w": "ein",
+    "s": 45.44,
+    "e": 45.6,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "Schutzmechanismus",
+    "s": 45.558,
+    "e": 46.64,
+    "p": 0.999,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 20,
+  "text": "Vielleicht bin ich schizo, all diese Missgunst",
+  "start": 46.72,
+  "end": 49.36,
+  "words": [
+   {
+    "w": "Vielleicht",
+    "s": 46.72,
+    "e": 47.06,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "bin",
+    "s": 47.09,
+    "e": 47.36,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 47.415,
+    "e": 47.54,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "schizo,",
+    "s": 47.54,
+    "e": 47.84,
+    "p": 0.287,
+    "check": true
+   },
+   {
+    "w": "all",
+    "s": 48.112,
+    "e": 48.42,
+    "p": 0.839,
+    "check": false
+   },
+   {
+    "w": "diese",
+    "s": 48.437,
+    "e": 48.7,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "Missgunst",
+    "s": 48.7,
+    "e": 49.36,
+    "p": 0.509,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 21,
+  "text": "Ja, ich frag' den Typ im Spiegel jeden Tag: Wer bist du?",
+  "start": 49.46,
+  "end": 51.82,
+  "words": [
+   {
+    "w": "Ja,",
+    "s": 49.46,
+    "e": 49.58,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 49.64,
+    "e": 49.74,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "frag'",
+    "s": 49.784,
+    "e": 49.9,
+    "p": 0.993,
+    "check": false
+   },
+   {
+    "w": "den",
+    "s": 49.9,
+    "e": 50.04,
+    "p": 0.764,
+    "check": true
+   },
+   {
+    "w": "Typ",
+    "s": 50.062,
+    "e": 50.3,
+    "p": 0.986,
+    "check": false
+   },
+   {
+    "w": "im",
+    "s": 50.364,
+    "e": 50.42,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "Spiegel",
+    "s": 50.364,
+    "e": 50.72,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "jeden",
+    "s": 50.666,
+    "e": 50.92,
+    "p": 0.858,
+    "check": false
+   },
+   {
+    "w": "Tag:",
+    "s": 50.991,
+    "e": 51.16,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "Wer",
+    "s": 51.13,
+    "e": 51.32,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "bist",
+    "s": 51.339,
+    "e": 51.56,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "du?",
+    "s": 51.56,
+    "e": 51.82,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 22,
+  "text": "Fick auf alles, wenn ich nächtelang nicht schlafen kann",
+  "start": 52.106,
+  "end": 54.5,
+  "words": [
+   {
+    "w": "Fick",
+    "s": 52.106,
+    "e": 52.5,
+    "p": 0.984,
+    "check": false
+   },
+   {
+    "w": "auf",
+    "s": 52.5,
+    "e": 52.62,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "alles,",
+    "s": 52.593,
+    "e": 52.9,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "wenn",
+    "s": 52.96,
+    "e": 53.1,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 53.081,
+    "e": 53.22,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "nächtelang",
+    "s": 53.22,
+    "e": 53.74,
+    "p": 0.917,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 53.708,
+    "e": 53.9,
+    "p": 0.692,
+    "check": false
+   },
+   {
+    "w": "schlafen",
+    "s": 53.917,
+    "e": 54.24,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "kann",
+    "s": 54.24,
+    "e": 54.5,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 23,
+  "text": "Ich bin im Recht, wenn ich dann besser lebe",
+  "start": 54.64,
+  "end": 56.16,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 54.64,
+    "e": 54.84,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "bin",
+    "s": 54.869,
+    "e": 54.98,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "im",
+    "s": 54.98,
+    "e": 55.14,
+    "p": 0.981,
+    "check": false
+   },
+   {
+    "w": "Recht,",
+    "s": 55.147,
+    "e": 55.34,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "wenn",
+    "s": 55.42,
+    "e": 55.52,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 55.519,
+    "e": 55.64,
+    "p": 0.986,
+    "check": false
+   },
+   {
+    "w": "dann",
+    "s": 55.64,
+    "e": 55.8,
+    "p": 0.191,
+    "check": true
+   },
+   {
+    "w": "besser",
+    "s": 55.774,
+    "e": 56.04,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "lebe",
+    "s": 56.099,
+    "e": 56.16,
+    "p": 0.389,
+    "check": true
+   }
+  ]
+ },
+ {
+  "line": 24,
+  "text": "Ich bin echt, denn ich brech' das Gesetz",
+  "start": 56.96,
+  "end": 59.1,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 56.96,
+    "e": 57.3,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "bin",
+    "s": 57.32,
+    "e": 57.7,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "echt,",
+    "s": 57.72,
+    "e": 58.08,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "denn",
+    "s": 58.1,
+    "e": 58.2,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 58.212,
+    "e": 58.32,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "brech'",
+    "s": 58.329,
+    "e": 58.64,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "das",
+    "s": 58.654,
+    "e": 58.74,
+    "p": 0.9,
+    "check": false
+   },
+   {
+    "w": "Gesetz",
+    "s": 58.793,
+    "e": 59.1,
+    "p": 0.9,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 25,
+  "text": "Und hab' hinter mir ein ganzes Arsenal wie Mkhitaryan",
+  "start": 59.22,
+  "end": 62.22,
+  "words": [
+   {
+    "w": "Und",
+    "s": 59.22,
+    "e": 59.46,
+    "p": 0.438,
+    "check": true
+   },
+   {
+    "w": "hab'",
+    "s": 59.397,
+    "e": 59.6,
+    "p": 0.454,
+    "check": false
+   },
+   {
+    "w": "hinter",
+    "s": 59.606,
+    "e": 59.86,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "mir",
+    "s": 59.86,
+    "e": 60.06,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "ein",
+    "s": 60.093,
+    "e": 60.24,
+    "p": 0.961,
+    "check": false
+   },
+   {
+    "w": "ganzes",
+    "s": 60.24,
+    "e": 60.58,
+    "p": 0.58,
+    "check": false
+   },
+   {
+    "w": "Arsenal",
+    "s": 60.558,
+    "e": 60.9,
+    "p": 0.968,
+    "check": false
+   },
+   {
+    "w": "wie",
+    "s": 60.883,
+    "e": 61.24,
+    "p": 0.924,
+    "check": false
+   },
+   {
+    "w": "Mkhitaryan",
+    "s": 61.254,
+    "e": 62.22,
+    "p": 0.764,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 26,
+  "text": "Zimmer bis unter die Decke voll mit Schuhkartons",
+  "start": 62.322,
+  "end": 64.92,
+  "words": [
+   {
+    "w": "Zimmer",
+    "s": 62.322,
+    "e": 62.78,
+    "p": 0.959,
+    "check": false
+   },
+   {
+    "w": "bis",
+    "s": 62.856,
+    "e": 62.98,
+    "p": 0.943,
+    "check": false
+   },
+   {
+    "w": "unter",
+    "s": 62.949,
+    "e": 63.18,
+    "p": 0.971,
+    "check": false
+   },
+   {
+    "w": "die",
+    "s": 63.18,
+    "e": 63.44,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "Decke",
+    "s": 63.437,
+    "e": 63.74,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "voll",
+    "s": 63.739,
+    "e": 63.9,
+    "p": 0.802,
+    "check": false
+   },
+   {
+    "w": "mit",
+    "s": 63.925,
+    "e": 64.06,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "Schuhkartons",
+    "s": 64.06,
+    "e": 64.92,
+    "p": 0.954,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 27,
+  "text": "Ich hab' genug davon und ich knie nieder",
+  "start": 64.877,
+  "end": 67.28,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 64.877,
+    "e": 65.1,
+    "p": 0.979,
+    "check": false
+   },
+   {
+    "w": "hab'",
+    "s": 65.1,
+    "e": 65.2,
+    "p": 0.903,
+    "check": false
+   },
+   {
+    "w": "genug",
+    "s": 65.2,
+    "e": 65.52,
+    "p": 0.963,
+    "check": false
+   },
+   {
+    "w": "davon",
+    "s": 65.503,
+    "e": 65.94,
+    "p": 0.993,
+    "check": false
+   },
+   {
+    "w": "und",
+    "s": 65.968,
+    "e": 66.52,
+    "p": 0.803,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 66.52,
+    "e": 66.64,
+    "p": 0.77,
+    "check": false
+   },
+   {
+    "w": "knie",
+    "s": 66.641,
+    "e": 66.9,
+    "p": 0.963,
+    "check": false
+   },
+   {
+    "w": "nieder",
+    "s": 66.9,
+    "e": 67.28,
+    "p": 0.918,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 28,
+  "text": "Meine Mucke Ghetto-Gospel wie der 2Pac-Song",
+  "start": 67.431,
+  "end": 69.66,
+  "words": [
+   {
+    "w": "Meine",
+    "s": 67.431,
+    "e": 67.8,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "Mucke",
+    "s": 67.733,
+    "e": 68.24,
+    "p": 0.936,
+    "check": false
+   },
+   {
+    "w": "Ghetto-Gospel",
+    "s": 68.24,
+    "e": 68.847,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "wie",
+    "s": 68.847,
+    "e": 69.02,
+    "p": 0.875,
+    "check": false
+   },
+   {
+    "w": "der",
+    "s": 69.033,
+    "e": 69.18,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "2Pac-Song",
+    "s": 69.219,
+    "e": 69.66,
+    "p": 0.966,
+    "check": true
+   }
+  ]
+ },
+ {
+  "line": 29,
+  "text": "Kokain, Kokosnuss und wir ziehen wieder",
+  "start": 70.287,
+  "end": 72.3,
+  "words": [
+   {
+    "w": "Kokain,",
+    "s": 70.287,
+    "e": 70.66,
+    "p": 0.96,
+    "check": false
+   },
+   {
+    "w": "Kokosnuss",
+    "s": 70.74,
+    "e": 71.38,
+    "p": 0.765,
+    "check": true
+   },
+   {
+    "w": "und",
+    "s": 71.401,
+    "e": 71.56,
+    "p": 0.861,
+    "check": false
+   },
+   {
+    "w": "wir",
+    "s": 71.541,
+    "e": 71.76,
+    "p": 0.947,
+    "check": false
+   },
+   {
+    "w": "ziehen",
+    "s": 71.75,
+    "e": 71.98,
+    "p": 0.902,
+    "check": false
+   },
+   {
+    "w": "wieder",
+    "s": 72.052,
+    "e": 72.3,
+    "p": 0.97,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 30,
+  "text": "Kill den Beefeater, Rauchkette",
+  "start": 72.539,
+  "end": 74.18,
+  "words": [
+   {
+    "w": "Kill",
+    "s": 72.539,
+    "e": 72.88,
+    "p": 0.933,
+    "check": false
+   },
+   {
+    "w": "den",
+    "s": 72.841,
+    "e": 73.04,
+    "p": 0.76,
+    "check": false
+   },
+   {
+    "w": "Beefeater,",
+    "s": 73.28,
+    "e": 73.66,
+    "p": 0.725,
+    "check": true
+   },
+   {
+    "w": "Rauchkette",
+    "s": 73.63,
+    "e": 74.18,
+    "p": 0.975,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 31,
+  "text": "Sie haben gesagt, es sei nur wichtig, dass ich immer einen Traum hätte",
+  "start": 74.327,
+  "end": 77.4,
+  "words": [
+   {
+    "w": "Sie",
+    "s": 74.327,
+    "e": 74.58,
+    "p": 0.988,
+    "check": false
+   },
+   {
+    "w": "haben",
+    "s": 74.606,
+    "e": 74.78,
+    "p": 0.898,
+    "check": false
+   },
+   {
+    "w": "gesagt,",
+    "s": 74.78,
+    "e": 75.1,
+    "p": 0.994,
+    "check": false
+   },
+   {
+    "w": "es",
+    "s": 75.117,
+    "e": 75.28,
+    "p": 0.927,
+    "check": false
+   },
+   {
+    "w": "sei",
+    "s": 75.279,
+    "e": 75.42,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "nur",
+    "s": 75.418,
+    "e": 75.56,
+    "p": 0.927,
+    "check": false
+   },
+   {
+    "w": "wichtig,",
+    "s": 75.56,
+    "e": 75.84,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "dass",
+    "s": 75.88,
+    "e": 76.08,
+    "p": 0.991,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 76.045,
+    "e": 76.26,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "immer",
+    "s": 76.185,
+    "e": 76.5,
+    "p": 0.991,
+    "check": false
+   },
+   {
+    "w": "einen",
+    "s": 76.51,
+    "e": 76.74,
+    "p": 0.989,
+    "check": false
+   },
+   {
+    "w": "Traum",
+    "s": 76.672,
+    "e": 77.18,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "hätte",
+    "s": 77.18,
+    "e": 77.4,
+    "p": 0.981,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 32,
+  "text": "Heute bin ich der, der Mutter fickt",
+  "start": 78.1,
+  "end": 80.14,
+  "words": [
+   {
+    "w": "Heute",
+    "s": 78.1,
+    "e": 78.5,
+    "p": 0.639,
+    "check": false
+   },
+   {
+    "w": "bin",
+    "s": 78.437,
+    "e": 78.9,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 78.925,
+    "e": 79.1,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "der,",
+    "s": 79.064,
+    "e": 79.26,
+    "p": 0.98,
+    "check": false
+   },
+   {
+    "w": "der",
+    "s": 79.32,
+    "e": 79.42,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "Mutter",
+    "s": 79.435,
+    "e": 79.64,
+    "p": 0.915,
+    "check": false
+   },
+   {
+    "w": "fickt",
+    "s": 79.64,
+    "e": 80.14,
+    "p": 0.974,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 33,
+  "text": "6, 66 gegen eine Unterschrift",
+  "start": 80.14,
+  "end": 82.78,
+  "words": [
+   {
+    "w": "6,",
+    "s": 80.14,
+    "e": 80.26,
+    "p": 0.985,
+    "check": false
+   },
+   {
+    "w": "66",
+    "s": 80.271,
+    "e": 81.08,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "gegen",
+    "s": 81.084,
+    "e": 81.54,
+    "p": 0.957,
+    "check": false
+   },
+   {
+    "w": "eine",
+    "s": 81.548,
+    "e": 81.86,
+    "p": 0.989,
+    "check": false
+   },
+   {
+    "w": "Unterschrift",
+    "s": 81.804,
+    "e": 82.78,
+    "p": 0.999,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 34,
+  "text": "Ah",
+  "start": 82.82,
+  "end": 83.08,
+  "words": [
+   {
+    "w": "Ah",
+    "s": 82.82,
+    "e": 83.08,
+    "p": 0.9,
     "check": false
    }
   ]

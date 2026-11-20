@@ -3,7 +3,7 @@ import { useCurrentFrame } from "remotion";
 import { ez, lerp, prog } from "../animations/ease";
 import { COLORS, FONT } from "../presets/theme";
 
-export type RevealStyle = "rise" | "blur" | "chars" | "scale" | "track";
+export type RevealStyle = "rise" | "blur" | "chars" | "scale" | "track" | "drop" | "flip" | "slide";
 
 type WordProps = {
   text: string;
@@ -72,6 +72,9 @@ export const Word: React.FC<WordProps> = ({
     case "blur": transform = `scale(${lerp(1.12, 1, p)})`; filter = `blur(${(1 - p) * 30}px)`; break;
     case "scale": transform = `scale(${lerp(0.6, 1, p)})`; filter = `blur(${(1 - p) * 14}px)`; break;
     case "track": ls = lerp(0.6, tracking, p); filter = `blur(${(1 - p) * 10}px)`; break;
+    case "drop": transform = `translateY(${(1 - p) * -60}%) scale(${lerp(1.3, 1, p)})`; filter = `blur(${(1 - p) * 12}px)`; break;
+    case "flip": transform = `perspective(800px) rotateX(${(1 - p) * -90}deg)`; filter = `blur(${(1 - p) * 6}px)`; break;
+    case "slide": transform = `translateX(${(1 - p) * 40}%)`; filter = `blur(${(1 - p) * 14}px)`; break;
   }
   // exit: fast upward motion-blurred
   transform += ` translateY(${-x * 40}%)`;

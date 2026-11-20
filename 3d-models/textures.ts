@@ -106,3 +106,26 @@ export const nylonBump = () => make("nylon", 256, 256, (c) => {
   c.fillStyle = "#808080"; c.fillRect(0, 0, 256, 256);
   for (let y = 0; y < 256; y += 2) { c.fillStyle = y % 4 ? "#8a8a8a" : "#767676"; c.fillRect(0, y, 256, 1); }
 });
+
+/** Fictional purple 500 note (stylised, marked SPECIMEN – not a currency reproduction). */
+export const note500Texture = () => make("note500", 1024, 512, (c) => {
+  const g = c.createLinearGradient(0, 0, 1024, 512);
+  g.addColorStop(0, "#5b3a8c"); g.addColorStop(0.5, "#b79ad9"); g.addColorStop(1, "#4a2f78");
+  c.fillStyle = g; c.fillRect(0, 0, 1024, 512);
+  c.lineWidth = 1.2;
+  for (let k = 0; k < 46; k++) {
+    c.strokeStyle = `rgba(40,15,70,${0.12 + (k % 3) * 0.05})`; c.beginPath();
+    for (let x = 0; x <= 1024; x += 4) { const y = 256 + Math.sin(x * 0.011 + k * 0.37) * (50 + k * 3) * Math.cos(x * 0.005 + k * 0.11); x === 0 ? c.moveTo(x, y) : c.lineTo(x, y); }
+    c.stroke();
+  }
+  c.save(); c.translate(760, 256);
+  for (let k = 0; k < 60; k++) { c.rotate(Math.PI / 30); c.strokeStyle = "rgba(255,255,255,0.2)"; c.beginPath(); c.ellipse(0, 0, 150, 40, 0, 0, Math.PI * 2); c.stroke(); }
+  c.restore();
+  c.strokeStyle = "rgba(30,10,55,0.55)"; c.lineWidth = 10; c.strokeRect(18, 18, 988, 476);
+  c.fillStyle = "rgba(30,10,55,0.85)"; c.font = "800 190px Inter, Arial"; c.fillText("500", 60, 230);
+  c.font = "800 70px Inter, Arial"; c.fillText("500", 840, 460);
+  c.font = "600 34px Inter, Arial"; c.fillText("EURO  ·  SPECIMEN", 66, 440);
+  const hg = c.createLinearGradient(560, 0, 620, 512);
+  hg.addColorStop(0, "rgba(255,255,255,0.65)"); hg.addColorStop(0.5, "rgba(210,230,255,0.35)"); hg.addColorStop(1, "rgba(255,240,200,0.6)");
+  c.fillStyle = hg; c.fillRect(560, 0, 46, 512);
+});
