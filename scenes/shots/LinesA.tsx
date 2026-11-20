@@ -337,7 +337,7 @@ export const Shot08: React.FC = () => {
 export const Shot09: React.FC = () => {
   const f = useCurrentFrame();
   const L = 9; const s0 = lineStart(L), bus = findWord(L, "bus"), fah = findWord(L, "fahren");
-  const busIn = spr(f, s0 - 6, { damping: 18, stiffness: 90 });
+  const busIn = spr(f, s0 - 18, { damping: 18, stiffness: 110 });
   const swap = spr(f, fah - 4, { damping: 16, stiffness: 120 });
   const cross = prog(f, bus + 6, 10, ez.snap);
   return (

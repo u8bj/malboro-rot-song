@@ -46,7 +46,7 @@ export const Shot12: React.FC = () => {
   const f = useCurrentFrame(); const L = 12; const s0 = lineStart(L);
   const t = (f - s0) / fps;
   const snap = beatPulse(f, 10);
-  const inn = spr(f, s0 - 8, { damping: 18, stiffness: 80 });
+  const inn = spr(f, s0 - 18, { damping: 18, stiffness: 110 });
   const week = Math.floor(Math.max(0, f - findWord(L, "wöchentlich") + 6) / 6);
   return (
     <AbsoluteFill>

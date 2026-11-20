@@ -84,16 +84,17 @@ export const Shot24: React.FC = () => {
 /* 25 · Und hab' hinter mir ein ganzes Arsenal wie Mkhitaryan – an army of chrome rising behind */
 export const Shot25: React.FC = () => {
   const f = useCurrentFrame(); const L = 25; const s0 = lineStart(L), ars = findWord(L, "arsenal");
-  const rise = prog(f, s0, ars - s0 + 50, ez.inOut);
+  const rise = 0.35 + 0.65 * prog(f, s0 - 20, ars - s0 + 50, ez.inOut);
   const t = (f - s0) / fps;
   return (
     <AbsoluteFill>
       <Stage3D bloom={0.9} bloomThreshold={0.7} transparent={false}>
         <color attach="background" args={[COLORS.bg]} />
-        <CameraRig pos={[lerp(-2, 2, t / 3), 1.2, 9.5]} look={[0, 0, -2]} fov={36} />
-        <StudioEnv tint={COLORS.red} intensity={1.2} />
-        <spotLight position={[0, 6, 6]} angle={0.6} penumbra={1} intensity={120} />
-        <pointLight position={[0, -1, -6]} intensity={80} color={COLORS.red} distance={20} />
+        <CameraRig pos={[lerp(-2, 2, t / 3), 0.4, 9.5]} look={[0, -1.4, -2]} fov={36} />
+        <StudioEnv tint={COLORS.red} intensity={2.6} />
+        <spotLight position={[0, 6, 6]} angle={0.7} penumbra={1} intensity={260} />
+        <pointLight position={[0, -1, -6]} intensity={140} color={COLORS.red} distance={20} />
+        <pointLight position={[0, 3, 4]} intensity={60} color="#ffffff" distance={15} />
         <ChromeBalls n={9 * 9} t={t} rise={rise} />
       </Stage3D>
       <AbsoluteFill style={{ background: "linear-gradient(180deg, transparent 55%, rgba(5,5,5,0.9) 72%)" }} />
