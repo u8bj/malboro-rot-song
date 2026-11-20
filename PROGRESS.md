@@ -6,8 +6,8 @@
 - [x] Alignment `scripts/build_lyrics.py` → `lyrics/lyrics.json`, Prüfliste `lyrics/sync_report.txt`
 - [x] Alle Shots: `scenes/shots/SmokeShot|MoneyShot|JacketShot` (Z. 1–2), `LinesA` (Z. 3–10), `LinesB` (Z. 11–22), `LinesC` (Z. 23–36)
 - [x] Komposition `FullVideo` (`scenes/FullVideo.tsx`, 5017 Frames = 83,616 s)
-- [ ] Finaler Render: `bash scripts/render_chunks.sh` (Chunks à 600 Frames in `output/chunks_s1/`, setzt automatisch fort)
-- [ ] QC des finalen MP4 (Dauer, Black-Frames, Stichproben)
+- [x] Finaler Render: `output/malboro_rot_full_s1.mp4` (83,616 s, 5016 Frames, 1080×1920, 60 fps, H.264 + AAC 320k)
+- [x] QC: Dauer = Audio, vollständig dekodierbar, keine echten Schwarzbilder (8,4 s = minimalistische Uhr, geprüft)
 
 ## Fortsetzen nach Unterbrechung
 1. `npm i` · Python-venv: `pip install faster-whisper librosa`
