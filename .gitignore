@@ -4,3 +4,6 @@ previews/*.mp4
 previews/frames/
 .cache/
 *.log
+previews/qc*/
+previews/*.jpg
+previews/*.png
