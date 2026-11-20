@@ -5,7 +5,8 @@
  */
 import React, { useMemo } from "react";
 import * as THREE from "three";
-import { MIRROR, CLOCK_R } from "./Shards";
+import { MIRROR, CLOCK_R, sanitizeNormals } from "./Shards";
+import { rHeart } from "./Targets";
 
 const NR = 36, NT = 180;
 const EYE = { w: 2.5, h: 1.15 };
@@ -22,7 +23,7 @@ const zMirror = (p: number) => 0.06 * Math.pow(Math.max(0, 1 - Math.pow(p, 14)),
 const zLens = (p: number) => 0.26 * (1 - p * p) + 0.012 * Math.sqrt(Math.max(0, 1 - p * p));
 const zClock = (p: number) => 0.07 * Math.pow(Math.max(0, 1 - Math.pow(p, 10)), 0.3) + 0.05 * (1 - p * p);
 
-export type SlabState = { eye: number; circle: number }; // eye: mirror→eye blend, circle: eye→circle blend
+export type SlabState = { eye: number; circle: number; heart?: number }; // eye: mirror→eye, circle: eye→circle, heart: (eye)→heart
 
 export const MorphSlab: React.FC<{ s: SlabState; material: THREE.Material } & JSX.IntrinsicElements["group"]> = ({ s, material, ...g }) => {
   const geo = useMemo(() => {
@@ -40,14 +41,16 @@ export const MorphSlab: React.FC<{ s: SlabState; material: THREE.Material } & JS
   }, []);
   const arr = geo.attributes.position.array as Float32Array;
   for (let side = 0; side < 2; side++) for (let r = 0; r <= NR; r++) for (let t = 0; t < NT; t++) {
-    const th = (t / NT) * Math.PI * 2, p = r / NR;
-    const R = (rMirror(th) * (1 - s.eye) + rEye(th) * s.eye) * (1 - s.circle) + rCircle() * s.circle;
-    const z = (zMirror(p) * (1 - s.eye) + zLens(p) * s.eye) * (1 - s.circle) + zClock(p) * s.circle;
+    const th = (t / NT) * Math.PI * 2, p = Math.max(0.004, r / NR);
+    const hk = s.heart ?? 0;
+    const R = ((rMirror(th) * (1 - s.eye) + rEye(th) * s.eye) * (1 - s.circle) + rCircle() * s.circle) * (1 - hk) + rHeart(th) * hk;
+    const z = ((zMirror(p) * (1 - s.eye) + zLens(p) * s.eye) * (1 - s.circle) + zClock(p) * s.circle) * (1 - hk) + zLens(p) * 1.5 * hk;
     const k = ((side * (NR + 1) + r) * NT + t) * 3;
     arr[k] = Math.cos(th) * R * p; arr[k + 1] = Math.sin(th) * R * p; arr[k + 2] = side ? -z : z;
   }
   geo.attributes.position.needsUpdate = true;
   geo.computeVertexNormals();
+  sanitizeNormals(geo);
   geo.computeBoundingSphere();
   return <group {...g}><mesh geometry={geo} material={material} castShadow /></group>;
 };

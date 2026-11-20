@@ -18,6 +18,16 @@ type V = THREE.Vector3;
 export type Pose = { c: V; L: [V, V, V] };
 export type StateFn = (i: number, t: number) => Pose;
 
+/** replace zero / NaN normals (degenerate triangles) – a zero normal becomes NaN in the shader and bloom spreads it over the frame */
+export const sanitizeNormals = (g: THREE.BufferGeometry, fallback = new THREE.Vector3(0, 0, 1)) => {
+  const n = g.attributes.normal as THREE.BufferAttribute | undefined; if (!n) return;
+  const a = n.array as Float32Array;
+  for (let i = 0; i < a.length; i += 3) {
+    const x = a[i], y = a[i + 1], z = a[i + 2], l = Math.hypot(x, y, z);
+    if (!(l > 1e-6) || !Number.isFinite(l)) { a[i] = fallback.x; a[i + 1] = fallback.y; a[i + 2] = fallback.z; }
+  }
+  n.needsUpdate = true;
+};
 const superR = (th: number, a: number, b: number, n: number) => Math.pow(Math.pow(Math.abs(Math.cos(th) / a), n) + Math.pow(Math.abs(Math.sin(th) / b), n), -1 / n);
 const clampToMirror = (x: number, y: number) => {
   const r = Math.hypot(x, y), th = Math.atan2(y, x), R = superR(th, MIRROR.w / 2, MIRROR.h / 2, MIRROR.n);
@@ -99,6 +109,7 @@ export const ShardMesh: React.FC<{ poses: Pose[]; material: THREE.Material; visi
   poses.forEach((p, i) => p.L.forEach((v, j) => { arr[i * 9 + j * 3] = p.c.x + v.x; arr[i * 9 + j * 3 + 1] = p.c.y + v.y; arr[i * 9 + j * 3 + 2] = p.c.z + v.z; }));
   geo.attributes.position.needsUpdate = true;
   geo.computeVertexNormals();
+  sanitizeNormals(geo);
   geo.computeBoundingSphere();
   return <mesh geometry={geo} material={material} visible={visible} castShadow />;
 };

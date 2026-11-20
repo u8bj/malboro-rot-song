@@ -5,12 +5,13 @@ import { VIDEO } from "../presets/theme";
 import { TestScene, TEST_DURATION } from "../scenes/TestScene";
 import { FullVideo, FULL_DURATION } from "../scenes/FullVideo";
 import { NiemalsScene } from "../niemals/NiemalsWorld";
-import { TEST_END_S } from "../niemals/timeline";
+import { TEST_END_S, END_S } from "../niemals/timeline";
 
 export const RemotionRoot: React.FC = () => (
   <>
     <Composition id="TestScene" component={TestScene} durationInFrames={TEST_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
     <Composition id="FullVideo" component={FullVideo} durationInFrames={FULL_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+    <Composition id="Niemals" component={NiemalsScene} durationInFrames={Math.ceil(END_S * 60)} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
     <Composition id="NiemalsTest" component={NiemalsScene} durationInFrames={Math.round(TEST_END_S * 60)} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
   </>
 );

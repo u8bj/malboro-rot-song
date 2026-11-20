@@ -28,3 +28,24 @@ T.tiles0 = T.shatter + 0.45;
 T.tiles1 = beatNear(ws(1, "nie"));
 T.clear0 = T.tiles1 + 0.12;
 export const TEST_END_S = ls(5) + 0.1; // test ends right as scene 6 starts
+
+// ── Act 2 (scenes 6–16). Stage for act 2 sits deeper in space: S2 = (0,0,-10) – the camera flies there through the memory plates.
+export const T2 = {
+  plates0: ls(5) - 0.4, plates1: ws(5, "erinnerung'n"),
+  eyeT0: ls(6) - 0.55, eyeT1: ls(6) + 0.15,
+  heart0: beatNear(ws(6, "dich") + 0.2), heart1: ls(7) + 0.05,
+  heartCrack0: ws(7, "lang"), heartShat: beatNear(ls(8) - 0.25),
+  word1: ws(8, "undankbar"), wordCrack0: ws(8, "undankbar") + 0.4,
+  domino0: ls(9) - 0.35, domino1: ws(9, "tust"), fall0: ws(9, "ohne"),
+  city0: ws(9, "anfang'n") + 0.25, city1: ls(10) + 0.2,
+  crumble: ws(10, "zerstör'n"),
+  vortex0: ls(11) - 0.1, vortex1: ws(11, "nur"), clockIn: ws(11, "dieses"),
+  collapse0: ls(12) - 0.65, collapse1: ls(12) - 0.02,
+  beam0: ls(12) + 0.08, beam1: ls(12) + 0.6,
+  dust0: ls(13) - 0.12, dust1: ws(13, "egal"),
+  glass0: ws(13, "egal"), sand0: ws(13, "wie"), sand1: ls(14) - 0.2,
+  wave0: ls(14) - 0.25, wave1: ws(14, "ich"), decay1: ws(14, "hör'n") + 0.3,
+  path0: ls(15) - 0.45, path1: ws(15, "flieg'"),
+  fade0: ws(15, "nacht") - 0.2,
+};
+export const END_S = 37.72;
