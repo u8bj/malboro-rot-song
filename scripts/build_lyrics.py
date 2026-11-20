@@ -3,15 +3,16 @@ Global sequence alignment → matched words get Whisper times (start snapped to 
 unmatched words are interpolated between anchors and flagged "check": true.
 Extra timings: lyrics/manual_times.json {"<line>:<word>": start_seconds} overrides (for manual fixes)."""
 import json, re, difflib, os
-src = [l.strip() for l in open("lyrics/source.txt", encoding="utf-8") if l.strip()]
-ww = [w for s in json.load(open("lyrics/whisper_words.json")) for w in s["words"]]
-tail = os.path.exists("lyrics/whisper_tail.json") and json.load(open("lyrics/whisper_tail.json")) or []
+D = os.environ.get("LYR_DIR", "lyrics")
+src = [l.strip() for l in open(f"{D}/source.txt", encoding="utf-8") if l.strip()]
+ww = [w for s in json.load(open(f"{D}/whisper_words.json")) for w in s["words"]]
+tail = os.path.exists(f"{D}/whisper_tail.json") and json.load(open(f"{D}/whisper_tail.json")) or []
 ww += [w for w in tail if w["s"] > ww[-1]["s"] + 0.01]
-for pt in (json.load(open("lyrics/whisper_patches.json")) if os.path.exists("lyrics/whisper_patches.json") else []):
+for pt in (json.load(open(f"{D}/whisper_patches.json")) if os.path.exists(f"{D}/whisper_patches.json") else []):
     ww = [w for w in ww if not (pt["from"] <= w["s"] < pt["to"])] + pt["words"]
 ww.sort(key=lambda w: w["s"])
-on = json.load(open("lyrics/analysis.json"))["onsets"]
-manual = json.load(open("lyrics/manual_times.json")) if os.path.exists("lyrics/manual_times.json") else {}
+on = json.load(open(f"{D}/analysis.json"))["onsets"]
+manual = json.load(open(f"{D}/manual_times.json")) if os.path.exists(f"{D}/manual_times.json") else {}
 norm = lambda s: re.sub(r"[^a-zäöüß0-9]", "", s.lower().replace("2pac", "tupac"))
 words = [(li, wi, w) for li, line in enumerate(src) for wi, w in enumerate(line.split())]
 A = [norm(w) for _, _, w in words]; B = [norm(w["w"]) for w in ww]
@@ -63,10 +64,10 @@ for li, line in enumerate(src):
         s = manual.get(key, t["s"])
         ws.append({"w": w, "s": round(s, 3), "e": round(t["e"], 3), "p": round(t["p"], 3), "check": bool(t["check"] and key not in manual)})
     out.append({"line": li, "text": line, "start": ws[0]["s"], "end": ws[-1]["e"], "words": ws})
-json.dump(out, open("lyrics/lyrics.json", "w"), ensure_ascii=False, indent=1)
+json.dump(out, open(f"{D}/lyrics.json", "w"), ensure_ascii=False, indent=1)
 rep = []
 for l in out:
     flags = [w["w"] for w in l["words"] if w["check"]]
     rep.append(f'{l["line"]:2d} {l["start"]:6.2f}-{l["end"]:6.2f}  ' + (f'CHECK: {flags}' if flags else "ok"))
-open("lyrics/sync_report.txt", "w").write("\n".join(rep) + "\n")
+open(f"{D}/sync_report.txt", "w").write("\n".join(rep) + "\n")
 print("\n".join(rep))

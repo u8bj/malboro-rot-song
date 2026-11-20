@@ -1,5 +1,6 @@
 """Beat/BPM analysis + Whisper word timestamps. Writes lyrics/analysis.json and lyrics/whisper_words.json (cached)."""
 import json, sys, os
+OUT = os.environ.get("OUT_DIR", "lyrics")
 import numpy as np, librosa
 from faster_whisper import WhisperModel
 
@@ -24,15 +25,15 @@ json.dump({
     "onsets": [round(float(o), 3) for o in onsets],
     "kicks": [round(float(o), 3) for o in low_onset],
     "energy": {"fps": 10, "values": [round(float(v), 4) for v in np.interp(np.arange(0, rms_t[-1], 0.1), rms_t, rms)]},
-}, open("lyrics/analysis.json", "w"))
+}, open(f"{OUT}/analysis.json", "w"))
 print("BPM", tempo, "beats", len(beats))
 
 model = WhisperModel(MODEL, device="cpu", compute_type="int8")
 y16 = librosa.load(AUDIO, sr=16000, mono=True)[0].astype(np.float32)
-segs, info = model.transcribe(y16, initial_prompt=os.environ.get("WHISPER_PROMPT", "Marlboro Rot, aber fühle mich wie John Player. Circa vier, fünf Mille in der Moncler."), language="de", word_timestamps=True, vad_filter=False, beam_size=5)
+segs, info = model.transcribe(y16, initial_prompt=os.environ.get("WHISPER_PROMPT", "Nein, du warst niemals da für mich. Deine Augen verraten dich. Undankbar."), language="de", word_timestamps=True, vad_filter=False, beam_size=5)
 out = []
 for s in segs:
     words = [{"w": w.word.strip(), "s": round(w.start, 3), "e": round(w.end, 3), "p": round(w.probability, 3)} for w in s.words]
     out.append({"s": round(s.start, 3), "e": round(s.end, 3), "text": s.text.strip(), "words": words})
     print(f"[{s.start:6.2f}-{s.end:6.2f}] {s.text.strip()}")
-json.dump(out, open("lyrics/whisper_words.json", "w"), ensure_ascii=False, indent=1)
+json.dump(out, open(f"{OUT}/whisper_words.json", "w"), ensure_ascii=False, indent=1)

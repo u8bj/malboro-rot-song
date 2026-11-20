@@ -1,0 +1,732 @@
+[
+ {
+  "line": 0,
+  "text": "Nein, du warst niemals da für mich",
+  "start": 0.07,
+  "end": 2.16,
+  "words": [
+   {
+    "w": "Nein,",
+    "s": 0.07,
+    "e": 0.54,
+    "p": 0.97,
+    "check": false
+   },
+   {
+    "w": "du",
+    "s": 0.511,
+    "e": 0.68,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "warst",
+    "s": 0.673,
+    "e": 0.94,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "niemals",
+    "s": 0.998,
+    "e": 1.22,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "da",
+    "s": 1.231,
+    "e": 1.38,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "für",
+    "s": 1.37,
+    "e": 1.64,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 1.64,
+    "e": 2.16,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 1,
+  "text": "Und ich sah nie dein wahres Ich",
+  "start": 2.206,
+  "end": 4.14,
+  "words": [
+   {
+    "w": "Und",
+    "s": 2.206,
+    "e": 2.72,
+    "p": 0.591,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 2.763,
+    "e": 2.92,
+    "p": 0.987,
+    "check": false
+   },
+   {
+    "w": "sah",
+    "s": 2.92,
+    "e": 3.14,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "nie",
+    "s": 3.065,
+    "e": 3.3,
+    "p": 0.885,
+    "check": false
+   },
+   {
+    "w": "dein",
+    "s": 3.344,
+    "e": 3.44,
+    "p": 0.994,
+    "check": false
+   },
+   {
+    "w": "wahres",
+    "s": 3.46,
+    "e": 3.88,
+    "p": 0.984,
+    "check": false
+   },
+   {
+    "w": "Ich",
+    "s": 3.924,
+    "e": 4.14,
+    "p": 0.863,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 2,
+  "text": "Deine Augen verraten dich",
+  "start": 4.644,
+  "end": 6.4,
+  "words": [
+   {
+    "w": "Deine",
+    "s": 4.644,
+    "e": 5.14,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "Augen",
+    "s": 5.14,
+    "e": 5.48,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "verraten",
+    "s": 5.48,
+    "e": 6.2,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "dich",
+    "s": 6.177,
+    "e": 6.4,
+    "p": 0.989,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 3,
+  "text": "Viel zu lang hab' ich weggeschaut",
+  "start": 6.734,
+  "end": 9.02,
+  "words": [
+   {
+    "w": "Viel",
+    "s": 6.734,
+    "e": 7.28,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "zu",
+    "s": 7.291,
+    "e": 7.38,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "lang",
+    "s": 7.38,
+    "e": 7.68,
+    "p": 0.517,
+    "check": false
+   },
+   {
+    "w": "hab'",
+    "s": 7.68,
+    "e": 7.88,
+    "p": 0.975,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 7.872,
+    "e": 8.0,
+    "p": 0.956,
+    "check": false
+   },
+   {
+    "w": "weggeschaut",
+    "s": 8.011,
+    "e": 9.02,
+    "p": 0.536,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 4,
+  "text": "Nein, du warst niemals da für mich",
+  "start": 9.288,
+  "end": 11.14,
+  "words": [
+   {
+    "w": "Nein,",
+    "s": 9.288,
+    "e": 9.58,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "du",
+    "s": 9.567,
+    "e": 9.68,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "warst",
+    "s": 9.706,
+    "e": 9.94,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "niemals",
+    "s": 9.94,
+    "e": 10.22,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "da",
+    "s": 10.22,
+    "e": 10.4,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "für",
+    "s": 10.426,
+    "e": 10.7,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 10.728,
+    "e": 11.14,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 5,
+  "text": "Die Erinnerung'n jagen mich",
+  "start": 11.424,
+  "end": 13.16,
+  "words": [
+   {
+    "w": "Die",
+    "s": 11.424,
+    "e": 11.76,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "Erinnerung'n",
+    "s": 11.796,
+    "e": 12.5,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "jagen",
+    "s": 12.5,
+    "e": 12.94,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 12.94,
+    "e": 13.16,
+    "p": 0.999,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 6,
+  "text": "Deine Augen verraten dich",
+  "start": 13.7,
+  "end": 15.46,
+  "words": [
+   {
+    "w": "Deine",
+    "s": 13.7,
+    "e": 14.18,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "Augen",
+    "s": 14.18,
+    "e": 14.54,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "verraten",
+    "s": 14.54,
+    "e": 15.22,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "dich",
+    "s": 15.232,
+    "e": 15.46,
+    "p": 0.999,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 7,
+  "text": "Viel zu lang hab' ich dir vertraut",
+  "start": 16.0,
+  "end": 18.14,
+  "words": [
+   {
+    "w": "Viel",
+    "s": 16.0,
+    "e": 16.38,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "zu",
+    "s": 16.347,
+    "e": 16.48,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "lang",
+    "s": 16.48,
+    "e": 16.76,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "hab'",
+    "s": 16.76,
+    "e": 16.96,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 16.927,
+    "e": 17.08,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "dir",
+    "s": 17.09,
+    "e": 17.22,
+    "p": 0.989,
+    "check": false
+   },
+   {
+    "w": "vertraut",
+    "s": 17.206,
+    "e": 18.14,
+    "p": 0.999,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 8,
+  "text": "Baby, du bist undankbar",
+  "start": 18.44,
+  "end": 20.76,
+  "words": [
+   {
+    "w": "Baby,",
+    "s": 18.44,
+    "e": 18.96,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "du",
+    "s": 19.02,
+    "e": 19.18,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "bist",
+    "s": 19.203,
+    "e": 19.38,
+    "p": 0.985,
+    "check": false
+   },
+   {
+    "w": "undankbar",
+    "s": 19.365,
+    "e": 20.76,
+    "p": 0.991,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 9,
+  "text": "Und tust ohne Grund anfang'n",
+  "start": 20.898,
+  "end": 23.08,
+  "words": [
+   {
+    "w": "Und",
+    "s": 20.898,
+    "e": 21.24,
+    "p": 0.755,
+    "check": false
+   },
+   {
+    "w": "tust",
+    "s": 21.24,
+    "e": 21.41,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "ohne",
+    "s": 21.41,
+    "e": 21.58,
+    "p": 0,
+    "check": true
+   },
+   {
+    "w": "Grund",
+    "s": 21.58,
+    "e": 22.04,
+    "p": 0.902,
+    "check": false
+   },
+   {
+    "w": "anfang'n",
+    "s": 22.18,
+    "e": 23.08,
+    "p": 0.523,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 10,
+  "text": "Meine Welt zu zerstör'n",
+  "start": 23.15,
+  "end": 25.24,
+  "words": [
+   {
+    "w": "Meine",
+    "s": 23.15,
+    "e": 23.5,
+    "p": 0.549,
+    "check": false
+   },
+   {
+    "w": "Welt",
+    "s": 23.429,
+    "e": 23.86,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "zu",
+    "s": 23.86,
+    "e": 24.28,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "zerstör'n",
+    "s": 24.242,
+    "e": 25.24,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 11,
+  "text": "Doch nur dieses Chaos hält mich wach",
+  "start": 25.24,
+  "end": 28.28,
+  "words": [
+   {
+    "w": "Doch",
+    "s": 25.24,
+    "e": 25.74,
+    "p": 0.963,
+    "check": false
+   },
+   {
+    "w": "nur",
+    "s": 25.704,
+    "e": 25.96,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "dieses",
+    "s": 25.983,
+    "e": 26.52,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "Chaos",
+    "s": 26.564,
+    "e": 27.1,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "hält",
+    "s": 27.121,
+    "e": 27.48,
+    "p": 0.991,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 27.48,
+    "e": 27.74,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "wach",
+    "s": 27.74,
+    "e": 28.28,
+    "p": 0.919,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 12,
+  "text": "Undankbar",
+  "start": 29.095,
+  "end": 29.8,
+  "words": [
+   {
+    "w": "Undankbar",
+    "s": 29.095,
+    "e": 29.8,
+    "p": 0.95,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 13,
+  "text": "Ganz egal, wie jung man war",
+  "start": 29.8,
+  "end": 31.98,
+  "words": [
+   {
+    "w": "Ganz",
+    "s": 29.8,
+    "e": 30.26,
+    "p": 0.978,
+    "check": false
+   },
+   {
+    "w": "egal,",
+    "s": 30.232,
+    "e": 30.44,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "wie",
+    "s": 30.511,
+    "e": 30.78,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "jung",
+    "s": 30.813,
+    "e": 31.2,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "man",
+    "s": 31.2,
+    "e": 31.54,
+    "p": 0.968,
+    "check": false
+   },
+   {
+    "w": "war",
+    "s": 31.533,
+    "e": 31.98,
+    "p": 0.991,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 14,
+  "text": "Und ich kann's nicht mehr hör'n",
+  "start": 32.206,
+  "end": 34.3,
+  "words": [
+   {
+    "w": "Und",
+    "s": 32.206,
+    "e": 32.48,
+    "p": 0.962,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 32.485,
+    "e": 32.64,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "kann's",
+    "s": 32.647,
+    "e": 32.96,
+    "p": 0.938,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 32.949,
+    "e": 33.32,
+    "p": 0.989,
+    "check": false
+   },
+   {
+    "w": "mehr",
+    "s": 33.344,
+    "e": 33.8,
+    "p": 0.991,
+    "check": false
+   },
+   {
+    "w": "hör'n",
+    "s": 33.808,
+    "e": 34.3,
+    "p": 0.406,
+    "check": true
+   }
+  ]
+ },
+ {
+  "line": 15,
+  "text": "Darum flieg' ich planlos durch die Nacht",
+  "start": 34.482,
+  "end": 37.12,
+  "words": [
+   {
+    "w": "Darum",
+    "s": 34.482,
+    "e": 35.06,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "flieg'",
+    "s": 35.039,
+    "e": 35.54,
+    "p": 0.902,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 35.619,
+    "e": 35.7,
+    "p": 0.928,
+    "check": false
+   },
+   {
+    "w": "planlos",
+    "s": 35.736,
+    "e": 36.24,
+    "p": 0.653,
+    "check": false
+   },
+   {
+    "w": "durch",
+    "s": 36.177,
+    "e": 36.54,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "die",
+    "s": 36.54,
+    "e": 36.68,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "Nacht",
+    "s": 36.757,
+    "e": 37.12,
+    "p": 0.997,
+    "check": false
+   }
+  ]
+ }
+]

@@ -30,6 +30,7 @@ export type LineTextProps = {
   rowGap?: number;
   style?: React.CSSProperties;
   hide?: string[]; // words not rendered as text (replaced by a visual)
+  lyrics?: { start: number; end: number; words: { w: string; s: number; e: number }[] }[]; // other project
   only?: [number, number]; // render only word index range [a, b)
 };
 
@@ -51,10 +52,10 @@ const fit = (words: { t: string; k: number }[], weight: number, tracking: number
 export const LineText: React.FC<LineTextProps> = ({
   line, top, centerY = 960, maxWidth = 940, maxSize = 150, minSize = 44, maxRows = 3, weight = 700, color = COLORS.white,
   reveal = "rise", dur = 16, tracking = -0.02, upper = false, align = "center", left = 70, highlight = {}, exitAt, dimPast = false,
-  wordGap = 0.26, rowGap = 0.05, style, hide = [], only,
+  wordGap = 0.26, rowGap = 0.05, style, hide = [], only, lyrics,
 }) => {
   const f = useCurrentFrame();
-  const L = LYRICS[line];
+  const L = (lyrics ?? LYRICS)[line];
   const words = L.words.map((w, idx) => ({ w, idx })).filter(({ w, idx }) => !hide.includes(clean(w.w)) && (!only || (idx >= only[0] && idx < only[1]))).map(({ w }) => {
     const h = highlight[clean(w.w)];
     return { raw: w, t: upper ? w.w.toUpperCase() : w.w, h, k: h?.scale ?? 1 };

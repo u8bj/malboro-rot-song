@@ -45,3 +45,10 @@ npm run render:test                        # 1080×1920, 60 fps, H.264 CRF 16, A
 - `remotion.config.ts` nutzt auf Windows automatisch `--gl=angle` (GPU-WebGL). Concurrency 4–6 (`REMOTION_CONCURRENCY`).
 - Whisper lokal: `pip install faster-whisper librosa`, CUDA optional (`device="cuda", compute_type="float16"`).
 - Hardware-Encoding (optional, nur für Final-Encode): `ffmpeg -c:v h264_nvenc -preset p7 -cq 18`.
+
+## Projekt 2: „Niemals“ (`niemals/`)
+- Audio `audio/niemals.mp3` (37,7 s, 108 BPM). Text: `niemals/lyrics/source.txt` (verbindlich, vom Nutzer). Alignment: `LYR_DIR=niemals/lyrics python scripts/build_lyrics.py`
+- One-Take-Architektur: `niemals/NiemalsWorld.tsx` (eine Szene, Zeit-Funktionen), `niemals/models/Shards.tsx` (Splitterfeld), `niemals/models/MorphSlab.tsx` (Morph-Körper), Zeiten in `niemals/timeline.ts`
+- KEINE harten Schnitte, kein simples Fade: jede Szene entsteht aus der vorherigen (siehe `niemals/STORYBOARD.md`)
+- Glas ohne `transmission` rendern (SwiftShader-Artefakte) → transparente Physical-Materialien + Environment-Lightformer
+- Stills: `COMP=NiemalsTest node scripts/stills.mjs <dir> 0.3 <frames…>`
