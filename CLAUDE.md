@@ -52,3 +52,11 @@ npm run render:test                        # 1080×1920, 60 fps, H.264 CRF 16, A
 - KEINE harten Schnitte, kein simples Fade: jede Szene entsteht aus der vorherigen (siehe `niemals/STORYBOARD.md`)
 - Glas ohne `transmission` rendern (SwiftShader-Artefakte) → transparente Physical-Materialien + Environment-Lightformer
 - Stills: `COMP=NiemalsTest node scripts/stills.mjs <dir> 0.3 <frames…>`
+
+## Projekt 3: „Feuer“ – Apple-iOS-Lyrics-Video 16:9 (`feuer/`)
+- 1920×1080, 60 fps. Audio `audio/feuer.mp3` (40,1 s, ~96 BPM). Text: `feuer/lyrics/source.txt` (verbindlich, inkl. Adlibs in Klammern).
+- Timing: Whisper mit Text-Prompt + akustischer Gegenlauf (`feuer/lyrics/raw/`), Korrekturen in `feuer/lyrics/manual_times.json`.
+- Reines 2D (React/SVG/CSS-3D), kein WebGL → schnelles Rendern. Szenen in `feuer/scenes/A|B|C.tsx`, Master `feuer/Feuer.tsx`.
+- Szenen sind TRANSPARENT; der Master malt einen gemeinsamen Hintergrund → Übergänge überlappen echt (nie einen deckenden Hintergrund pro Szene einbauen).
+- Lyrics im Referenz-Stil: `feuer/ui/Lyrics.tsx` (Wort erscheint beim Singen, grau → schwarz/Akzent, Akzente kursiv Serif, Adlibs grau kursiv).
+- Export: `COMP=Feuer TOTAL=2406 AUDIO=audio/feuer.mp3 OUT=output/feuer_chunks FINAL=output/apple_ios_lyrics_video_16x9.mp4 bash scripts/render_chunks.sh`

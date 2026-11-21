@@ -30,7 +30,7 @@ print("BPM", tempo, "beats", len(beats))
 
 model = WhisperModel(MODEL, device="cpu", compute_type="int8")
 y16 = librosa.load(AUDIO, sr=16000, mono=True)[0].astype(np.float32)
-segs, info = model.transcribe(y16, initial_prompt=os.environ.get("WHISPER_PROMPT", "Nein, du warst niemals da für mich. Deine Augen verraten dich. Undankbar."), language="de", word_timestamps=True, vad_filter=False, beam_size=5)
+segs, info = model.transcribe(y16, initial_prompt=os.environ.get("WHISPER_PROMPT", os.environ.get("WHISPER_PROMPT", "Leute vor der Tür, Kugeln in mei'm Lauf. Blaulicht und Sirenen. Makarow aus Stalingrad.")), language="de", word_timestamps=True, vad_filter=False, beam_size=5)
 out = []
 for s in segs:
     words = [{"w": w.word.strip(), "s": round(w.start, 3), "e": round(w.end, 3), "p": round(w.probability, 3)} for w in s.words]

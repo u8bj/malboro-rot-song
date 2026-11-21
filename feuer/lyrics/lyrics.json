@@ -1,0 +1,882 @@
+[
+ {
+  "line": 0,
+  "text": "Leute vor der Tür, Kugeln in mei’m Lauf",
+  "start": 0.0,
+  "end": 2.72,
+  "words": [
+   {
+    "w": "Leute",
+    "s": 0.0,
+    "e": 0.07,
+    "p": 0,
+    "check": false
+   },
+   {
+    "w": "vor",
+    "s": 0.22,
+    "e": 0.36,
+    "p": 0.002,
+    "check": false
+   },
+   {
+    "w": "der",
+    "s": 0.418,
+    "e": 0.66,
+    "p": 0.766,
+    "check": false
+   },
+   {
+    "w": "Tür,",
+    "s": 0.66,
+    "e": 0.86,
+    "p": 0.486,
+    "check": false
+   },
+   {
+    "w": "Kugeln",
+    "s": 0.98,
+    "e": 1.9,
+    "p": 0.672,
+    "check": false
+   },
+   {
+    "w": "in",
+    "s": 1.881,
+    "e": 2.1,
+    "p": 0.836,
+    "check": false
+   },
+   {
+    "w": "mei’m",
+    "s": 2.04,
+    "e": 2.32,
+    "p": 0.256,
+    "check": false
+   },
+   {
+    "w": "Lauf",
+    "s": 2.32,
+    "e": 2.72,
+    "p": 0.853,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 1,
+  "text": "Was für Rücken oder Schutz? Bra, nur Gott passt auf mich auf",
+  "start": 2.76,
+  "end": 5.9,
+  "words": [
+   {
+    "w": "Was",
+    "s": 2.76,
+    "e": 2.9,
+    "p": 0.041,
+    "check": false
+   },
+   {
+    "w": "für",
+    "s": 2.94,
+    "e": 3.12,
+    "p": 0.37,
+    "check": false
+   },
+   {
+    "w": "Rücken",
+    "s": 3.042,
+    "e": 3.48,
+    "p": 0.733,
+    "check": false
+   },
+   {
+    "w": "oder",
+    "s": 3.506,
+    "e": 3.78,
+    "p": 0.747,
+    "check": false
+   },
+   {
+    "w": "Schutz?",
+    "s": 3.78,
+    "e": 4.1,
+    "p": 0.672,
+    "check": false
+   },
+   {
+    "w": "Bra,",
+    "s": 4.26,
+    "e": 4.44,
+    "p": 0.033,
+    "check": false
+   },
+   {
+    "w": "nur",
+    "s": 4.54,
+    "e": 4.72,
+    "p": 0.687,
+    "check": false
+   },
+   {
+    "w": "Gott",
+    "s": 4.737,
+    "e": 4.92,
+    "p": 0.912,
+    "check": false
+   },
+   {
+    "w": "passt",
+    "s": 4.876,
+    "e": 5.18,
+    "p": 0.66,
+    "check": false
+   },
+   {
+    "w": "auf",
+    "s": 5.108,
+    "e": 5.4,
+    "p": 0.524,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 5.341,
+    "e": 5.58,
+    "p": 0.882,
+    "check": false
+   },
+   {
+    "w": "auf",
+    "s": 5.55,
+    "e": 5.9,
+    "p": 0.973,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 2,
+  "text": "Und wenn wir schießen, wird es laut (ja), Blaulicht und Siren’n (Bra)",
+  "start": 5.88,
+  "end": 9.52,
+  "words": [
+   {
+    "w": "Und",
+    "s": 5.88,
+    "e": 6.18,
+    "p": 0.196,
+    "check": false
+   },
+   {
+    "w": "wenn",
+    "s": 6.107,
+    "e": 6.36,
+    "p": 0.808,
+    "check": false
+   },
+   {
+    "w": "wir",
+    "s": 6.362,
+    "e": 6.46,
+    "p": 0.891,
+    "check": false
+   },
+   {
+    "w": "schießen,",
+    "s": 6.502,
+    "e": 6.88,
+    "p": 0.96,
+    "check": false
+   },
+   {
+    "w": "wird",
+    "s": 6.827,
+    "e": 7.08,
+    "p": 0.987,
+    "check": false
+   },
+   {
+    "w": "es",
+    "s": 7.059,
+    "e": 7.22,
+    "p": 0.623,
+    "check": false
+   },
+   {
+    "w": "laut",
+    "s": 7.245,
+    "e": 7.74,
+    "p": 0.516,
+    "check": false
+   },
+   {
+    "w": "(ja),",
+    "s": 7.52,
+    "e": 7.663,
+    "p": 0,
+    "check": false
+   },
+   {
+    "w": "Blaulicht",
+    "s": 7.8,
+    "e": 8.54,
+    "p": 0.879,
+    "check": false
+   },
+   {
+    "w": "und",
+    "s": 8.522,
+    "e": 8.7,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "Siren’n",
+    "s": 8.661,
+    "e": 9.5,
+    "p": 0.585,
+    "check": false
+   },
+   {
+    "w": "(Bra)",
+    "s": 9.22,
+    "e": 9.52,
+    "p": 0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 3,
+  "text": "Erst fallen Schüsse, danach fallen Mamas Trän’n",
+  "start": 9.52,
+  "end": 12.64,
+  "words": [
+   {
+    "w": "Erst",
+    "s": 9.52,
+    "e": 10.1,
+    "p": 0.892,
+    "check": false
+   },
+   {
+    "w": "fallen",
+    "s": 10.12,
+    "e": 10.42,
+    "p": 0.12,
+    "check": false
+   },
+   {
+    "w": "Schüsse,",
+    "s": 10.5,
+    "e": 10.9,
+    "p": 0.73,
+    "check": false
+   },
+   {
+    "w": "danach",
+    "s": 10.88,
+    "e": 11.2,
+    "p": 0.129,
+    "check": false
+   },
+   {
+    "w": "fallen",
+    "s": 11.1,
+    "e": 11.72,
+    "p": 0.79,
+    "check": false
+   },
+   {
+    "w": "Mamas",
+    "s": 11.6,
+    "e": 12.14,
+    "p": 0.012,
+    "check": false
+   },
+   {
+    "w": "Trän’n",
+    "s": 12.14,
+    "e": 12.64,
+    "p": 0.153,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 4,
+  "text": "Nein, sie können’s nicht versteh’n, sie können’s nicht begreifen",
+  "start": 12.585,
+  "end": 16.06,
+  "words": [
+   {
+    "w": "Nein,",
+    "s": 12.585,
+    "e": 12.92,
+    "p": 0.642,
+    "check": false
+   },
+   {
+    "w": "sie",
+    "s": 12.91,
+    "e": 13.06,
+    "p": 0.888,
+    "check": false
+   },
+   {
+    "w": "können’s",
+    "s": 13.026,
+    "e": 13.5,
+    "p": 0.606,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 13.421,
+    "e": 13.7,
+    "p": 0.919,
+    "check": false
+   },
+   {
+    "w": "versteh’n,",
+    "s": 13.769,
+    "e": 14.4,
+    "p": 0.656,
+    "check": false
+   },
+   {
+    "w": "sie",
+    "s": 14.52,
+    "e": 14.68,
+    "p": 0.834,
+    "check": false
+   },
+   {
+    "w": "können’s",
+    "s": 14.652,
+    "e": 15.14,
+    "p": 0.978,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 15.07,
+    "e": 15.34,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "begreifen",
+    "s": 15.279,
+    "e": 16.06,
+    "p": 0.93,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 5,
+  "text": "Ich brauch’ mich nicht beweisen, du kannst mich nicht vergleichen",
+  "start": 16.06,
+  "end": 19.5,
+  "words": [
+   {
+    "w": "Ich",
+    "s": 16.06,
+    "e": 16.38,
+    "p": 0.894,
+    "check": false
+   },
+   {
+    "w": "brauch’",
+    "s": 16.324,
+    "e": 16.64,
+    "p": 0.711,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 16.56,
+    "e": 16.8,
+    "p": 0.365,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 16.742,
+    "e": 17.0,
+    "p": 0.961,
+    "check": false
+   },
+   {
+    "w": "beweisen,",
+    "s": 17.0,
+    "e": 17.7,
+    "p": 0.967,
+    "check": false
+   },
+   {
+    "w": "du",
+    "s": 17.972,
+    "e": 18.04,
+    "p": 0.915,
+    "check": false
+   },
+   {
+    "w": "kannst",
+    "s": 17.972,
+    "e": 18.28,
+    "p": 0.82,
+    "check": false
+   },
+   {
+    "w": "mich",
+    "s": 18.204,
+    "e": 18.46,
+    "p": 0.881,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 18.39,
+    "e": 18.66,
+    "p": 0.977,
+    "check": false
+   },
+   {
+    "w": "vergleichen",
+    "s": 18.715,
+    "e": 19.5,
+    "p": 0.963,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 6,
+  "text": "Wir sind nicht wie die meisten, Makarow aus Stalingrad (Bra)",
+  "start": 19.528,
+  "end": 22.709,
+  "words": [
+   {
+    "w": "Wir",
+    "s": 19.528,
+    "e": 19.68,
+    "p": 0.735,
+    "check": false
+   },
+   {
+    "w": "sind",
+    "s": 19.621,
+    "e": 19.94,
+    "p": 0.993,
+    "check": false
+   },
+   {
+    "w": "nicht",
+    "s": 19.946,
+    "e": 20.22,
+    "p": 0.981,
+    "check": false
+   },
+   {
+    "w": "wie",
+    "s": 20.271,
+    "e": 20.34,
+    "p": 0.984,
+    "check": false
+   },
+   {
+    "w": "die",
+    "s": 20.271,
+    "e": 20.54,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "meisten,",
+    "s": 20.54,
+    "e": 21.04,
+    "p": 0.988,
+    "check": false
+   },
+   {
+    "w": "Makarow",
+    "s": 21.22,
+    "e": 21.96,
+    "p": 0.235,
+    "check": false
+   },
+   {
+    "w": "aus",
+    "s": 22.0,
+    "e": 22.1,
+    "p": 0.149,
+    "check": false
+   },
+   {
+    "w": "Stalingrad",
+    "s": 22.105,
+    "e": 22.74,
+    "p": 0.994,
+    "check": false
+   },
+   {
+    "w": "(Bra)",
+    "s": 22.78,
+    "e": 22.709,
+    "p": 0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 7,
+  "text": "Bunker’ Cash für die Fam unterm Laminat",
+  "start": 23.22,
+  "end": 26.38,
+  "words": [
+   {
+    "w": "Bunker’",
+    "s": 23.22,
+    "e": 23.88,
+    "p": 0.379,
+    "check": false
+   },
+   {
+    "w": "Cash",
+    "s": 23.9,
+    "e": 24.12,
+    "p": 0.091,
+    "check": false
+   },
+   {
+    "w": "für",
+    "s": 24.102,
+    "e": 24.46,
+    "p": 0.845,
+    "check": false
+   },
+   {
+    "w": "die",
+    "s": 24.46,
+    "e": 24.6,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "Fam",
+    "s": 24.6,
+    "e": 24.96,
+    "p": 0.28,
+    "check": false
+   },
+   {
+    "w": "unterm",
+    "s": 25.008,
+    "e": 25.48,
+    "p": 0.886,
+    "check": false
+   },
+   {
+    "w": "Laminat",
+    "s": 25.426,
+    "e": 26.38,
+    "p": 0.966,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 8,
+  "text": "Und wenn sie komm’n, muss ich Bleikugeln feuern (ja)",
+  "start": 26.448,
+  "end": 29.24,
+  "words": [
+   {
+    "w": "Und",
+    "s": 26.448,
+    "e": 26.64,
+    "p": 0.764,
+    "check": false
+   },
+   {
+    "w": "wenn",
+    "s": 26.657,
+    "e": 26.84,
+    "p": 0.797,
+    "check": false
+   },
+   {
+    "w": "sie",
+    "s": 26.865,
+    "e": 27.04,
+    "p": 0.869,
+    "check": false
+   },
+   {
+    "w": "komm’n,",
+    "s": 27.04,
+    "e": 27.68,
+    "p": 0.391,
+    "check": false
+   },
+   {
+    "w": "muss",
+    "s": 27.701,
+    "e": 27.78,
+    "p": 0.937,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 27.701,
+    "e": 27.92,
+    "p": 0.965,
+    "check": false
+   },
+   {
+    "w": "Bleikugeln",
+    "s": 27.887,
+    "e": 28.72,
+    "p": 0.588,
+    "check": false
+   },
+   {
+    "w": "feuern",
+    "s": 28.723,
+    "e": 29.24,
+    "p": 0.887,
+    "check": false
+   },
+   {
+    "w": "(ja)",
+    "s": 29.02,
+    "e": 29.24,
+    "p": 0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 9,
+  "text": "Kein Schulabschluss, doch zahl’ sechsstellig Steuern",
+  "start": 29.24,
+  "end": 32.62,
+  "words": [
+   {
+    "w": "Kein",
+    "s": 29.24,
+    "e": 29.98,
+    "p": 0.937,
+    "check": false
+   },
+   {
+    "w": "Schulabschluss,",
+    "s": 29.977,
+    "e": 30.86,
+    "p": 0.995,
+    "check": false
+   },
+   {
+    "w": "doch",
+    "s": 30.813,
+    "e": 31.0,
+    "p": 0.925,
+    "check": false
+   },
+   {
+    "w": "zahl’",
+    "s": 31.0,
+    "e": 31.4,
+    "p": 0.156,
+    "check": false
+   },
+   {
+    "w": "sechsstellig",
+    "s": 31.26,
+    "e": 32.12,
+    "p": 0.36,
+    "check": false
+   },
+   {
+    "w": "Steuern",
+    "s": 32.136,
+    "e": 32.62,
+    "p": 0.752,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 10,
+  "text": "Doch egal, was ich auch hab’ (egal), Haus oder Palast",
+  "start": 32.62,
+  "end": 35.8,
+  "words": [
+   {
+    "w": "Doch",
+    "s": 32.62,
+    "e": 32.76,
+    "p": 0.303,
+    "check": false
+   },
+   {
+    "w": "egal,",
+    "s": 32.763,
+    "e": 33.04,
+    "p": 0.986,
+    "check": false
+   },
+   {
+    "w": "was",
+    "s": 33.274,
+    "e": 33.4,
+    "p": 0.968,
+    "check": false
+   },
+   {
+    "w": "ich",
+    "s": 33.4,
+    "e": 33.62,
+    "p": 0.87,
+    "check": false
+   },
+   {
+    "w": "auch",
+    "s": 33.669,
+    "e": 33.8,
+    "p": 0.952,
+    "check": false
+   },
+   {
+    "w": "hab’",
+    "s": 33.8,
+    "e": 34.08,
+    "p": 0.367,
+    "check": false
+   },
+   {
+    "w": "(egal),",
+    "s": 34.06,
+    "e": 34.34,
+    "p": 0.0,
+    "check": false
+   },
+   {
+    "w": "Haus",
+    "s": 34.4,
+    "e": 34.84,
+    "p": 0.278,
+    "check": false
+   },
+   {
+    "w": "oder",
+    "s": 34.9,
+    "e": 35.22,
+    "p": 0.426,
+    "check": false
+   },
+   {
+    "w": "Palast",
+    "s": 35.271,
+    "e": 35.8,
+    "p": 0.624,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 11,
+  "text": "Da oben gibt’s für sowas keinen Platz, mhm, na na na na",
+  "start": 35.759,
+  "end": 39.82,
+  "words": [
+   {
+    "w": "Da",
+    "s": 35.759,
+    "e": 36.26,
+    "p": 0.495,
+    "check": false
+   },
+   {
+    "w": "oben",
+    "s": 36.316,
+    "e": 36.62,
+    "p": 0.777,
+    "check": false
+   },
+   {
+    "w": "gibt’s",
+    "s": 36.62,
+    "e": 37.12,
+    "p": 0.592,
+    "check": false
+   },
+   {
+    "w": "für",
+    "s": 36.98,
+    "e": 37.12,
+    "p": 0.02,
+    "check": false
+   },
+   {
+    "w": "sowas",
+    "s": 37.198,
+    "e": 37.5,
+    "p": 0.513,
+    "check": false
+   },
+   {
+    "w": "keinen",
+    "s": 37.431,
+    "e": 37.78,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "Platz,",
+    "s": 37.825,
+    "e": 38.18,
+    "p": 0.731,
+    "check": false
+   },
+   {
+    "w": "mhm,",
+    "s": 38.0,
+    "e": 38.88,
+    "p": 0.005,
+    "check": false
+   },
+   {
+    "w": "na",
+    "s": 38.34,
+    "e": 38.88,
+    "p": 0.124,
+    "check": false
+   },
+   {
+    "w": "na",
+    "s": 38.78,
+    "e": 39.24,
+    "p": 0.302,
+    "check": false
+   },
+   {
+    "w": "na",
+    "s": 39.2,
+    "e": 39.7,
+    "p": 0.835,
+    "check": false
+   },
+   {
+    "w": "na",
+    "s": 39.6,
+    "e": 39.82,
+    "p": 0.181,
+    "check": false
+   }
+  ]
+ }
+]
