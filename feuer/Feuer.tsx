@@ -2,6 +2,7 @@
 import React from "react";
 import { AbsoluteFill, Audio, staticFile } from "remotion";
 import { ls } from "./timing";
+import { SANS } from "./theme";
 import { useT } from "./ui/kit";
 import * as A from "./scenes/A";
 import { pr, eio } from "./ui/kit";
@@ -25,6 +26,9 @@ export const Feuer: React.FC = () => {
         const b = i === SC.length - 1 ? 999 : ls(SC[i + 1][1]) + PAD_OUT;
         return t >= a && t < b ? <AbsoluteFill key={i}><S /></AbsoluteFill> : null;
       })}
+      {/* watermark – always on top, bottom-left, semi-transparent; dual shadow keeps it readable on light AND dark scenes */}
+      <div style={{ position: "absolute", left: 44, bottom: 34, fontFamily: SANS, fontSize: 30, fontWeight: 600, letterSpacing: "0.01em", color: "rgba(30,30,36,0.42)",
+        textShadow: "0 0 6px rgba(255,255,255,0.55), 0 1px 2px rgba(0,0,0,0.12)", pointerEvents: "none", zIndex: 999 }}>@user21638252</div>
     </AbsoluteFill>
   );
 };
