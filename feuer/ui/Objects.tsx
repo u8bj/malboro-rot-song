@@ -56,3 +56,23 @@ export const Avatar: React.FC<{ s: number; label: string; bg: string }> = ({ s, 
 export const Row: React.FC<{ k: string; v: string; vColor?: string }> = ({ k, v, vColor = C.grey }) => (
   <div style={{ display: "flex", justifyContent: "space-between", padding: "18px 26px", background: "#f2f2f7", borderRadius: 16, fontSize: 26, marginTop: 10 }}><span style={{ color: C.ink }}>{k}</span><span style={{ color: vColor }}>{v}</span></div>
 );
+
+/** stylised chrome pistol silhouette (generic, no brand details) */
+export const ChromePistol: React.FC<{ w?: number; rot?: number }> = ({ w = 240, rot = 0 }) => (
+  <svg width={w} height={w * 0.66} viewBox="0 0 240 158" style={{ transform: `perspective(700px) rotateY(${rot}deg)`, filter: "drop-shadow(0 20px 24px rgba(20,20,40,0.28))" }}>
+    <defs>
+      <linearGradient id="pc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#ffffff" /><stop offset="0.3" stopColor="#d9dde3" /><stop offset="0.55" stopColor="#8f959e" /><stop offset="0.8" stopColor="#c8ccd2" /><stop offset="1" stopColor="#5b6069" /></linearGradient>
+      <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#3a3d43" /><stop offset="1" stopColor="#15161a" /></linearGradient>
+    </defs>
+    {/* slide */}
+    <path d="M14 22 Q14 14 22 14 H226 Q234 14 234 22 V54 Q234 60 228 60 H22 Q14 60 14 52 Z" fill="url(#pc)" />
+    {Array.from({ length: 7 }, (_, i) => <rect key={i} x={170 + i * 7} y={20} width={3} height={34} rx={1.5} fill="rgba(60,64,72,0.35)" />)}
+    <rect x={22} y={26} width={120} height={4} rx={2} fill="rgba(255,255,255,0.7)" />
+    {/* frame + trigger guard */}
+    <path d="M40 60 H200 V72 Q200 78 194 78 H120 Q110 78 104 84 L98 92 Q90 104 76 104 H70 Q58 104 58 92 V78 H40 Z" fill="url(#pc)" />
+    <path d="M92 80 Q92 98 76 98" stroke="#2c2f35" strokeWidth={6} fill="none" strokeLinecap="round" />
+    {/* grip */}
+    <path d="M150 78 H200 L214 146 Q216 154 207 154 H170 Q162 154 160 146 Z" fill="url(#pg)" />
+    {Array.from({ length: 6 }, (_, i) => <line key={i} x1={172 + i * 5} y1={92} x2={182 + i * 5} y2={146} stroke="rgba(255,255,255,0.08)" strokeWidth={2} />)}
+  </svg>
+);

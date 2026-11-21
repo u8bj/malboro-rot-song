@@ -8,7 +8,7 @@ import { C, SANS, SERIF, SHADOW } from "../theme";
 import { ws, ls } from "../timing";
 import { AppIcon, G, cl, pr, eo, eio, lerp, spring, useT } from "../ui/kit";
 import { Lyric } from "../ui/Lyrics";
-import { Capsule, Bundle, Avatar, Drop } from "../ui/Objects";
+import { Capsule, Bundle, Avatar, Drop, ChromePistol } from "../ui/Objects";
 import { Pastel, mixHex } from "./A";
 
 /* ───────── 5 · Nein, sie können's nicht versteh'n … begreifen ───────── */
@@ -114,15 +114,14 @@ export const S7: React.FC = () => {
           <svg width={80} height={110} viewBox="0 0 24 33"><path d="M12 0a11 11 0 0 0-11 11c0 8 11 22 11 22s11-14 11-22A11 11 0 0 0 12 0z" fill={C.red} /><circle cx={12} cy={11} r={4.5} fill="#fff" /></svg>
         </div>
         {/* label card */}
-        <div style={{ position: "absolute", left: px + 70, top: py - 70, padding: "18px 26px", borderRadius: 22, background: "rgba(255,255,255,0.9)", boxShadow: SHADOW, fontFamily: SANS, opacity: pr(t, sta + 0.1, sta + 0.35) * (1 - out),
+        <div style={{ position: "absolute", left: px + 190, top: py - 60, padding: "18px 26px", borderRadius: 22, background: "rgba(255,255,255,0.9)", boxShadow: SHADOW, fontFamily: SANS, opacity: pr(t, sta + 0.1, sta + 0.35) * (1 - out),
           transform: `translateX(${(1 - eo(pr(t, sta + 0.1, sta + 0.4))) * 30}px)` }}>
-          <div style={{ fontSize: 34, fontWeight: 800 }}>Wolgograd</div>
-          <div style={{ fontSize: 22, color: C.grey, marginTop: 2 }}>1925 – 1961: Stalingrad</div>
+          <div style={{ fontSize: 34, fontWeight: 800 }}>Stalingrad</div>
         </div>
       </AbsoluteFill>
       <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.5) 18%, transparent 30%)", opacity: inn * (1 - out) }} />
       {/* pin → chrome object → it flies to the centre and becomes the first wallet card (scene 8) */}
-      <div style={{ position: "absolute", left: lerp(px, 960, out) - 33, top: lerp(py - 150, 520, out), opacity: metal * (1 - pr(t, end - 0.05, end + 0.15)), transform: `scale(${lerp(0.4, 1.2, metal) * (1 + out * 0.6)}) rotate(${(1 - metal) * -30 + out * 90}deg)` }}><Capsule w={66} h={186} rot={Math.sin(t * 2) * 60} tone="chrome" /></div>
+      <div style={{ position: "absolute", left: lerp(px, 960, out) - 130, top: lerp(py - 160, 560, out) - 40, opacity: metal * (1 - pr(t, end - 0.05, end + 0.15)), transform: `scale(${lerp(0.3, 1.1, metal) * (1 + out * 0.4)}) rotate(${(1 - metal) * -25}deg)` }}><ChromePistol w={300} rot={Math.sin(t * 1.8) * 14} /></div>
       <Lyric line={6} accents={{ "meisten": { italic: true }, makarow: { weight: 800 }, stalingrad: { color: C.red } }} out={end - 0.1} />
     </AbsoluteFill>
   );
