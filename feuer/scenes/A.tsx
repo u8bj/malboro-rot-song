@@ -82,7 +82,8 @@ export const mixHex = (a: string, b: string, k: number) => { const h = (s: strin
 /* ───────── 2 · Was für Rücken oder Schutz? … nur Gott passt auf mich auf ───────── */
 export const S2: React.FC = () => {
   const t = useT();
-  const s0 = ls(1), sch = ws(1, "schutz"), gott = ws(1, "gott"), end = ls(2);
+  const s0 = ls(1), sch = ws(1, "schutz"), gott = ws(1, "gott"), nur = ws(1, "nur"), end = ls(2);
+  const cardOut = eio(pr(t, nur - 0.35, nur + 0.05));
   const inn = eio(pr(t, s0 - 0.3, s0 + 0.25));
   const beam = eio(pr(t, gott - 0.25, gott + 0.35));
   const toWave = eio(pr(t, end - 0.35, end + 0.15));
@@ -95,7 +96,7 @@ export const S2: React.FC = () => {
         background: "linear-gradient(180deg, rgba(255,255,255,1), rgba(255,206,120,0.95) 55%, rgba(255,206,120,0))", boxShadow: "0 0 120px 40px rgba(255,210,130,0.55)", filter: `blur(${lerp(24, 2, toWave)}px)`, borderRadius: 4 }} />
       {/* Health-like safety card (inherits the hero tile rect) */}
       <div style={{ position: "absolute", left: 960 - lerp(980, 1180, inn) / 2, top: lerp(330, 600, inn) - lerp(300, 640, inn) / 2, width: lerp(980, 1180, inn), height: lerp(300, 640, inn), borderRadius: 44,
-        background: "#fff", boxShadow: SHADOW, overflow: "hidden", fontFamily: SANS, opacity: (1 - beam) * cl(inn * 2), transform: `scale(${1 + beam * 0.08})` }}>
+        background: "#fff", boxShadow: SHADOW, overflow: "hidden", fontFamily: SANS, opacity: (1 - Math.max(beam, cardOut)) * cl(inn * 2), transform: `scale(${1 + cardOut * 0.08})`, filter: cardOut ? `blur(${cardOut * 10}px)` : undefined }}>
         <div style={{ position: "absolute", left: 44, top: 36, display: "flex", gap: 16, alignItems: "center" }}>
           <AppIcon size={54} bg={C.blue} glyph={G.shield} /><div><div style={{ fontSize: 34, fontWeight: 800 }}>Sicherheit</div><div style={{ fontSize: 22, color: C.grey }}>Heute</div></div>
         </div>
@@ -112,9 +113,9 @@ export const S2: React.FC = () => {
         <div style={{ position: "absolute", left: 606, top: 400, fontSize: 26, color: C.grey, opacity: pr(t, sch + 0.2, sch + 0.5) }}>Status</div>
         <div style={{ position: "absolute", left: 606, top: 434, fontSize: 30, fontWeight: 700, color: C.green, opacity: pr(t, sch + 0.25, sch + 0.55) }}>● Aktiv</div>
       </div>
-      <Lyric line={1} to={5} accents={{ "schutz": { color: C.blue }, "bra": {} }} out={gott - 0.3} />
+      <Lyric line={1} to={6} accents={{ "schutz": { color: C.blue } }} out={nur - 0.25} />
       {/* „nur Gott passt auf mich auf“ – centred inside the light */}
-      <Lyric line={1} from={5} align="center" x={960} y={440} size={96} maxW={1600} accents={{ gott: { italic: true, color: C.gold } }} out={end - 0.2} style={{ opacity: 1 - toWave }} />
+      <Lyric line={1} from={6} align="center" x={960} y={440} size={96} maxW={1600} accents={{ gott: { italic: true, color: C.gold } }} out={end - 0.2} style={{ opacity: 1 - toWave }} />
     </AbsoluteFill>
   );
 };
