@@ -348,3 +348,24 @@ export const Wagen5: React.FC = () => {
     </AbsoluteFill>
   );
 };
+
+/* ───────── cover / thumbnail (series template) ───────── */
+export const W5Cover: React.FC<{ part?: number; hook?: string }> = ({ part = 1, hook = "Du hast 3 Sekunden." }) => {
+  const t = at(27) + 0.6; // open suitcase, money glowing
+  return (
+    <AbsoluteFill style={{ background: K.bg }}>
+      <AbsoluteFill style={{ filter: "brightness(0.8)" }}><S_Case t={t} /></AbsoluteFill>
+      <AbsoluteFill style={{ background: "linear-gradient(180deg, rgba(7,11,20,0.85) 0%, rgba(7,11,20,0.1) 30%, rgba(7,11,20,0.1) 55%, rgba(7,11,20,0.9) 80%)" }} />
+      {/* everything important inside the 3:4 centre crop (y 240–1680) */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: 300, textAlign: "center", fontFamily: SANS }}>
+        <div style={{ display: "inline-block", padding: "12px 30px", borderRadius: 16, background: K.red, color: "#fff", fontWeight: 900, fontSize: 54, letterSpacing: "0.08em" }}>TEIL {part}</div>
+        <div style={{ marginTop: 24, fontWeight: 900, fontSize: 190, lineHeight: 0.95, color: "#fff", letterSpacing: "-0.03em", textShadow: "0 10px 40px rgba(0,0,0,0.8)" }}>WAGEN 5</div>
+      </div>
+      <div style={{ position: "absolute", left: 60, right: 60, top: 1330, textAlign: "center", fontFamily: SANS, fontWeight: 900, fontSize: 92, color: K.yellow, lineHeight: 1.05, textShadow: "0 8px 30px rgba(0,0,0,0.85)" }}>{hook}</div>
+      <div style={{ position: "absolute", left: 0, right: 0, top: 1540, textAlign: "center", fontFamily: SANS, fontWeight: 800, fontSize: 64, color: "#fff" }}>
+        <span style={{ color: K.blue }}>A</span> oder <span style={{ color: K.red }}>B</span>?
+      </div>
+      <Vignette k={0.6} />
+    </AbsoluteFill>
+  );
+};
