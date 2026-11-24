@@ -2,10 +2,12 @@
 import React, { useMemo } from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile, useCurrentFrame, useVideoConfig, random } from "remotion";
 import wordsJson from "./words.json";
+import { Outro } from "../shared/Outro";
 
 type Wd = { w: string; s: number; e: number };
 const WORDS = wordsJson as Wd[];
-export const W5_DURATION_S = 55.2;
+export const OUTRO_T0 = 53.4; // right after the last spoken word
+export const W5_DURATION_S = 61.6; // > 60 s (TikTok Creator Rewards need videos longer than one minute)
 const SANS = '"Inter", -apple-system, "Helvetica Neue", Arial, sans-serif';
 const K = { bg: "#070b14", navy: "#0e1729", navy2: "#16223a", steel: "#2a3957", amber: "#ffb547", amber2: "#ffd58a", red: "#ff3b3b", blue: "#4da3ff", yellow: "#ffd23f", ink: "#e9eef7" };
 
@@ -297,7 +299,7 @@ const S_End: React.FC<{ t: number }> = ({ t }) => {
       {[K.blue, K.red].map((c, i) => <div key={i} style={{ width: 200, height: 200, borderRadius: 100, background: c, display: "flex", alignItems: "center", justifyContent: "center", fontFamily: SANS, fontWeight: 900, fontSize: 120, color: "#0a0f1a",
         transform: `scale(${1 + (i === 0 ? p : 1 - p) * 0.08})`, boxShadow: `0 0 ${40 + 40 * (i === 0 ? p : 1 - p)}px ${c}` }}>{i ? "B" : "A"}</div>)}
     </div>
-    <svg width={140} height={140} viewBox="0 0 24 24" style={{ position: "absolute", left: 470, top: 1500, opacity: pr(t, at(109), at(109) + 0.3), transform: `translateY(${Math.sin(t * 6) * 12}px)` }}><path d="M12 4v14m-6-6 6 6 6-6" stroke="#fff" strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
+    <svg width={140} height={140} viewBox="0 0 24 24" style={{ position: "absolute", left: 470, top: 1500, opacity: pr(t, at(109), at(109) + 0.3) * (1 - pr(t, OUTRO_T0, OUTRO_T0 + 0.3)), transform: `translateY(${Math.sin(t * 6) * 12}px)` }}><path d="M12 4v14m-6-6 6 6 6-6" stroke="#fff" strokeWidth={2.4} fill="none" strokeLinecap="round" strokeLinejoin="round" /></svg>
   </AbsoluteFill>);
 };
 
@@ -330,13 +332,15 @@ export const Wagen5: React.FC = () => {
       {[at(10), at(25), at(43), at(61), at(76) - 0.1, at(96)].map((s, i) => <Sequence key={i} from={fr(s - 0.1)}><Audio src={staticFile("wagen5/hit.mp3")} volume={i === 2 || i === 5 ? 0.9 : 0.55} /></Sequence>)}
       <Sequence from={fr(at(77) - 0.2)}><Audio src={staticFile("wagen5/door.mp3")} volume={0.8} /></Sequence>
       <Sequence from={fr(at(79))}><Audio src={staticFile("wagen5/heart.mp3")} volume={0.9} /></Sequence>
+      {[OUTRO_T0, OUTRO_T0 + 1.6, OUTRO_T0 + 3.2].map((s2, i) => <Sequence key={"pop" + i} from={fr(s2)}><Audio src={staticFile("wagen5/pop.mp3")} volume={0.5} /></Sequence>)}
       <Sequence from={fr(at(91) + 1.2)}><Audio src={staticFile("wagen5/brake.mp3")} volume={0.35} /></Sequence>
 
       {SCENES.map((s, i) => (t >= s.from && t < s.to ? <AbsoluteFill key={i}><s.C t={t} /></AbsoluteFill> : null))}
       {/* quick flash cut between scenes (beat of the edit) */}
       {SCENES.slice(1).map((s, i) => { const d = t - s.from; return d >= 0 && d < 0.12 ? <AbsoluteFill key={"fl" + i} style={{ background: "#fff", opacity: 0.18 * (1 - d / 0.12) }} /> : null; })}
       <HUD t={t} />
-      <Captions t={t} y={t > at(100) - 0.15 ? 1180 : 1330} />
+      {t < OUTRO_T0 && <Captions t={t} y={t > at(100) - 0.15 ? 1180 : 1330} />}
+      <Outro t={t} t0={OUTRO_T0} />
       <Vignette />
       <Grain />
       {/* watermark – bottom-left, above TikTok's caption area, semi-transparent */}
