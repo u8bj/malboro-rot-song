@@ -11,6 +11,7 @@ import { Still } from "remotion";
 import { PP1, PP2, PP3 } from "../viral/shared/ProfilePic";
 import { Aufzug, AZ_DURATION_S, AufzugCover } from "../viral/aufzug/Aufzug";
 import { Geld, GELD_DURATION_S, GeldCover } from "../viral/geld/Geld";
+import { Wach, WACH_DURATION_S, WachCover } from "../viral/wach/Wach";
 import { AUDIO_S as FEUER_S } from "../feuer/timing";
 import { TEST_END_S, END_S } from "../niemals/timeline";
 
@@ -18,6 +19,8 @@ export const RemotionRoot: React.FC = () => (
   <>
     <Composition id="TestScene" component={TestScene} durationInFrames={TEST_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
     <Composition id="FullVideo" component={FullVideo} durationInFrames={FULL_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+    <Still id="WachCover" component={WachCover} width={1080} height={1920} />
+    <Composition id="Wach" component={Wach} durationInFrames={Math.ceil(WACH_DURATION_S * 30)} fps={30} width={1080} height={1920} />
     <Still id="GeldCover" component={GeldCover} width={1080} height={1920} />
     <Composition id="Geld" component={Geld} durationInFrames={Math.ceil(GELD_DURATION_S * 30)} fps={30} width={1080} height={1920} />
     <Composition id="Aufzug" component={Aufzug} durationInFrames={Math.ceil(AZ_DURATION_S * 30)} fps={30} width={1080} height={1920} />
