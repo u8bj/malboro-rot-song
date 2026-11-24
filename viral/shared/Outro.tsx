@@ -10,7 +10,7 @@ const spring = (t: number, t0: number, d = 0.5) => { const x = (t - t0) / d; if 
 export const HANDLE = "@entscheidungsnacht";
 
 /** t = current time (s), t0 = when the outro starts. Total runtime ≈ 7 s. */
-export const Outro: React.FC<{ t: number; t0: number; accent?: string }> = ({ t, t0, accent = "#ffd23f" }) => {
+export const Outro: React.FC<{ t: number; t0: number; accent?: string; likeTitle?: string }> = ({ t, t0, accent = "#ffd23f", likeTitle = "Hat dir die Story gefallen?" }) => {
   if (t < t0) return null;
   const follow = spring(t, t0, 0.55), tap = pr(t, t0 + 1.4, t0 + 1.7), followed = t > t0 + 1.7;
   const like = spring(t, t0 + 2.6, 0.55), beat = Math.exp(-Math.max(0, t - (t0 + 3.2)) * 5) * (t > t0 + 3.2 ? 1 : 0);
@@ -37,7 +37,7 @@ export const Outro: React.FC<{ t: number; t0: number; accent?: string }> = ({ t,
           <svg width={92} height={92} viewBox="0 0 24 24" style={{ transform: `scale(${1 + beat * 0.35})` }}><path d="M12 21s-7.5-4.6-10-9.2C.3 8.6 2.2 4.5 6 4.5c2.2 0 3.5 1.2 4.4 2.5h3.2c.9-1.3 2.2-2.5 4.4-2.5 3.8 0 5.7 4.1 4 7.3C19.5 16.4 12 21 12 21z" fill={t > t0 + 3.2 ? "#fe2c55" : "rgba(255,255,255,0.85)"} /></svg>
         </div>
         <div>
-          <div style={{ fontSize: 30, opacity: 0.7, fontWeight: 600 }}>Hat dir die Story gefallen?</div>
+          <div style={{ fontSize: 30, opacity: 0.7, fontWeight: 600 }}>{likeTitle}</div>
           <div style={{ fontSize: 40, fontWeight: 800 }}>Gerne liken ❤️</div>
         </div>
       </div>

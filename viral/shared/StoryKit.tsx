@@ -33,14 +33,14 @@ export const HudRow: React.FC<{ op: number; children: React.ReactNode }> = ({ op
 
 /** 1–3 word captions, current word yellow */
 export const makeChunks = (W: Wd[]) => { const out: number[][] = []; let cur: number[] = []; W.forEach((w, i) => { cur.push(i); if (/[.,:?!]$/.test(w.w) || cur.length >= 3) { out.push(cur); cur = []; } }); if (cur.length) out.push(cur); return out; };
-export const Captions: React.FC<{ t: number; W: Wd[]; chunks: number[][]; y?: number }> = ({ t, W, chunks, y = 1330 }) => {
+export const Captions: React.FC<{ t: number; W: Wd[]; chunks: number[][]; y?: number; size?: number; hi?: string }> = ({ t, W, chunks, y = 1330, size = 92, hi = K.yellow }) => {
   const ci = chunks.findIndex((c, k) => t >= W[c[0]].s - 0.05 && (k === chunks.length - 1 || t < W[chunks[k + 1][0]].s - 0.05));
   if (ci < 0) return null;
   const c = chunks[ci]; const pop = spring(t, W[c[0]].s - 0.05, 0.35);
   return (
-    <div style={{ position: "absolute", left: 50, right: 170, top: y, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 22px", fontFamily: SANS, fontWeight: 900, fontSize: 92, letterSpacing: "-0.02em", lineHeight: 1.08,
+    <div style={{ position: "absolute", left: 50, right: 170, top: y, display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "0 22px", fontFamily: SANS, fontWeight: 900, fontSize: size, letterSpacing: "-0.02em", lineHeight: 1.08,
       transform: `scale(${0.85 + 0.15 * pop})`, textShadow: "0 6px 24px rgba(0,0,0,0.8)" }}>
-      {c.map((i) => { const w = W[i]; const on = t >= w.s - 0.03; const cur = on && t < w.e + 0.08; return <span key={i} style={{ color: cur ? K.yellow : on ? "#fff" : "rgba(255,255,255,0.35)", transform: `translateY(${cur ? -4 : 0}px)` }}>{w.w}</span>; })}
+      {c.map((i) => { const w = W[i]; const on = t >= w.s - 0.03; const cur = on && t < w.e + 0.08; return <span key={i} style={{ color: cur ? hi : on ? "#fff" : "rgba(255,255,255,0.35)", transform: `translateY(${cur ? -4 : 0}px)` }}>{w.w}</span>; })}
     </div>
   );
 };
@@ -81,3 +81,6 @@ export const EndAB: React.FC<{ t: number; t0: number; bg: React.ReactNode; arrow
 };
 
 export const Watermark: React.FC = () => <div style={{ position: "absolute", left: 44, top: 1585, fontFamily: SANS, fontSize: 34, fontWeight: 700, color: "rgba(255,255,255,0.38)", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>@entscheidungsnacht</div>;
+
+/** TikTok safe area for 1080×1920 (top bar, right action column, bottom caption/username zone stay free) */
+export const SAFE = { left: 60, right: 930, top: 230, bottom: 1400 };
