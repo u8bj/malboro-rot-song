@@ -1,6 +1,6 @@
 // Reusable end-screen CTAs for all @entscheidungsnacht videos: follow + like reminders.
 import React from "react";
-import { AbsoluteFill } from "remotion";
+import { AbsoluteFill, Img, staticFile } from "remotion";
 
 const SANS = '"Inter", -apple-system, "Helvetica Neue", Arial, sans-serif';
 const cl = (x: number) => Math.max(0, Math.min(1, x));
@@ -15,20 +15,18 @@ export const Outro: React.FC<{ t: number; t0: number; accent?: string }> = ({ t,
   const follow = spring(t, t0, 0.55), tap = pr(t, t0 + 1.4, t0 + 1.7), followed = t > t0 + 1.7;
   const like = spring(t, t0 + 2.6, 0.55), beat = Math.exp(-Math.max(0, t - (t0 + 3.2)) * 5) * (t > t0 + 3.2 ? 1 : 0);
   const out = pr(t, t0 + 7.2, t0 + 7.8);
-  const card: React.CSSProperties = { position: "absolute", left: 90, right: 190, borderRadius: 36, background: "rgba(10,16,30,0.86)", border: "1.5px solid rgba(255,255,255,0.14)", backdropFilter: "blur(16px)",
-    display: "flex", alignItems: "center", gap: 28, padding: "30px 34px", fontFamily: SANS, color: "#e9eef7", boxShadow: "0 30px 80px rgba(0,0,0,0.55)" };
+  const card: React.CSSProperties = { position: "absolute", left: 50, right: 170, borderRadius: 36, overflow: "hidden", background: "rgba(10,16,30,0.86)", border: "1.5px solid rgba(255,255,255,0.14)", backdropFilter: "blur(16px)",
+    display: "flex", alignItems: "center", gap: 22, padding: "28px 28px", fontFamily: SANS, color: "#e9eef7", boxShadow: "0 30px 80px rgba(0,0,0,0.55)" };
   return (
     <AbsoluteFill style={{ opacity: 1 - out, pointerEvents: "none" }}>
       {/* follow reminder */}
       <div style={{ ...card, top: 1010, transform: `translateX(${(1 - follow) * -1200}px)` }}>
-        <div style={{ width: 110, height: 110, borderRadius: 55, background: "radial-gradient(circle at 35% 30%, #2a3957, #070b14)", border: `3px solid ${accent}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-          <svg width={60} height={60} viewBox="0 0 24 24"><path d="M15 3a8 8 0 1 0 6 13.3A7 7 0 1 1 15 3z" fill={accent} /></svg>
+        <Img src={staticFile("brand/profile.png")} style={{ width: 110, height: 110, borderRadius: 55, border: `3px solid ${accent}`, flexShrink: 0, objectFit: "cover" }} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: 28, opacity: 0.7, fontWeight: 600 }}>Vergiss nicht zu folgen</div>
+          <div style={{ fontSize: 34, fontWeight: 800, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{HANDLE}</div>
         </div>
-        <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 30, opacity: 0.7, fontWeight: 600 }}>Vergiss nicht zu folgen</div>
-          <div style={{ fontSize: 40, fontWeight: 800 }}>{HANDLE}</div>
-        </div>
-        <div style={{ padding: "18px 26px", borderRadius: 18, fontSize: 32, fontWeight: 800, background: followed ? "rgba(255,255,255,0.14)" : "#fe2c55", color: "#fff", transform: `scale(${1 - 0.12 * Math.sin(Math.PI * tap)})`, whiteSpace: "nowrap" }}>
+        <div style={{ flexShrink: 0, padding: "16px 22px", borderRadius: 18, fontSize: 30, fontWeight: 800, background: followed ? "rgba(255,255,255,0.14)" : "#fe2c55", color: "#fff", transform: `scale(${1 - 0.12 * Math.sin(Math.PI * tap)})`, whiteSpace: "nowrap" }}>
           {followed ? "✓ Gefolgt" : "Folgen"}
         </div>
       </div>

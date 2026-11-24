@@ -9,6 +9,7 @@ import { Feuer } from "../feuer/Feuer";
 import { Wagen5, W5_DURATION_S, W5Cover } from "../viral/wagen5/Wagen5";
 import { Still } from "remotion";
 import { PP1, PP2, PP3 } from "../viral/shared/ProfilePic";
+import { Aufzug, AZ_DURATION_S, AufzugCover } from "../viral/aufzug/Aufzug";
 import { AUDIO_S as FEUER_S } from "../feuer/timing";
 import { TEST_END_S, END_S } from "../niemals/timeline";
 
@@ -16,6 +17,8 @@ export const RemotionRoot: React.FC = () => (
   <>
     <Composition id="TestScene" component={TestScene} durationInFrames={TEST_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
     <Composition id="FullVideo" component={FullVideo} durationInFrames={FULL_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+    <Composition id="Aufzug" component={Aufzug} durationInFrames={Math.ceil(AZ_DURATION_S * 30)} fps={30} width={1080} height={1920} />
+    <Still id="AufzugCover" component={AufzugCover} width={1080} height={1920} />
     <Still id="PP1" component={PP1} width={1080} height={1080} />
     <Still id="PP2" component={PP2} width={1080} height={1080} />
     <Still id="PP3" component={PP3} width={1080} height={1080} />
