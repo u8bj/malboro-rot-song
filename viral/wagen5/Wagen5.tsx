@@ -339,6 +339,8 @@ export const Wagen5: React.FC = () => {
       <Captions t={t} y={t > at(100) - 0.15 ? 1180 : 1330} />
       <Vignette />
       <Grain />
+      {/* watermark – bottom-left, above TikTok's caption area, semi-transparent */}
+      <div style={{ position: "absolute", left: 44, top: 1585, fontFamily: SANS, fontSize: 34, fontWeight: 700, color: "rgba(255,255,255,0.38)", textShadow: "0 2px 8px rgba(0,0,0,0.6)", letterSpacing: "0.01em" }}>@entscheidungsnacht</div>
     </AbsoluteFill>
   );
 };
