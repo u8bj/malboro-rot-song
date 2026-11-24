@@ -96,7 +96,7 @@ const S_Phone: React.FC<{ t: number }> = ({ t }) => {
 const S_Open: React.FC<{ t: number }> = ({ t }) => (
   <Cabin t={t} doors={eo(pr(t, at(42), at(45) + 0.3))} zoom={lerp(1.15, 1.05, pr(t, at(40), at(45)))} />
 );
-const Corridor: React.FC<{ t: number; door7?: number; knock?: number; openK?: number; push?: number }> = ({ t, door7 = 0, knock = 0, openK = 0, push = 0 }) => {
+const Corridor: React.FC<{ t: number; door7?: number; knock?: number; openK?: number; push?: number; under?: number; feet?: number }> = ({ t, door7 = 0, knock = 0, openK = 0, push = 0, under = 0, feet = 0 }) => {
   const kx = knock ? Math.sin(t * 70) * 8 * knock : 0;
   return (<AbsoluteFill style={{ background: "#05080f", transform: `scale(${1 + push})`, transformOrigin: "540px 820px" }}>
     <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
@@ -112,6 +112,10 @@ const Corridor: React.FC<{ t: number; door7?: number; knock?: number; openK?: nu
       <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: `${openK * 100}%`, background: "rgba(255,236,200,0.95)", boxShadow: `0 0 ${80 * openK}px rgba(255,220,160,0.9)` }} />
       <div style={{ position: "absolute", left: 40, top: 30, fontFamily: SANS, fontWeight: 900, fontSize: 54, color: K.amber, opacity: door7, textShadow: `0 0 20px ${K.amber}` }}>7</div>
     </div>
+    {/* light leaking under the door – and the shadow of someone standing behind it */}
+    {under > 0 && <div style={{ position: "absolute", left: 474, top: 992, width: 132, height: 10, background: `rgba(255,236,200,${under})`, boxShadow: `0 0 ${30 * under}px rgba(255,220,160,${0.9 * under})` }}>
+      {[22, 74].map((x, i) => <div key={i} style={{ position: "absolute", left: x, top: -2, width: 36 * feet, height: 14, background: "#05070c", marginLeft: 18 * (1 - feet) }} />)}
+    </div>}
     <div style={{ position: "absolute", left: 470, top: 690, width: 140, height: 30, borderRadius: 6, background: K.amber, opacity: 0.25 + 0.75 * door7, filter: "blur(2px)", boxShadow: `0 0 60px 20px rgba(255,181,71,${0.4 * door7})` }} />
     <AbsoluteFill style={{ background: `radial-gradient(20% 18% at 50% 45%, rgba(255,181,71,${0.15 + 0.25 * door7 + 0.5 * openK}), transparent 70%)` }} />
   </AbsoluteFill>);
@@ -157,7 +161,7 @@ const S_Choice: React.FC<{ t: number }> = ({ t }) => (
     a={{ title: "Karte nehmen & Zimmer 7 öffnen", icon: <svg width={220} height={170} viewBox="0 0 220 170"><rect x={30} y={30} width={160} height={100} rx={14} fill="#c9d0de" /><rect x={45} y={50} width={50} height={60} rx={6} fill="#4a5570" /><text x={140} y={95} textAnchor="middle" fontFamily={SANS} fontWeight={900} fontSize={40} fill={K.red}>7</text></svg> }}
     b={{ title: "Durch die Dachluke klettern", icon: <svg width={220} height={170} viewBox="0 0 220 170"><rect x={20} y={10} width={180} height={30} fill="#2a3348" /><rect x={70} y={10} width={80} height={30} fill="#05070c" stroke={K.red} strokeWidth={4} /><path d="M110 150 V60 M90 80 l20-20 20 20" stroke={K.red} strokeWidth={8} fill="none" strokeLinecap="round" /></svg> }} />
 );
-const S_DoorOpens: React.FC<{ t: number }> = ({ t }) => <Corridor t={t} door7={1} openK={sm(pr(t, at(117) - 0.2, at(120) + 0.6))} push={lerp(0.3, 0.9, pr(t, at(108), at(121)))} />;
+const S_Shadow: React.FC<{ t: number }> = ({ t }) => <Corridor t={t} door7={1} under={sm(pr(t, at(112), at(116)))} feet={sm(pr(t, at(119), at(120) + 0.35))} push={lerp(0.3, 1.2, eo(pr(t, at(108), at(125))))} />;
 
 const SCENES: { from: number; to: number; C: React.FC<{ t: number }> }[] = [
   { from: 0, to: at(15) - 0.1, C: S_Lobby },
@@ -172,8 +176,8 @@ const SCENES: { from: number; to: number; C: React.FC<{ t: number }> }[] = [
   { from: at(79) - 0.1, to: at(85) - 0.1, C: S_Knock },
   { from: at(85) - 0.1, to: at(89) - 0.15, C: S_Two },
   { from: at(89) - 0.15, to: at(108) - 0.1, C: S_Choice },
-  { from: at(108) - 0.1, to: at(121) - 0.15, C: S_DoorOpens },
-  { from: at(121) - 0.15, to: 999, C: ({ t }) => <EndAB t={t} t0={at(121)} arrowAt={at(130)} hideAt={AZ_OUTRO_T0} bg={<Corridor t={t} door7={1} openK={1} push={0.9} />} /> },
+  { from: at(108) - 0.1, to: at(125) - 0.15, C: S_Shadow },
+  { from: at(125) - 0.15, to: 999, C: ({ t }) => <EndAB t={t} t0={at(125)} arrowAt={at(134)} hideAt={AZ_OUTRO_T0} bg={<Corridor t={t} door7={1} under={1} feet={1} push={1.2} />} /> },
 ];
 
 export const Aufzug: React.FC = () => {
@@ -181,18 +185,17 @@ export const Aufzug: React.FC = () => {
   const fr = (s: number) => Math.max(0, Math.round(s * fps));
   const fl = floorAt(t);
   const bars = t < at(35) ? 4 : Math.max(0, 4 - Math.floor(pr(t, at(35), at(39)) * 5));
-  const hudOp = pr(t, 0.6, 1.1) * (1 - pr(t, at(121) - 0.3, at(121)));
+  const hudOp = pr(t, 0.6, 1.1) * (1 - pr(t, at(125) - 0.3, at(125)));
   return (
     <AbsoluteFill style={{ background: K.bg }}>
       <Audio src={staticFile("aufzug/voice.mp3")} />
       <Audio src={staticFile("aufzug/drone.mp3")} volume={0.55} />
       <Sequence from={fr(at(15))} durationInFrames={fr(at(46) - at(15))}><Audio src={staticFile("aufzug/hum.mp3")} loop volume={0.3} /></Sequence>
       {[at(20), at(42) - 0.15].map((s, i) => <Sequence key={"d" + i} from={fr(s)}><Audio src={staticFile("aufzug/ding.mp3")} volume={0.7} /></Sequence>)}
-      {[at(28), at(41), at(64), at(117)].map((s, i) => <Sequence key={"h" + i} from={fr(s - 0.1)}><Audio src={staticFile("aufzug/hit.mp3")} volume={0.55} /></Sequence>)}
+      {[at(28), at(41), at(64), at(120), at(124)].map((s, i) => <Sequence key={"h" + i} from={fr(s - 0.1)}><Audio src={staticFile("aufzug/hit.mp3")} volume={0.55} /></Sequence>)}
       <Sequence from={fr(at(69))}><Audio src={staticFile("aufzug/close.mp3")} volume={0.8} /></Sequence>
       <Sequence from={fr(at(82) - 0.15)}><Audio src={staticFile("aufzug/knock.mp3")} volume={0.95} /></Sequence>
       <Sequence from={fr(at(85))}><Audio src={staticFile("aufzug/heart.mp3")} volume={0.7} /></Sequence>
-      <Sequence from={fr(at(117) - 0.3)}><Audio src={staticFile("aufzug/creak.mp3")} volume={0.85} /></Sequence>
       {[AZ_OUTRO_T0, AZ_OUTRO_T0 + 1.6, AZ_OUTRO_T0 + 3.2].map((s, i) => <Sequence key={"p" + i} from={fr(s)}><Audio src={staticFile("aufzug/pop.mp3")} volume={0.5} /></Sequence>)}
 
       {SCENES.map((s, i) => (t >= s.from && t < s.to ? <AbsoluteFill key={i}><s.C t={t} /></AbsoluteFill> : null))}
@@ -202,7 +205,7 @@ export const Aufzug: React.FC = () => {
         <Chip label="STOCKWERK" value={fl} color={fl.startsWith("-") ? K.red : K.ink} pulse={fl.startsWith("-") ? 0.35 : 0} op={pr(t, at(15), at(15) + 0.3)} />
         <Chip label="EMPFANG" value={<span style={{ display: "inline-flex", gap: 5, alignItems: "flex-end", height: 40 }}>{[0, 1, 2, 3].map((b) => <span key={b} style={{ width: 9, height: 12 + b * 8, borderRadius: 2, background: b < bars ? K.ink : "rgba(255,255,255,0.18)" }} />)}</span>} color={bars ? K.ink : K.red} op={pr(t, at(35) - 0.5, at(35))} pulse={bars === 0 ? 0.4 : 0} />
       </HudRow>
-      {t < AZ_OUTRO_T0 && <Captions t={t} W={W} chunks={CH} y={t > at(121) - 0.15 ? 1180 : 1330} />}
+      {t < AZ_OUTRO_T0 && <Captions t={t} W={W} chunks={CH} y={t > at(125) - 0.15 ? 1180 : 1330} />}
       <Outro t={t} t0={AZ_OUTRO_T0} />
       <Vignette />
       <Grain />
