@@ -59,7 +59,7 @@ export const OutroCompact: React.FC<{ t: number; t0: number; light?: boolean; li
     border: light ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(255,255,255,0.1)", boxShadow: light ? "0 24px 60px rgba(20,20,40,0.14)" : "0 24px 60px rgba(0,0,0,0.5)",
     transform: `translateY(${(1 - k) * 50}px) scale(${0.92 + 0.08 * k})`, opacity: cl(k * 2.2) * (1 - out) });
   return (
-    <AbsoluteFill style={{ pointerEvents: "none", background: light ? `rgba(245,245,247,${0.82 * cl(a * 2) * (1 - out)})` : `rgba(0,0,0,${0.6 * cl(a * 2) * (1 - out)})`, backdropFilter: `blur(${20 * cl(a * 2) * (1 - out)}px)` }}>
+    <AbsoluteFill style={{ pointerEvents: "none", background: light ? `rgba(245,245,247,${0.93 * cl(a * 2) * (1 - out)})` : `rgba(3,4,8,${0.88 * cl(a * 2) * (1 - out)})` }}>
       <div style={pill(a, -88)}>
         <Img src={staticFile("brand/profile.png")} style={{ width: 106, height: 106, borderRadius: 53, objectFit: "cover", flexShrink: 0 }} />
         <div style={{ flex: 1, minWidth: 0 }}>
