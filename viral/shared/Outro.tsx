@@ -45,28 +45,37 @@ export const Outro: React.FC<{ t: number; t0: number; accent?: string; likeTitle
   );
 };
 
-/** Compact, clean end card (≈3.6 s): one card – profile, handle, follow tap, like heart. Stays inside the TikTok safe area. */
-export const OUTRO_COMPACT_S = 3.6;
-export const OutroCompact: React.FC<{ t: number; t0: number; light?: boolean; line?: string }> = ({ t, t0, light = false, line = "Folg für mehr" }) => {
+/** Compact, clean end screen (3 s): two slim centered pills – follow + like. Centered on screen, inside the TikTok safe area. */
+export const OUTRO_COMPACT_S = 3.0;
+export const OutroCompact: React.FC<{ t: number; t0: number; light?: boolean; line?: string }> = ({ t, t0, light = false }) => {
   if (t < t0 || t > t0 + OUTRO_COMPACT_S) return null;
-  const k = spring(t, t0, 0.45), tap = pr(t, t0 + 0.85, t0 + 1.05), followed = t > t0 + 1.05;
-  const heart = spring(t, t0 + 1.5, 0.4), burst = t > t0 + 1.5 ? Math.exp(-(t - t0 - 1.5) * 4) : 0;
-  const out = pr(t, t0 + OUTRO_COMPACT_S - 0.35, t0 + OUTRO_COMPACT_S);
+  const a = spring(t, t0, 0.4), b = spring(t, t0 + 0.35, 0.4);
+  const tap = pr(t, t0 + 0.75, t0 + 0.95), followed = t > t0 + 0.95;
+  const liked = t > t0 + 1.35, burst = liked ? Math.exp(-(t - t0 - 1.35) * 4) : 0;
+  const out = pr(t, t0 + OUTRO_COMPACT_S - 0.3, t0 + OUTRO_COMPACT_S);
   const ink = light ? "#0b0b0f" : "#f2f4f8", sub = light ? "#86868b" : "rgba(255,255,255,0.6)";
+  const pill = (k: number, dy: number): React.CSSProperties => ({ position: "absolute", left: 540 - 360, width: 720, height: 150, top: 960 + dy - 75, borderRadius: 75, boxSizing: "border-box", padding: "0 22px 0 22px",
+    display: "flex", alignItems: "center", gap: 22, fontFamily: SANS, color: ink, background: light ? "rgba(255,255,255,0.96)" : "rgba(28,30,38,0.94)",
+    border: light ? "1px solid rgba(0,0,0,0.06)" : "1px solid rgba(255,255,255,0.1)", boxShadow: light ? "0 24px 60px rgba(20,20,40,0.14)" : "0 24px 60px rgba(0,0,0,0.5)",
+    transform: `translateY(${(1 - k) * 50}px) scale(${0.92 + 0.08 * k})`, opacity: cl(k * 2.2) * (1 - out) });
   return (
-    <AbsoluteFill style={{ pointerEvents: "none", background: light ? `rgba(245,245,247,${0.75 * cl(k * 2) * (1 - out)})` : `rgba(0,0,0,${0.55 * cl(k * 2) * (1 - out)})`, backdropFilter: `blur(${18 * cl(k * 2) * (1 - out)}px)` }}>
-      <div style={{ position: "absolute", left: 140, width: 720, top: 640, borderRadius: 56, padding: "56px 40px 44px", boxSizing: "border-box", background: light ? "#fff" : "rgba(22,24,32,0.92)", border: light ? "none" : "1.5px solid rgba(255,255,255,0.12)",
-        boxShadow: light ? "0 40px 100px rgba(20,20,40,0.18)" : "0 40px 100px rgba(0,0,0,0.6)", fontFamily: SANS, color: ink, textAlign: "center",
-        transform: `translateY(${(1 - k) * 120 + out * 40}px) scale(${(0.9 + 0.1 * k) * (1 - out * 0.06)})`, opacity: cl(k * 2) * (1 - out) }}>
-        <Img src={staticFile("brand/profile.png")} style={{ width: 170, height: 170, borderRadius: 85, objectFit: "cover", boxShadow: "0 10px 30px rgba(0,0,0,0.25)" }} />
-        <div style={{ fontSize: 46, fontWeight: 800, marginTop: 22, letterSpacing: "-0.02em" }}>{HANDLE}</div>
-        <div style={{ fontSize: 30, fontWeight: 600, color: sub, marginTop: 6 }}>{line}</div>
-        <div style={{ display: "flex", gap: 20, justifyContent: "center", marginTop: 36 }}>
-          <div style={{ width: 300, padding: "22px 0", borderRadius: 24, fontSize: 36, fontWeight: 800, background: followed ? (light ? "#e9e9eb" : "rgba(255,255,255,0.14)") : "#fe2c55", color: followed ? ink : "#fff", transform: `scale(${1 - 0.1 * Math.sin(Math.PI * tap)})` }}>{followed ? "✓ Gefolgt" : "Folgen"}</div>
-          <div style={{ position: "relative", width: 96, height: 84, borderRadius: 24, background: light ? "#f2f2f5" : "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            {Array.from({ length: 8 }, (_, i) => { const a = (i / 8) * Math.PI * 2, r = 30 + (1 - burst) * 44; return <div key={i} style={{ position: "absolute", left: 48 + Math.cos(a) * r - 5, top: 42 + Math.sin(a) * r - 5, width: 10, height: 10, borderRadius: 5, background: "#fe2c55", opacity: burst }} />; })}
-            <svg width={54} height={54} viewBox="0 0 24 24" style={{ transform: `scale(${0.9 + 0.1 * heart + burst * 0.4})` }}><path d="M12 21s-7.5-4.6-10-9.2C.3 8.6 2.2 4.5 6 4.5c2.2 0 3.5 1.2 4.4 2.5h3.2c.9-1.3 2.2-2.5 4.4-2.5 3.8 0 5.7 4.1 4 7.3C19.5 16.4 12 21 12 21z" fill={t > t0 + 1.5 ? "#fe2c55" : light ? "#c7c7cc" : "rgba(255,255,255,0.5)"} /></svg>
-          </div>
+    <AbsoluteFill style={{ pointerEvents: "none", background: light ? `rgba(245,245,247,${0.82 * cl(a * 2) * (1 - out)})` : `rgba(0,0,0,${0.6 * cl(a * 2) * (1 - out)})`, backdropFilter: `blur(${20 * cl(a * 2) * (1 - out)}px)` }}>
+      <div style={pill(a, -88)}>
+        <Img src={staticFile("brand/profile.png")} style={{ width: 106, height: 106, borderRadius: 53, objectFit: "cover", flexShrink: 0 }} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ fontSize: 24, fontWeight: 700, color: sub, letterSpacing: "0.04em" }}>FOLG FÜR MEHR</div>
+          <div style={{ fontSize: 31, fontWeight: 800, letterSpacing: "-0.025em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{HANDLE}</div>
+        </div>
+        <div style={{ flexShrink: 0, width: 160, padding: "20px 0", textAlign: "center", borderRadius: 50, fontSize: 30, fontWeight: 800, background: followed ? (light ? "#ececf0" : "rgba(255,255,255,0.12)") : "#fe2c55", color: followed ? ink : "#fff", transform: `scale(${1 - 0.1 * Math.sin(Math.PI * tap)})` }}>{followed ? "✓ Gefolgt" : "Folgen"}</div>
+      </div>
+      <div style={pill(b, 88)}>
+        <div style={{ position: "relative", width: 106, height: 106, borderRadius: 53, flexShrink: 0, background: liked ? "rgba(254,44,85,0.12)" : light ? "#f2f2f5" : "rgba(255,255,255,0.08)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {Array.from({ length: 8 }, (_, i) => { const an = (i / 8) * Math.PI * 2, r = 34 + (1 - burst) * 40; return <div key={i} style={{ position: "absolute", left: 53 + Math.cos(an) * r - 5, top: 53 + Math.sin(an) * r - 5, width: 10, height: 10, borderRadius: 5, background: "#fe2c55", opacity: burst }} />; })}
+          <svg width={58} height={58} viewBox="0 0 24 24" style={{ transform: `scale(${1 + burst * 0.4})` }}><path d="M12 21s-7.5-4.6-10-9.2C.3 8.6 2.2 4.5 6 4.5c2.2 0 3.5 1.2 4.4 2.5h3.2c.9-1.3 2.2-2.5 4.4-2.5 3.8 0 5.7 4.1 4 7.3C19.5 16.4 12 21 12 21z" fill={liked ? "#fe2c55" : light ? "#c7c7cc" : "rgba(255,255,255,0.5)"} /></svg>
+        </div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontSize: 24, fontWeight: 700, color: sub, letterSpacing: "0.04em" }}>HAT ES DIR GEFALLEN?</div>
+          <div style={{ fontSize: 34, fontWeight: 800, letterSpacing: "-0.02em" }}>Lass ein Like da</div>
         </div>
       </div>
     </AbsoluteFill>

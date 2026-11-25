@@ -347,7 +347,7 @@ export const Luege2: React.FC = () => {
     [LS(15) - 0.12, "pop", 0.5], [at(169) - 0.15, "buzz", 0.7], [at(169) - 0.1, "msg", 0.5],
     [LE(15) + 0.05, "drop", 0.95], [LE(15) + 0.05, "impact", 0.85], [LE(15) + 0.15, "gasp", 0.5], [LE(15) + 0.3, "heart", 0.6],
     [LS(16) - 0.1, "impact", 0.35], [at(189), "error", 0.35], [at(197) - 0.1, "ding", 0.5],
-    [L2_OUTRO_T0, "pop", 0.5], [L2_OUTRO_T0 + 0.85, "pop", 0.5], [L2_OUTRO_T0 + 1.5, "ding", 0.35],
+    [L2_OUTRO_T0, "pop", 0.5], [L2_OUTRO_T0 + 0.75, "pop", 0.5], [L2_OUTRO_T0 + 1.35, "ding", 0.35],
   ];
   const bedVol = (f: number) => { const s = f / fps; if (TITLES.some((x) => s > x - 0.35 && s < x + 0.25)) return 0; if (FREEZES.some((x) => s > x && s < x + 1.2)) return 0.03; if (s > LE(15) - 0.2 && s < LS(16)) return 0; return s > L2_OUTRO_T0 ? 0.08 : 0.12; };
   return (
