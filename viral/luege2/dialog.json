@@ -1,0 +1,26 @@
+{
+  "voices": {
+    "N": {"id": "GpMEuRGYD0oLjmn4ptQZ", "stability": 0.38, "style": 0.5, "speed": 1.07},
+    "L": {"id": "S87WJpstXs0Ge2ukRiXJ", "stability": 0.35, "style": 0.55, "speed": 1.05},
+    "M": {"id": "5E7eLPuxPjnAWDRiuU0r", "stability": 0.3, "style": 0.6, "speed": 1.0}
+  },
+  "lines": [
+    ["L", "Wo warst du gestern Abend?"],
+    ["M", "Zuhause. Hab Netflix geschaut."],
+    ["N", "Lügt er? Die meisten schauen jetzt auf seine Augen. Großer Fehler. Lügner schauen dir genauso oft in die Augen wie alle anderen. Im Schnitt erkennen Menschen Lügen nur in vierundfünfzig Prozent der Fälle. Fast ein Münzwurf. Aber diese drei Tricks funktionieren wirklich."],
+    ["N", "Trick eins: Frag nach Details."],
+    ["L", "Was hast du denn geschaut?"],
+    ["M", "Äh… so 'ne Serie halt. Weiß nicht mehr genau."],
+    ["N", "Seht ihr? Komplett vage. Wer die Wahrheit sagt, erzählt Details. Lügner halten es kurz, damit sie sich nicht verraten."],
+    ["N", "Trick zwei: Lass es rückwärts erzählen."],
+    ["L", "Okay. Dann erzähl mal rückwärts. Was hast du als Letztes gemacht?"],
+    ["M", "Als Letztes… warte. Also zuerst war ich… nee, warte."],
+    ["N", "Seht ihr? Er muss wieder vorne anfangen. Die Wahrheit kannst du einfach zurückspulen. Eine Lüge muss man neu bauen."],
+    ["N", "Trick drei: Die Frage, mit der niemand rechnet."],
+    ["L", "Wo lag dein Handy, als du eingeschlafen bist?"],
+    ["M", "Wieso… wieso fragst du das?"],
+    ["N", "Achtung, Gegenfrage. Er kauft sich Zeit."],
+    ["L", "Weil du mir um zwei Uhr nachts 'ne Sprachnachricht geschickt hast. Mit lauter Musik im Hintergrund."],
+    ["N", "Aber Vorsicht: Ein einzelnes Zeichen beweist noch keine Lüge. Achte darauf, ob sich die Geschichte verändert. Und jetzt sag mir: Wen testest du zuerst?"]
+  ]
+}

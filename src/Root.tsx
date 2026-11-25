@@ -15,6 +15,7 @@ import { Wach, WACH_DURATION_S, WachCover } from "../viral/wach/Wach";
 import { Offline, OFF_DURATION_S, OfflineCover } from "../viral/offline/Offline";
 import { Treppe, TR_DURATION_S, TreppeCover } from "../viral/treppe/Treppe";
 import { Luege, LG_DURATION_S, LuegeCover } from "../viral/luege/Luege";
+import { Luege2, L2_DURATION_S, Luege2Cover } from "../viral/luege2/Luege2";
 import { AUDIO_S as FEUER_S } from "../feuer/timing";
 import { TEST_END_S, END_S } from "../niemals/timeline";
 
@@ -22,6 +23,8 @@ export const RemotionRoot: React.FC = () => (
   <>
     <Composition id="TestScene" component={TestScene} durationInFrames={TEST_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
     <Composition id="FullVideo" component={FullVideo} durationInFrames={FULL_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+    <Composition id="Luege2" component={Luege2} durationInFrames={Math.ceil(L2_DURATION_S * 30)} fps={30} width={1080} height={1920} />
+    <Still id="Luege2Cover" component={Luege2Cover} width={1080} height={1920} />
     <Composition id="Luege" component={Luege} durationInFrames={Math.ceil(LG_DURATION_S * 30)} fps={30} width={1080} height={1920} />
     <Still id="LuegeCover" component={LuegeCover} width={1080} height={1920} />
     <Composition id="Treppe" component={Treppe} durationInFrames={Math.ceil(TR_DURATION_S * 30)} fps={30} width={1080} height={1920} />
