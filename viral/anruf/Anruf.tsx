@@ -18,7 +18,7 @@ const ANSWER = at(14) - 0.1;
 
 /* ───────── phone ───────── */
 const Phone: React.FC<{ t: number }> = ({ t }) => {
-  const ringing = t < ANSWER; const vib = ringing && Math.sin(t * 7) > 0 ? Math.sin(t * 95) * 6 : 0;
+  const ringing = t < ANSWER; const vib = 0; const ringPulse = ringing ? (t * 1.2) % 1 : 0;
   const mine = pr(t, at(10) - 0.1, at(10) + 0.3); const you = pr(t, at(24), at(26));
   const callT = Math.max(0, t - ANSWER); const P = W.find((w) => w.spk === "P" && t >= w.s && t <= w.e + 0.05);
   const amp = P ? 0.4 + 0.6 * Math.abs(Math.sin(t * 17)) : t > at(16) && t < at(21) ? 0.15 + 0.1 * Math.abs(Math.sin(t * 3)) : 0.05;
@@ -26,6 +26,7 @@ const Phone: React.FC<{ t: number }> = ({ t }) => {
     <div style={{ position: "absolute", left: CX - 300, top: 330, width: 600, height: 1060, borderRadius: 90, background: "#0b0d12", border: "10px solid #1c1f27", boxShadow: `0 0 ${ringing ? 160 : 90}px rgba(120,160,255,${ringing ? 0.35 : 0.2})`, transform: `translateX(${vib}px) rotate(${vib * 0.15}deg)`, overflow: "hidden", fontFamily: SANS, color: "#fff" }}>
       <div style={{ position: "absolute", inset: 0, background: "radial-gradient(80% 60% at 50% 20%, #1c2a4a, #07080c 75%)" }} />
       <div style={{ position: "absolute", left: 200, top: 26, width: 180, height: 50, borderRadius: 25, background: "#000" }} />
+      {ringing && [0, 0.5].map((o, i) => { const k = (ringPulse + o) % 1; return <div key={i} style={{ position: "absolute", left: 300 - 60 - k * 160, top: 760 - k * 160, width: 120 + k * 320, height: 120 + k * 320, borderRadius: "50%", border: `4px solid ${C.green}`, opacity: (1 - k) * 0.5 }} />; })}
       <div style={{ position: "absolute", left: 0, right: 0, top: 120, textAlign: "center" }}>
         <div style={{ fontSize: 30, fontWeight: 600, opacity: 0.7 }}>Dienstag, 25. November</div>
         <div style={{ fontSize: 170, fontWeight: 700, letterSpacing: "-0.04em", lineHeight: 1.05, opacity: ringing ? 1 : 0.25 }}>3:17</div>
@@ -229,7 +230,7 @@ const SCENES: S[] = [
 export const Anruf: React.FC = () => {
   const t = useT(); const { fps } = useVideoConfig(); const fr = (s: number) => Math.max(0, Math.round(s * fps));
   const sfx: [number, string, number][] = [
-    [0, "buzz", 0.9], [1.25, "buzz", 0.9], [2.5, "buzz", 0.9], [3.75, "buzz", 0.8], [5.0, "buzz", 0.7], [at(10) - 0.1, "impact", 0.6], [at(10), "tinnitus", 0.25],
+    [at(10) - 0.1, "impact", 0.6], [at(10), "tinnitus", 0.25],
     [ANSWER, "pickup", 0.7], [ANSWER + 0.1, "static", 0.35], [at(16), "breath", 0.45], [at(24) - 0.1, "boom", 0.6], [LS(2) - 0.1, "static", 0.25],
     [LS(3) - 0.1, "whoosh", 0.6], [at(42) - 0.2, "breath", 0.7], [at(42), "heart", 0.6], [LS(4) - 0.1, "static", 0.25],
     [LS(5) - 0.1, "steps", 0.6], [at(70) - 0.05, "knock", 0.95], [LS(6) - 0.4, "knock2", 0.5],
@@ -245,6 +246,7 @@ export const Anruf: React.FC = () => {
     <AbsoluteFill style={{ background: "#020306" }}>
       <Audio src={staticFile("anruf/voice.mp3")} />
       <Audio src={staticFile("anruf/drone.mp3")} loop volume={droneVol} />
+      <Sequence from={0} durationInFrames={fr(ANSWER)}><Audio src={staticFile("anruf/ring.mp3")} volume={(f) => 0.75 * Math.min(1, (fr(ANSWER) - f) / 4)} /></Sequence>
       {sfx.map(([s, n, v], i) => <Sequence key={i} from={fr(s)}><Audio src={staticFile(`anruf/${n}.mp3`)} volume={v} /></Sequence>)}
       <AbsoluteFill style={{ transform: `translate(${kx}px,${ky}px)` }}>
         {SCENES.map((s, i) => {
