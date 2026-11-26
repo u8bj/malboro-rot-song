@@ -20,8 +20,9 @@ $("play").onclick = () => {
 };
 
 // scroll reveal
-const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
-document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+window.__revealReady = true;
+const io = !("IntersectionObserver" in window) ? null : new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach((el) => (io ? io.observe(el) : el.classList.add("in")));
 // spotlight hover on cards
 document.querySelectorAll(".spot").forEach((el) => el.addEventListener("pointermove", (e) => { const r = el.getBoundingClientRect(); el.style.setProperty("--mx", `${e.clientX - r.left}px`); el.style.setProperty("--my", `${e.clientY - r.top}px`); }));
 // 3D tilt of the example phone (mouse only)

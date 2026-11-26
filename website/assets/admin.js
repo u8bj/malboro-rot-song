@@ -16,8 +16,7 @@ if (DEMO) {
 } else {
   const { createClient } = window.supabase;
   sb = createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
-  const { data } = await sb.auth.getSession();
-  if (data.session) showApp(); else $("loginView").hidden = false;
+  sb.auth.getSession().then(({ data }) => { if (data.session) showApp(); else $("loginView").hidden = false; });
 }
 
 $("loginForm").onsubmit = async (e) => {
