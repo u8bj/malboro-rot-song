@@ -1,0 +1,12 @@
+name = "visualx-warteliste"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+account_id = "cd5ae30ae6de2d3743d0db11652fff89"
+workers_dev = false
+routes = [{ pattern = "u8bj.xyz/visualx.mp4*", zone_name = "u8bj.xyz" }]
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+html_handling = "auto-trailing-slash"
+not_found_handling = "none"
