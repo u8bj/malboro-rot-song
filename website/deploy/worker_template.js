@@ -67,7 +67,8 @@ async function vapidJwt(env, aud) {
 async function sendPush(env, endpoint) {
   const aud = new URL(endpoint).origin;
   const r = await fetch(endpoint, { method: "POST", headers: { TTL: "86400", Urgency: "high", "Content-Length": "0", Authorization: `vapid t=${await vapidJwt(env, aud)}, k=${env.VAPID_PUBLIC}` } });
-  return r.status;
+  const txt = r.status >= 300 ? (await r.text().catch(() => "")).slice(0, 300) : "";
+  return { status: r.status, host: new URL(endpoint).host, body: txt };
 }
 
 async function api(request, env, path, url) {
@@ -97,11 +98,12 @@ async function api(request, env, path, url) {
     const subs = await (await fetch(`${env.SUPABASE_URL}/rest/v1/push_subs?submission_id=eq.${sid}&select=id,endpoint`, { headers: h })).json().catch(() => []);
     const results = [];
     for (const sub of Array.isArray(subs) ? subs : []) {
-      let st = 0; try { st = await sendPush(env, sub.endpoint); } catch (e) { st = -1; }
-      results.push(st);
-      if (st === 404 || st === 410) await fetch(`${env.SUPABASE_URL}/rest/v1/push_subs?id=eq.${sub.id}`, { method: "DELETE", headers: h });
+      let res; try { res = await sendPush(env, sub.endpoint); } catch (e) { res = { status: -1, host: "", body: String(e && e.message || e).slice(0, 300) }; }
+      results.push(res);
+      if (res.status === 404 || res.status === 410) await fetch(`${env.SUPABASE_URL}/rest/v1/push_subs?id=eq.${sub.id}`, { method: "DELETE", headers: h });
     }
-    return json({ ok: true, sent: results.filter((x) => x >= 200 && x < 300).length, results });
+    await env.VIDEOS.put("debug/last-notify.json", JSON.stringify({ at: new Date().toISOString(), sid, subs: Array.isArray(subs) ? subs.length : subs, results }), { httpMetadata: { contentType: "application/json" } });
+    return json({ ok: true, sent: results.filter((x) => x.status >= 200 && x.status < 300).length, results });
   }
   // GET /api/a/<key> → chat attachment (unguessable capability URL)
   if (path.startsWith("/api/a/") && (request.method === "GET" || request.method === "HEAD")) {
