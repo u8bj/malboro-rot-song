@@ -231,3 +231,22 @@ footer a { transition: color .2s; } footer a:hover { color: var(--ink); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .reveal { opacity: 1; transform: none; filter: none; }
 }
+
+/* ═════ Mobile-Feinschliff ═════ */
+.faq details { padding: 0; }
+.faq summary { padding: 18px 22px; min-height: 56px; }
+.faq details p { padding: 0 22px 18px; margin-top: 0; }
+.nav .btn.small { min-height: 44px; }
+.brand { display: inline-flex; align-items: center; min-height: 44px; }
+input[type=text], textarea, select { font-size: 17px; }
+@media (max-width: 480px) {
+  .hero h1 { font-size: clamp(36px, 11vw, 48px); }
+  .hero .wrap { padding: 56px 16px 52px; }
+  .player { border-radius: 18px; }
+  .player .tag { font-size: 11px; padding: 4px 9px; left: 10px; top: 9px; }
+  .play { gap: 8px; font-size: 14px; }
+  .play .pbtn { width: 58px; height: 58px; }
+  .play .pbtn .ic { width: 24px; height: 24px; }
+  .free li { font-size: 19px; }
+  .marquee span { font-size: 17px; }
+}

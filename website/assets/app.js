@@ -16,6 +16,10 @@ vio.observe(vid);
 $("play").onclick = () => {
   vid.muted = false; vid.volume = 1; vid.loop = false; vid.currentTime = 0; vid.controls = true;
   vid.play().catch(() => { vid.muted = false; });
+  // on phones: open the video fullscreen so it is big enough to enjoy
+  if (matchMedia("(max-width: 700px)").matches) {
+    try { if (vid.webkitEnterFullscreen) vid.webkitEnterFullscreen(); else if (vid.requestFullscreen) vid.requestFullscreen().catch(() => {}); } catch (e) {}
+  }
   $("play").classList.add("gone"); $("player").classList.add("playing");
 };
 
