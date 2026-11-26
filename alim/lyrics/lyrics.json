@@ -1,0 +1,567 @@
+[
+ {
+  "line": 0,
+  "text": "Fäuste, Tritte so wie Ong-Bak",
+  "start": 0.7,
+  "end": 2.88,
+  "words": [
+   {
+    "w": "Fäuste,",
+    "s": 0.7,
+    "e": 1.36,
+    "p": 0,
+    "check": false
+   },
+   {
+    "w": "Tritte",
+    "s": 1.36,
+    "e": 1.74,
+    "p": 0.474,
+    "check": false
+   },
+   {
+    "w": "so",
+    "s": 1.74,
+    "e": 1.88,
+    "p": 0.016,
+    "check": false
+   },
+   {
+    "w": "wie",
+    "s": 1.88,
+    "e": 2.1,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "Ong-Bak",
+    "s": 2.1,
+    "e": 2.88,
+    "p": 0.365,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 1,
+  "text": "Zivis fahnden, Bruder, normal",
+  "start": 2.81,
+  "end": 4.74,
+  "words": [
+   {
+    "w": "Zivis",
+    "s": 2.81,
+    "e": 3.54,
+    "p": 0.628,
+    "check": false
+   },
+   {
+    "w": "fahnden,",
+    "s": 3.529,
+    "e": 3.88,
+    "p": 0.51,
+    "check": false
+   },
+   {
+    "w": "Bruder,",
+    "s": 3.878,
+    "e": 4.24,
+    "p": 0.971,
+    "check": false
+   },
+   {
+    "w": "normal",
+    "s": 4.226,
+    "e": 4.74,
+    "p": 0.607,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 2,
+  "text": "Mach' schlau auf Motorola",
+  "start": 4.74,
+  "end": 6.32,
+  "words": [
+   {
+    "w": "Mach'",
+    "s": 4.74,
+    "e": 5.32,
+    "p": 0.916,
+    "check": false
+   },
+   {
+    "w": "schlau",
+    "s": 5.457,
+    "e": 5.72,
+    "p": 0.941,
+    "check": false
+   },
+   {
+    "w": "auf",
+    "s": 5.72,
+    "e": 5.92,
+    "p": 0.972,
+    "check": false
+   },
+   {
+    "w": "Motorola",
+    "s": 5.991,
+    "e": 6.32,
+    "p": 0.73,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 3,
+  "text": "Big Stacks heißt, wir kommen voran",
+  "start": 6.85,
+  "end": 9.06,
+  "words": [
+   {
+    "w": "Big",
+    "s": 6.85,
+    "e": 7.38,
+    "p": 0.862,
+    "check": false
+   },
+   {
+    "w": "Stacks",
+    "s": 7.361,
+    "e": 7.7,
+    "p": 0.714,
+    "check": false
+   },
+   {
+    "w": "heißt,",
+    "s": 7.755,
+    "e": 7.84,
+    "p": 0.908,
+    "check": false
+   },
+   {
+    "w": "wir",
+    "s": 7.92,
+    "e": 7.98,
+    "p": 0.965,
+    "check": false
+   },
+   {
+    "w": "kommen",
+    "s": 7.98,
+    "e": 8.2,
+    "p": 0.982,
+    "check": false
+   },
+   {
+    "w": "voran",
+    "s": 8.127,
+    "e": 9.06,
+    "p": 0.955,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 4,
+  "text": "Freiheit, Zelle, Chaye, bonne chance",
+  "start": 9.06,
+  "end": 11.0,
+  "words": [
+   {
+    "w": "Freiheit,",
+    "s": 9.06,
+    "e": 9.54,
+    "p": 0.77,
+    "check": false
+   },
+   {
+    "w": "Zelle,",
+    "s": 9.6,
+    "e": 9.9,
+    "p": 0.913,
+    "check": false
+   },
+   {
+    "w": "Chaye,",
+    "s": 10.0,
+    "e": 10.34,
+    "p": 0.421,
+    "check": false
+   },
+   {
+    "w": "bonne",
+    "s": 10.36,
+    "e": 10.6,
+    "p": 0.0,
+    "check": false
+   },
+   {
+    "w": "chance",
+    "s": 10.588,
+    "e": 11.0,
+    "p": 0.931,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 5,
+  "text": "Banditen bei Sonn'nuntergang",
+  "start": 11.0,
+  "end": 13.06,
+  "words": [
+   {
+    "w": "Banditen",
+    "s": 11.0,
+    "e": 11.94,
+    "p": 0.993,
+    "check": false
+   },
+   {
+    "w": "bei",
+    "s": 11.981,
+    "e": 12.1,
+    "p": 0.975,
+    "check": false
+   },
+   {
+    "w": "Sonn'nuntergang",
+    "s": 12.4,
+    "e": 13.06,
+    "p": 0.274,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 6,
+  "text": "Werden heiß, jagen auch die Klunker",
+  "start": 13.003,
+  "end": 15.16,
+  "words": [
+   {
+    "w": "Werden",
+    "s": 13.003,
+    "e": 13.6,
+    "p": 0.907,
+    "check": false
+   },
+   {
+    "w": "heiß,",
+    "s": 13.653,
+    "e": 13.78,
+    "p": 0.986,
+    "check": false
+   },
+   {
+    "w": "jagen",
+    "s": 13.886,
+    "e": 14.14,
+    "p": 0.886,
+    "check": false
+   },
+   {
+    "w": "auch",
+    "s": 14.14,
+    "e": 14.3,
+    "p": 0.61,
+    "check": false
+   },
+   {
+    "w": "die",
+    "s": 14.28,
+    "e": 14.4,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "Klunker",
+    "s": 14.443,
+    "e": 15.16,
+    "p": 0.96,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 7,
+  "text": "Werden heiß, jagen auch die Klunker",
+  "start": 15.16,
+  "end": 17.22,
+  "words": [
+   {
+    "w": "Werden",
+    "s": 15.16,
+    "e": 15.66,
+    "p": 0.957,
+    "check": false
+   },
+   {
+    "w": "heiß,",
+    "s": 15.581,
+    "e": 15.86,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "jagen",
+    "s": 15.96,
+    "e": 16.2,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "auch",
+    "s": 16.2,
+    "e": 16.36,
+    "p": 0.997,
+    "check": false
+   },
+   {
+    "w": "die",
+    "s": 16.347,
+    "e": 16.48,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "Klunker",
+    "s": 16.509,
+    "e": 17.22,
+    "p": 1.0,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 8,
+  "text": "Alles blau und sie ziel'n auf uns grad",
+  "start": 17.22,
+  "end": 19.3,
+  "words": [
+   {
+    "w": "Alles",
+    "s": 17.22,
+    "e": 17.68,
+    "p": 0.996,
+    "check": false
+   },
+   {
+    "w": "blau",
+    "s": 17.601,
+    "e": 18.08,
+    "p": 0.981,
+    "check": false
+   },
+   {
+    "w": "und",
+    "s": 18.135,
+    "e": 18.14,
+    "p": 0.97,
+    "check": false
+   },
+   {
+    "w": "sie",
+    "s": 18.135,
+    "e": 18.26,
+    "p": 0.95,
+    "check": false
+   },
+   {
+    "w": "ziel'n",
+    "s": 18.27,
+    "e": 18.5,
+    "p": 0.375,
+    "check": false
+   },
+   {
+    "w": "auf",
+    "s": 18.622,
+    "e": 18.64,
+    "p": 0.99,
+    "check": false
+   },
+   {
+    "w": "uns",
+    "s": 18.622,
+    "e": 18.94,
+    "p": 0.959,
+    "check": false
+   },
+   {
+    "w": "grad",
+    "s": 18.924,
+    "e": 19.3,
+    "p": 0.918,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 9,
+  "text": "Die Vision fällt in Scherben unter",
+  "start": 19.3,
+  "end": 21.04,
+  "words": [
+   {
+    "w": "Die",
+    "s": 19.3,
+    "e": 19.62,
+    "p": 0.286,
+    "check": false
+   },
+   {
+    "w": "Vision",
+    "s": 19.667,
+    "e": 19.92,
+    "p": 0.934,
+    "check": false
+   },
+   {
+    "w": "fällt",
+    "s": 19.946,
+    "e": 20.18,
+    "p": 0.726,
+    "check": false
+   },
+   {
+    "w": "in",
+    "s": 20.18,
+    "e": 20.32,
+    "p": 0.224,
+    "check": false
+   },
+   {
+    "w": "Scherben",
+    "s": 20.32,
+    "e": 20.72,
+    "p": 0.617,
+    "check": false
+   },
+   {
+    "w": "unter",
+    "s": 20.712,
+    "e": 21.04,
+    "p": 0.975,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 10,
+  "text": "Vor paar Stunden war noch alles bunter",
+  "start": 20.968,
+  "end": 23.4,
+  "words": [
+   {
+    "w": "Vor",
+    "s": 20.968,
+    "e": 21.64,
+    "p": 0.992,
+    "check": false
+   },
+   {
+    "w": "paar",
+    "s": 21.687,
+    "e": 21.78,
+    "p": 0.912,
+    "check": false
+   },
+   {
+    "w": "Stunden",
+    "s": 21.827,
+    "e": 22.02,
+    "p": 0.983,
+    "check": false
+   },
+   {
+    "w": "war",
+    "s": 22.02,
+    "e": 22.28,
+    "p": 0.975,
+    "check": false
+   },
+   {
+    "w": "noch",
+    "s": 22.221,
+    "e": 22.36,
+    "p": 0.935,
+    "check": false
+   },
+   {
+    "w": "alles",
+    "s": 22.36,
+    "e": 22.66,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "bunter",
+    "s": 22.66,
+    "e": 23.4,
+    "p": 0.966,
+    "check": false
+   }
+  ]
+ },
+ {
+  "line": 11,
+  "text": "Vor paar Stunden war noch alles bunter",
+  "start": 23.359,
+  "end": 25.34,
+  "words": [
+   {
+    "w": "Vor",
+    "s": 23.359,
+    "e": 23.7,
+    "p": 0.885,
+    "check": false
+   },
+   {
+    "w": "paar",
+    "s": 23.708,
+    "e": 23.84,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "Stunden",
+    "s": 23.87,
+    "e": 24.08,
+    "p": 0.998,
+    "check": false
+   },
+   {
+    "w": "war",
+    "s": 24.079,
+    "e": 24.28,
+    "p": 0.999,
+    "check": false
+   },
+   {
+    "w": "noch",
+    "s": 24.265,
+    "e": 24.38,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "alles",
+    "s": 24.427,
+    "e": 24.7,
+    "p": 1.0,
+    "check": false
+   },
+   {
+    "w": "bunter",
+    "s": 24.752,
+    "e": 25.34,
+    "p": 0.996,
+    "check": false
+   }
+  ]
+ }
+]
