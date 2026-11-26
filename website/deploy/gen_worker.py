@@ -3,7 +3,7 @@ Serves files with correct types, caching and HTTP Range support (needed for vide
 import base64, json, os, sys
 root = os.path.join(os.path.dirname(__file__), "dist")
 TYPES = {".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".css": "text/css; charset=utf-8", ".mp4": "video/mp4", ".jpg": "image/jpeg",
-         ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8", ".json": "application/json"}
+         ".woff2": "font/woff2", ".png": "image/png", ".webmanifest": "application/manifest+json", ".txt": "text/plain; charset=utf-8", ".json": "application/json"}
 files = {}
 for dp, _, fns in os.walk(root):
     for fn in fns:

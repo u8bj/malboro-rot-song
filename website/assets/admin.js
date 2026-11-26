@@ -71,6 +71,7 @@ function render() {
 
 const fmtCode = (c) => (c ? c.slice(0, 3) + "-" + c.slice(3) : "–");
 const vidSrc = (key) => "api/v/" + key.split("/").map(encodeURIComponent).join("/");
+async function notify(sid) { if (DEMO) return; try { const tk = await token(); await fetch("api/admin/notify", { method: "POST", headers: { Authorization: "Bearer " + tk, "Content-Type": "application/json" }, body: JSON.stringify({ sid }) }); } catch (e) {} }
 async function token() { if (DEMO) return ""; const { data } = await sb.auth.getSession(); return data.session ? data.session.access_token : ""; }
 const bubbleA = (m) => VXChat.bubble(m, m.sender === "admin");
 
@@ -136,13 +137,13 @@ async function openDetail(id) {
   const ta = $("aText");
   const comp = VXChat.mountComposer($("aForm"), {
     upload: async (file, kind) => { if (DEMO) throw new Error("Im Demo-Modus können keine Dateien gesendet werden."); const tk = await token(); return comp.uploadVia(`api/upload?kind=${kind}&name=${encodeURIComponent(file.name)}`, { Authorization: "Bearer " + tk, "X-Sid": r.id }, file); },
-    send: async (m) => { const ins = await sb.from("messages").insert({ submission_id: r.id, sender: "admin", body: m.body || "", kind: m.kind, attachment_key: m.key, attachment_type: m.type, read_by_admin: true }); if (ins.error) throw new Error("Senden fehlgeschlagen: " + ins.error.message); await loadChat(); },
+    send: async (m) => { const ins = await sb.from("messages").insert({ submission_id: r.id, sender: "admin", body: m.body || "", kind: m.kind, attachment_key: m.key, attachment_type: m.type, read_by_admin: true }); if (ins.error) throw new Error("Senden fehlgeschlagen: " + ins.error.message); notify(r.id); await loadChat(); },
   });
   const sendAdmin = async (text) => {
     if (DEMO) { $("aEmpty").hidden = true; $("aChat").insertAdjacentHTML("beforeend", bubbleA({ created_at: new Date().toISOString(), sender: "admin", body: text })); return true; }
     const ins = await sb.from("messages").insert({ submission_id: r.id, sender: "admin", body: text, read_by_admin: true });
     if (ins.error) { alert("Senden fehlgeschlagen: " + ins.error.message); return false; }
-    await loadChat(); return true;
+    notify(r.id); await loadChat(); return true;
   };
   $("aForm").onsubmit = async (e) => { e.preventDefault(); const t = ta.value.trim(); if (!t) return; ta.value = ""; ta.style.height = "auto"; if (!(await sendAdmin(t))) ta.value = t; };
 
@@ -178,8 +179,8 @@ async function openDetail(id) {
   };
 
   $("save").onclick = async () => {
-    const patch = { status: $("st").value, notes: $("nt").value.trim() || null };
-    if (!DEMO) { const u = await sb.from("submissions").update(patch).eq("id", r.id); if (u.error) return alert("Speichern fehlgeschlagen: " + u.error.message); }
+    const patch = { status: $("st").value, notes: $("nt").value.trim() || null }; const changed = patch.status !== r.status;
+    if (!DEMO) { const u = await sb.from("submissions").update(patch).eq("id", r.id); if (u.error) return alert("Speichern fehlgeschlagen: " + u.error.message); if (changed) notify(r.id); }
     Object.assign(r, patch); close(); render();
   };
   $("del").onclick = async () => {

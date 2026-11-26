@@ -31,6 +31,7 @@
       code = c; store.set(c);
       $("loginView").hidden = true; $("portal").hidden = false; $("logoutBtn").hidden = false;
       render(s); await loadMessages(); startPolling();
+      window.VX_RPC = rpc; window.dispatchEvent(new CustomEvent("vx:login", { detail: { code } }));
     } catch (x) {
       $("codeErr").textContent = String(x.message).includes("too_many") ? "Zu viele falsche Versuche. Bitte warte 15 Minuten." : "Verbindung fehlgeschlagen. Bitte versuch es gleich nochmal.";
     }
@@ -38,6 +39,7 @@
 
   const ORDER = ["neu", "wartet", "in_arbeit", "fertig"];
   function render(s) {
+    window.dispatchEvent(new CustomEvent("vx:state", { detail: { status: s.status, video_key: s.video_key, notifiedUnread: 0 } }));
     $("pName").textContent = s.username || "–";
     $("pSong").textContent = s.song_title ? `Song: ${s.song_title}` : "";
     const idx = s.status === "abgelehnt" ? -1 : Math.max(0, ORDER.indexOf(s.status));

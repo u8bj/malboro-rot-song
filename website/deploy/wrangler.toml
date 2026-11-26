@@ -13,3 +13,6 @@ bucket_name = "visualx-videos"
 [vars]
 SUPABASE_URL = "https://gxdfzlsaicjnxvlslzqr.supabase.co"
 SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4ZGZ6bHNhaWNqbnh2bHNsenFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU2NDczNTgsImV4cCI6MjExMTIyMzM1OH0.i-Z4OKSAYqwdiHThPHEvcqV-bW8Fqgf5KUB-eE7KXv0"
+
+VAPID_PUBLIC = "BA9U0MoqxGYZveiKJUCJnsVVPvjP6xHingV2qYNKOrrEoGX6s8FjWlNbgGdqS03ZT3Vr4sLttK4FQGSRKWY3sbw"
+VAPID_SUB = "https://u8bj.xyz/visualx.mp4/"

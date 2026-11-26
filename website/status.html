@@ -6,6 +6,13 @@
   <title>visualx.mp4 – Mein Status</title>
   <meta name="robots" content="noindex" />
   <meta name="theme-color" content="#0b0b0c" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" href="assets/app/icon-192.png" />
+  <link rel="apple-touch-icon" href="assets/app/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="visualx.mp4" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
@@ -42,6 +49,8 @@
       <div class="pos" id="pPos"></div>
     </div>
 
+    <div class="card notify-card" id="notifyCard" hidden></div>
+
     <div class="card video-card" id="videoCard" hidden>
       <div class="vc-head"><svg class="ic" style="color:var(--green)"><use href="#i-check"/></svg><b>Dein Video ist fertig!</b></div>
       <div class="player"><video id="pVideo" controls playsinline preload="metadata"></video></div>
@@ -58,5 +67,6 @@
   <script src="config.js"></script>
   <script src="assets/supabase.js"></script>
   <script src="assets/status.js"></script>
+  <script src="assets/push.js"></script>
 </body>
 </html>

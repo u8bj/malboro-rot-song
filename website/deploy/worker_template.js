@@ -53,6 +53,23 @@ async function serveR2(request, env, key, url, fallbackType) {
   return new Response(request.method === "HEAD" ? null : obj.body, { headers: { ...h, "Content-Length": String(size) } });
 }
 
+
+// ── Web Push (VAPID, ohne Payload: der Service Worker holt sich den aktuellen Stand selbst) ──
+const b64u = (buf) => btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+let vapidKey = null;
+async function vapidJwt(env, aud) {
+  if (!vapidKey) vapidKey = await crypto.subtle.importKey("jwk", { ...JSON.parse(env.VAPID_JWK), ext: true }, { name: "ECDSA", namedCurve: "P-256" }, false, ["sign"]);
+  const enc = (o) => b64u(new TextEncoder().encode(JSON.stringify(o)));
+  const unsigned = `${enc({ typ: "JWT", alg: "ES256" })}.${enc({ aud, exp: Math.floor(Date.now() / 1000) + 12 * 3600, sub: env.VAPID_SUB })}`;
+  const sig = await crypto.subtle.sign({ name: "ECDSA", hash: "SHA-256" }, vapidKey, new TextEncoder().encode(unsigned));
+  return `${unsigned}.${b64u(sig)}`;
+}
+async function sendPush(env, endpoint) {
+  const aud = new URL(endpoint).origin;
+  const r = await fetch(endpoint, { method: "POST", headers: { TTL: "86400", Urgency: "high", "Content-Length": "0", Authorization: `vapid t=${await vapidJwt(env, aud)}, k=${env.VAPID_PUBLIC}` } });
+  return r.status;
+}
+
 async function api(request, env, path, url) {
   // GET /api/v/<key>  → stream a finished video (key is an unguessable capability, handed out only with a valid code)
   if (path.startsWith("/api/v/") && (request.method === "GET" || request.method === "HEAD")) {
@@ -67,6 +84,24 @@ async function api(request, env, path, url) {
       "Content-Disposition": `${url.searchParams.get("dl") ? "attachment" : "inline"}; filename="${name.replace(/"/g, "")}"` };
     if (rg) return new Response(request.method === "HEAD" ? null : obj.body, { status: 206, headers: { ...h, "Content-Range": `bytes ${rg.start}-${rg.end}/${size}`, "Content-Length": String(rg.end - rg.start + 1) } });
     return new Response(request.method === "HEAD" ? null : obj.body, { headers: { ...h, "Content-Length": String(size) } });
+  }
+  // GET /api/vapid → public key for push subscriptions
+  if (path === "/api/vapid") return json({ key: env.VAPID_PUBLIC });
+  // POST /api/admin/notify {sid}  (admin) → push to all devices of that entry
+  if (path === "/api/admin/notify" && request.method === "POST") {
+    if (!(await isAdmin(request, env))) return json({ error: "forbidden" }, 403);
+    const { sid } = await request.json().catch(() => ({}));
+    if (!UUID_RE.test(sid || "")) return json({ error: "bad_sid" }, 400);
+    const auth = request.headers.get("Authorization");
+    const h = { apikey: env.SUPABASE_ANON, Authorization: auth };
+    const subs = await (await fetch(`${env.SUPABASE_URL}/rest/v1/push_subs?submission_id=eq.${sid}&select=id,endpoint`, { headers: h })).json().catch(() => []);
+    const results = [];
+    for (const sub of Array.isArray(subs) ? subs : []) {
+      let st = 0; try { st = await sendPush(env, sub.endpoint); } catch (e) { st = -1; }
+      results.push(st);
+      if (st === 404 || st === 410) await fetch(`${env.SUPABASE_URL}/rest/v1/push_subs?id=eq.${sub.id}`, { method: "DELETE", headers: h });
+    }
+    return json({ ok: true, sent: results.filter((x) => x >= 200 && x < 300).length, results });
   }
   // GET /api/a/<key> → chat attachment (unguessable capability URL)
   if (path.startsWith("/api/a/") && (request.method === "GET" || request.method === "HEAD")) {
@@ -133,7 +168,7 @@ export default {
     if (!FILES[p] && FILES[p + ".html"]) p += ".html";
     if (!FILES[p] || !["GET", "HEAD"].includes(request.method)) return new Response("Nicht gefunden", { status: 404 });
     const [type] = FILES[p]; const body = bytes(p); const size = body.length;
-    const h = { "Content-Type": type, "Accept-Ranges": "bytes", ...SEC, "Cache-Control": type.startsWith("text/html") || p.endsWith("/config.js") ? "no-cache" : "public, max-age=86400" };
+    const h = { "Content-Type": type, "Accept-Ranges": "bytes", ...SEC, "Cache-Control": type.startsWith("text/html") || p.endsWith("/config.js") || p.endsWith("/sw.js") || p.endsWith(".webmanifest") ? "no-cache" : "public, max-age=86400" };
     if (p.endsWith("/admin.html")) h["X-Robots-Tag"] = "noindex, nofollow";
     const rg = rangeOf(request.headers.get("Range"), size);
     if (rg && rg.bad) return new Response(null, { status: 416, headers: { "Content-Range": `bytes */${size}` } });

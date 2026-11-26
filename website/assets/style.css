@@ -327,3 +327,14 @@ input[type=text], textarea, select { font-size: 17px; }
 
 [hidden] { display: none !important; }
 .chat-input textarea { min-width: 0; }
+
+/* ═════ Mitteilungen ═════ */
+.notify-card { padding: 20px; }
+.nc-head { display: flex; align-items: center; gap: 14px; }
+.nc-head > div { flex: 1; } .nc-head small { display: block; color: var(--sub); font-size: 14px; margin-top: 2px; line-height: 1.35; }
+.nc-ic { width: 44px; height: 44px; border-radius: 14px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: rgba(94, 92, 230, .16); color: #8e8cff; }
+.nc-ic.on { background: rgba(48, 209, 88, .16); color: var(--green); } .nc-ic.off { background: rgba(255, 55, 95, .16); color: var(--red); }
+.nc-ic .ic { width: 22px; height: 22px; }
+.nc-steps { margin: 16px 0 0; padding-left: 22px; display: grid; gap: 10px; line-height: 1.4; }
+.kbd { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: var(--card2); border: 1px solid var(--line); vertical-align: -6px; }
+.kbd .ic { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
