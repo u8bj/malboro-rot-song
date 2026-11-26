@@ -99,3 +99,30 @@ footer a { color: var(--sub); margin: 0 10px; }
   section { padding: 56px 0; }
   .form { padding: 22px 18px; }
 }
+
+/* ═════ Matt-schwarzes Design (überschreibt die hellen Farben oben) ═════ */
+:root {
+  --bg: #0b0b0c; --card: #161618; --card2: #1c1c1e; --ink: #f5f5f7; --sub: #a1a1a6; --line: #2c2c2e;
+  --shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+body { background: var(--bg); color: var(--ink); }
+.card { border: 1px solid rgba(255, 255, 255, 0.06); }
+.btn { background: #f5f5f7; color: #0b0b0c; }
+.btn.light { background: #f5f5f7; color: #0b0b0c; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.danger { background: var(--red); color: #fff; }
+.nav { background: rgba(11, 11, 12, 0.72); border-bottom-color: rgba(255, 255, 255, 0.08); }
+.hero { background: var(--bg); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.hero::before { background: radial-gradient(40% 35% at 50% 40%, rgba(94, 92, 230, 0.32), transparent 70%); }
+.free { background: #101012; border-top: 1px solid rgba(255, 255, 255, 0.04); border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+.phone { border-color: #2c2c2e; box-shadow: 0 40px 100px rgba(94, 92, 230, 0.22); }
+input, textarea, select { background: var(--card2); color: var(--ink); }
+.field input[type=text], .field textarea, .field select { background: var(--card2); color: var(--ink); border-color: var(--line); }
+.field input::placeholder, .field textarea::placeholder { color: #6e6e73; }
+.field input:focus, .field textarea:focus, .field select:focus { box-shadow: 0 0 0 5px rgba(10, 132, 255, 0.22); }
+.drop { background: var(--card2); border-color: #3a3a3c; }
+.drop.has { background: rgba(48, 209, 88, 0.08); border-color: var(--green); }
+.faq details { background: var(--card); border: 1px solid rgba(255, 255, 255, 0.06); box-shadow: none; }
+.honest { border-left-color: var(--orange); }
+.legal .todo { color: #0b0b0c; }
+::selection { background: rgba(94, 92, 230, 0.45); }
