@@ -43,6 +43,8 @@
     return "";
   }
 
+  const nice = (e, what) => { const m = String((e && e.message) || ""); return /schema cache|PGRST|function|fetch|network/i.test(m) ? `${what} konnte gerade nicht gesendet werden. Bitte versuch es später nochmal.` : m || `${what} konnte nicht gesendet werden.`; };
+
   /** form: the .chat-input form. opts.upload(file, kind) → {key,type}; opts.send({kind, body, key, type}) → bool */
   function mountComposer(form, opts) {
     const ta = form.querySelector("textarea");
@@ -59,7 +61,7 @@
       if (!f.type.startsWith("image/")) return alert("Bitte wähle ein Bild aus.");
       busy("Bild wird gesendet …");
       try { const small = await shrinkImage(f); if (small.size > 12 * 1024 * 1024) throw new Error("Das Bild ist zu groß (max. 12 MB)."); const up = await opts.upload(small, "image"); await opts.send({ kind: "image", body: "", key: up.key, type: up.type }); }
-      catch (e) { alert(e.message || "Bild konnte nicht gesendet werden."); }
+      catch (e) { alert(nice(e, "Das Bild")); }
       busy("");
     };
 
@@ -79,7 +81,7 @@
         const ext = mime.includes("mp4") ? "m4a" : mime.includes("ogg") ? "ogg" : "webm";
         busy("Sprachnachricht wird gesendet …");
         try { const up = await opts.upload(new File([blob], `sprachnachricht.${ext}`, { type: mime }), "audio"); await opts.send({ kind: "audio", body: "", key: up.key, type: up.type }); }
-        catch (e) { alert(e.message || "Sprachnachricht konnte nicht gesendet werden."); }
+        catch (e) { alert(nice(e, "Die Sprachnachricht")); }
         busy("");
       };
       rec.start(250); t0 = Date.now(); ta.hidden = true; recBox.hidden = false; form.classList.add("recording");
