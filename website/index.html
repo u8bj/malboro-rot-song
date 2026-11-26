@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kostenloses Musikvideo</title>
+  <meta name="description" content="Dein Song verdient ein Musikvideo. Animierte Lyrics- und Musikvideos – persönlich erstellt und 100 % kostenlos. Trag dich in die Warteliste ein." />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div id="demo" class="demo-banner" hidden>Demo-Modus – Supabase ist noch nicht verbunden, es wird nichts gespeichert.</div>
+  <nav class="nav"><div class="wrap"><b>Kostenloses Musikvideo</b><a class="btn small" href="#anmelden">Platz sichern</a></div></nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <h1>Dein Song verdient<br /><span class="grad">ein Musikvideo.</span></h1>
+      <p>Ich erstelle animierte Lyrics- und Musikvideos zu deinem Song – persönlich und 100&nbsp;% kostenlos.</p>
+      <a class="btn light" href="#anmelden">Jetzt auf die Warteliste</a>
+      <div class="badges"><span>Kein Abo</span><span>Keine Programme</span><span>Keine versteckten Kosten</span></div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap example">
+      <div>
+        <div class="eyebrow">Beispiel</div>
+        <h2>So kann dein Video aussehen.</h2>
+        <p class="lead">Ein Ausschnitt aus einem meiner Edits. Jeder Song bekommt seinen eigenen Look – mit animierten Lyrics, 3D-Szenen und Übergängen, die zur Musik passen.</p>
+      </div>
+      <div class="phone">
+        <video id="ex" src="assets/beispiel.mp4" poster="assets/beispiel.jpg" autoplay muted loop playsinline></video>
+        <span class="tag">Eines meiner Edits · „Niemals“</span>
+        <button class="sound" id="sound" type="button">🔈 Ton an</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="eyebrow">So funktioniert's</div>
+      <h2>Drei Schritte. <span style="color:var(--sub)">Mehr nicht.</span></h2>
+      <div class="steps">
+        <div class="card step"><div class="n" style="background:var(--purple)">1</div><h3>Eintragen</h3><p>Name, Kontakt, Song und Lyrics ins Formular unten.</p></div>
+        <div class="card step"><div class="n" style="background:var(--blue)">2</div><h3>Warten</h3><p>Du bist auf der Warteliste. Jeder kommt der Reihe nach dran.</p></div>
+        <div class="card step"><div class="n" style="background:var(--green)">3</div><h3>Video bekommen</h3><p>Ich melde mich über deinen Kontakt, sobald dein Video fertig ist.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="free">
+    <div class="wrap">
+      <div class="eyebrow">Wirklich kostenlos</div>
+      <h2>Du lieferst den Song.<br /><span class="grad">Ich mache den Rest.</span></h2>
+      <ul><li><i>✕</i>Keine kostenpflichtigen Abonnements</li><li><i>✕</i>Keine teuren Programme</li><li><i>✕</i>Keine versteckten Kosten</li></ul>
+      <div class="card honest"><b>Ehrlich gesagt:</b> Ich erstelle jedes Video selbst. Das braucht Zeit – deshalb gibt es eine Warteliste und keine feste Lieferzeit. Wer sich früher einträgt, ist früher dran.</div>
+    </div>
+  </section>
+
+  <section id="anmelden">
+    <div class="wrap">
+      <div style="text-align:center">
+        <div class="eyebrow">Warteliste</div>
+        <h2>Sichere dir deinen Platz.</h2>
+        <p class="lead" style="margin:0 auto">Dauert eine Minute. Kostet nichts.</p>
+      </div>
+
+      <form id="form" class="card form" novalidate>
+        <div class="field"><label for="username">1. Dein Benutzername</label><input id="username" type="text" maxlength="80" placeholder="z. B. @deinname" autocomplete="nickname" required /></div>
+        <div class="field"><label for="contact">2. Deine Kontaktmöglichkeit</label>
+          <div class="row">
+            <select id="platform" aria-label="Plattform"><option>Instagram</option><option>Snapchat</option><option>TikTok</option></select>
+            <input id="contact" type="text" maxlength="80" placeholder="Dein Name dort" required />
+          </div></div>
+        <div class="field"><label for="tiktok">3. Dein TikTok-Benutzername</label><input id="tiktok" type="text" maxlength="80" placeholder="@deinname" required /></div>
+        <div class="field"><label>4. Dein Song (MP3, WAV oder M4A · max. 10 MB)</label>
+          <label class="drop" id="drop"><input id="file" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" /><span style="font-size:28px">🎵</span><span id="fileText"><b>Song auswählen</b><br /><small style="color:var(--sub)">Tippe hier, um die Datei hochzuladen</small></span></label>
+          <input id="songTitle" type="text" maxlength="200" placeholder="Songtitel (optional)" style="margin-top:10px" /></div>
+        <div class="field"><label for="lyrics">5. Dein Songtext (vollständige Lyrics)</label><textarea id="lyrics" maxlength="20000" placeholder="Strophe 1 …" required></textarea></div>
+        <div class="field"><label for="wishes">Wünsche zum Video (optional)</label><textarea id="wishes" maxlength="3000" style="min-height:90px" placeholder="Stimmung, Farben, Ideen …"></textarea></div>
+        <input class="hp" id="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
+        <label class="check"><input id="c16" type="checkbox" /> <span>Ich bin mindestens 16 Jahre alt – oder meine Eltern sind einverstanden.</span></label>
+        <label class="check"><input id="crights" type="checkbox" /> <span>Der Song ist von mir bzw. ich darf ihn für ein Musikvideo verwenden.</span></label>
+        <label class="check"><input id="cprivacy" type="checkbox" /> <span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und bin mit der Speicherung meiner Angaben einverstanden.</span></label>
+        <div class="err" id="err"></div>
+        <button class="btn" id="submit" type="submit" style="width:100%">Auf die Warteliste</button>
+        <div class="progress" id="prog"><div></div></div>
+      </form>
+
+      <div class="card form done" id="done">
+        <div class="ok">✓</div>
+        <h2 style="font-size:36px">Du bist auf der Warteliste.</h2>
+        <p class="lead" style="margin:0 auto" id="posText">Ich melde mich bei dir, sobald du an der Reihe bist.</p>
+      </div>
+      <div class="card form closed" id="closed">
+        <h2 style="font-size:34px">Die Warteliste ist gerade geschlossen.</h2>
+        <p class="lead" style="margin:0 auto" id="closedMsg">Schau bald wieder vorbei.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" style="padding-top:0">
+    <div class="wrap" style="max-width:760px">
+      <h2 style="font-size:40px">Fragen</h2>
+      <details><summary>Was kostet das?</summary><p>Nichts. Kein Abo, keine versteckten Kosten.</p></details>
+      <details><summary>Wie lange dauert es?</summary><p>Das hängt von der Warteliste ab. Ich mache jedes Video selbst, deshalb kann es dauern. Du kommst der Reihe nach dran und ich melde mich über deinen Kontakt.</p></details>
+      <details><summary>Welche Songs gehen?</summary><p>Eigene Songs oder Songs, für die du die Rechte hast bzw. die du verwenden darfst.</p></details>
+      <details><summary>Was passiert mit meinen Daten?</summary><p>Deine Angaben und dein Song werden nur für die Erstellung deines Videos genutzt. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. Du kannst jederzeit die Löschung verlangen.</p></details>
+    </div>
+  </section>
+
+  <footer><span id="handle"></span><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></footer>
+
+  <script src="config.js"></script>
+  <script src="assets/supabase.js"></script>
+  <script type="module" src="assets/app.js"></script>
+</body>
+</html>

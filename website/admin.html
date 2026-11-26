@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Warteliste Admin</title>
+  <link rel="stylesheet" href="assets/style.css" />
+  <style>
+    .login { max-width: 420px; margin: 12vh auto 0; padding: 34px; }
+    .top { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; padding: 22px 0 8px; }
+    .top h1 { margin: 0; font-size: 32px; letter-spacing: -.03em; }
+    .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 14px 0; }
+    .stat { padding: 16px; } .stat b { display: block; font-size: 30px; letter-spacing: -.03em; } .stat span { font-size: 13px; color: var(--sub); font-weight: 700; }
+    .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 10px 0 16px; }
+    .bar input[type=search] { flex: 1; min-width: 180px; border: 1.5px solid var(--line); border-radius: 999px; padding: 11px 16px; font: inherit; }
+    .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tabs button { border: 0; border-radius: 999px; padding: 9px 14px; font: inherit; font-weight: 700; font-size: 14px; background: #e9e9ee; cursor: pointer; }
+    .tabs button.on { background: var(--ink); color: #fff; }
+    .list .item { display: grid; grid-template-columns: 54px 1.3fr 1fr 1fr 130px; gap: 10px; align-items: center; padding: 14px 18px; border-bottom: 1px solid var(--line); cursor: pointer; }
+    .list .item:hover { background: #fafafc; } .list .item:last-child { border-bottom: 0; }
+    .list .pos { font-weight: 900; color: var(--sub); } .muted { color: var(--sub); font-size: 14px; }
+    .st-neu { background: #e5f0ff; color: #0a64c8; } .st-wartet { background: #eeeef3; color: #55555c; } .st-in_arbeit { background: #fff1db; color: #b36b00; } .st-fertig { background: #e2f8e8; color: #1c8a3c; } .st-abgelehnt { background: #ffe5ea; color: #c4173b; }
+    .switch { display: flex; align-items: center; gap: 10px; font-weight: 800; }
+    .switch input { width: 46px; height: 26px; accent-color: var(--green); }
+    .drawer { position: fixed; inset: 0; background: rgba(0, 0, 0, .35); display: none; z-index: 60; }
+    .drawer .panel { position: absolute; right: 0; top: 0; bottom: 0; width: min(620px, 100%); background: var(--bg); overflow: auto; padding: 24px; box-shadow: -20px 0 60px rgba(0, 0, 0, .2); }
+    .kv { display: grid; grid-template-columns: 150px 1fr; gap: 8px 14px; margin: 16px 0; } .kv div:nth-child(odd) { color: var(--sub); font-weight: 700; font-size: 14px; }
+    pre.lyrics { white-space: pre-wrap; background: #fff; border-radius: 16px; padding: 16px; font: inherit; max-height: 320px; overflow: auto; border: 1px solid var(--line); }
+    .actions { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0; }
+    .empty { padding: 40px; text-align: center; color: var(--sub); }
+    @media (max-width: 760px) { .stats { grid-template-columns: repeat(3, 1fr); } .list .item { grid-template-columns: 40px 1fr 110px; } .list .hide-m { display: none; } .kv { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="demo" class="demo-banner" hidden>Demo-Modus – Beispieldaten, nichts wird gespeichert.</div>
+
+  <div id="loginView" class="wrap" hidden>
+    <form id="loginForm" class="card login">
+      <h1 style="margin:0 0 6px;letter-spacing:-.03em">Admin</h1>
+      <p class="muted" style="margin:0 0 20px">Melde dich mit deinem Supabase-Admin-Konto an.</p>
+      <div class="field"><label for="em">E-Mail</label><input id="em" type="text" autocomplete="username" /></div>
+      <div class="field"><label for="pw">Passwort</label><input id="pw" type="password" autocomplete="current-password" style="width:100%;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;font:inherit;font-size:17px" /></div>
+      <div class="err" id="loginErr"></div>
+      <button class="btn" style="width:100%">Anmelden</button>
+    </form>
+  </div>
+
+  <div id="appView" class="wrap" hidden>
+    <div class="top">
+      <h1>Warteliste</h1>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn small ghost" id="refresh">↻ Aktualisieren</button>
+        <button class="btn small ghost" id="csv">CSV-Export</button>
+        <button class="btn small ghost" id="logout">Abmelden</button>
+      </div>
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="card" style="padding:18px 20px;display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+      <label class="switch"><input type="checkbox" id="open" /> <span id="openLabel">Anmeldungen offen</span></label>
+      <div style="display:flex;gap:8px;flex:1;min-width:240px;justify-content:flex-end">
+        <input id="closedMsg" type="text" placeholder="Text, wenn geschlossen (optional)" style="flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;font:inherit" />
+        <button class="btn small" id="saveSettings">Speichern</button>
+      </div>
+    </div>
+
+    <div class="bar">
+      <div class="tabs" id="tabs"></div>
+      <input type="search" id="q" placeholder="Suchen (Name, TikTok, Kontakt, Song) …" />
+    </div>
+
+    <div class="card list" id="list"></div>
+    <p class="muted" style="margin:14px 4px 60px">Platz = Reihenfolge nach Anmeldezeit unter allen offenen Einträgen (Neu, Wartet, In Arbeit).</p>
+  </div>
+
+  <div class="drawer" id="drawer"><div class="panel" id="panel"></div></div>
+
+  <script src="config.js"></script>
+  <script src="assets/supabase.js"></script>
+  <script type="module" src="assets/admin.js"></script>
+</body>
+</html>
