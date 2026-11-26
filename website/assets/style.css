@@ -338,3 +338,9 @@ input[type=text], textarea, select { font-size: 17px; }
 .nc-steps { margin: 16px 0 0; padding-left: 22px; display: grid; gap: 10px; line-height: 1.4; }
 .kbd { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 8px; background: var(--card2); border: 1px solid var(--line); vertical-align: -6px; }
 .kbd .ic { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ═════ iPhone Safe Area (App vom Home-Bildschirm, Notch/Dynamic Island) ═════ */
+.nav { padding-top: env(safe-area-inset-top, 0px); }
+.nav .wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+body { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.drawer .panel { padding-top: max(24px, env(safe-area-inset-top, 0px)); padding-bottom: max(24px, env(safe-area-inset-bottom, 0px)); }
