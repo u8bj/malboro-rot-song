@@ -22,8 +22,8 @@ Solange `config.js` leer ist, läuft alles im **Demo-Modus** – zum Anschauen, 
 2. In `config.js` bei `SUPABASE_URL` und `SUPABASE_ANON_KEY` einfügen. Optional bei `HANDLE` deinen TikTok-Namen.
    Der anon-Key darf öffentlich sein. Der **service_role**-Key darf **niemals** in die Webseite!
 
-## 5. Impressum und Datenschutz ausfüllen
-In `impressum.html` und `datenschutz.html` alle **gelb markierten** Stellen ersetzen.
+## 5. Datenschutz ausfüllen
+In `datenschutz.html` alle **gelb markierten** Stellen ersetzen.
 
 ## 6. Online stellen mit GitHub Pages (ca. 5 Min.)
 1. Auf github.com → **New repository**, Name z. B. `musikvideo-warteliste`, **Public** → Create.
