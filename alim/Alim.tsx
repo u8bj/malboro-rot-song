@@ -2,7 +2,7 @@
 // 1920×1080 @ 60 fps. Own recreation – no Apple assets/logos, no brand logos, no people.
 import "@fontsource/instrument-serif/400-italic.css";
 import React from "react";
-import { AbsoluteFill, Audio, random, staticFile } from "remotion";
+import { AbsoluteFill, Audio, Img, random, staticFile } from "remotion";
 import lyricsJson from "./lyrics/lyrics.json";
 import { SANS, cl, pr, eo, lerp, spring, useT, Grain } from "../viral/shared/StoryKit";
 
@@ -107,9 +107,30 @@ const S0: React.FC<{ t: number }> = ({ t }) => {
           <circle r={r} fill="none" stroke={c} strokeOpacity={0.22} strokeWidth={42} />
           <circle r={r} fill="none" stroke={c} strokeWidth={42} strokeLinecap="round" strokeDasharray={L} strokeDashoffset={L * (1 - Math.min(0.98, v) * eo(pr(t, 0.3, 0.9)))} transform="rotate(-90)" /></g>); })}
       </svg>
-      {hits.map((h, i) => <div key={i} style={{ position: "absolute", inset: 0, background: i === 2 ? D.pink : "#fff", opacity: 0.12 * (1 - pr(t, h, h + 0.18)) * (t >= h ? 1 : 0) }} />)}
+      {hits.map((h, i) => <div key={i} style={{ position: "absolute", inset: 0, background: i === 2 ? D.orange : "#fff", opacity: 0.12 * (1 - pr(t, h, h + 0.18)) * (t >= h ? 1 : 0) }} />)}
     </Card>
   );
+};
+
+// „… so wie Ong-Bak“ → Picture-in-Picture film window slides in, hit on „Ong-Bak“ with the poster's fire flaring over the screen
+const OngBakPiP: React.FC<{ t: number }> = ({ t }) => {
+  const t0 = WS(0, 2) - 0.08, hit = WS(0, 4); const inK = spring(t, t0, 0.5); if (t < t0) return null;
+  const punch = t >= hit ? Math.exp(-(t - hit) * 7) * Math.sin((t - hit) * 26) : 0; const flare = t >= hit ? Math.exp(-(t - hit) * 3.2) : 0;
+  const [dx, dy] = hitShake(t, [hit], 18); const kb = eo(pr(t, t0, hit + 0.8));
+  const W = 360, H = 533;
+  return (<>
+    {/* fire from the poster spills over the whole screen on the hit */}
+    <AbsoluteFill style={{ background: `radial-gradient(55% 70% at 74% 55%, rgba(255,120,20,${0.55 * flare}), rgba(200,30,10,${0.25 * flare}) 45%, transparent 75%)`, mixBlendMode: "screen", pointerEvents: "none" }} />
+    <div style={{ position: "absolute", left: 1325 - W / 2 + dx + (1 - cl(inK)) * 700, top: 600 - H / 2 + dy, width: W, height: H, borderRadius: 28, overflow: "hidden", boxShadow: `0 40px 120px rgba(0,0,0,0.7), 0 0 ${40 + 140 * flare}px rgba(255,110,20,${0.25 + 0.6 * flare})`,
+      border: "1px solid rgba(255,255,255,0.14)", transform: `rotate(${lerp(6, -2, cl(inK))}deg) scale(${1 + 0.14 * punch + 0.04 * flare})`, filter: inK < 1 ? `blur(${(1 - cl(inK)) * 10}px)` : undefined, opacity: cl(inK * 2) }}>
+      <Img src={staticFile("alim/ongbak.jpg")} style={{ position: "absolute", left: 0, top: 0, width: W, height: H, objectFit: "cover", transformOrigin: "50% 30%", transform: `scale(${lerp(1.55, 1.02, kb)}) translateY(${lerp(18, 0, kb)}%)` }} />
+      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.35), transparent 22%, transparent 78%, rgba(0,0,0,0.55))" }} />
+      {/* iOS PiP controls */}
+      <div style={{ position: "absolute", left: 16, top: 14, display: "flex", gap: 10 }}>{[0, 1].map((i) => <div key={i} style={{ width: 34, height: 34, borderRadius: 17, background: "rgba(40,40,44,0.7)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <svg width={16} height={16} viewBox="0 0 24 24">{i === 0 ? <path d="M6 6l12 12M18 6 6 18" stroke="#fff" strokeWidth={2.6} strokeLinecap="round" /> : <path d="M9 4H4v5M15 20h5v-5M4 4l6 6M20 20l-6-6" stroke="#fff" strokeWidth={2.4} fill="none" strokeLinecap="round" />}</svg></div>)}</div>
+      <div style={{ position: "absolute", left: 18, right: 18, bottom: 16, height: 5, borderRadius: 3, background: "rgba(255,255,255,0.3)" }}><div style={{ width: `${lerp(38, 46, kb)}%`, height: "100%", borderRadius: 3, background: "#fff" }} /></div>
+    </div>
+  </>);
 };
 
 // 2 · Zivis fahnden, Bruder, normal → Maps (dark): a vehicle follows you, banner
@@ -366,8 +387,9 @@ const S11: React.FC<{ t: number }> = ({ t }) => {
 };
 
 /* ───────── master ───────── */
+const S0P: React.FC<{ t: number }> = ({ t }) => (<><S0 t={t} /><OngBakPiP t={t} /></>);
 const SC: { C: React.FC<{ t: number }>; acc: Record<string, Acc> }[] = [
-  { C: S0, acc: { "ong-bak": { italic: true, color: D.pink } } },
+  { C: S0P, acc: { "ong-bak": { italic: true, grad: "linear-gradient(180deg,#fff27a,#f2c31a 55%,#c98a0c)" } } },
   { C: S1, acc: { zivis: { color: D.teal }, normal: { italic: true, color: D.green } } },
   { C: S2, acc: { motorola: { italic: true, color: D.teal } } },
   { C: S3, acc: { big: { color: D.green }, stacks: { color: D.green }, voran: { italic: true, color: D.yellow } } },
