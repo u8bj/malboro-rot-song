@@ -112,24 +112,68 @@ const S0: React.FC<{ t: number }> = ({ t }) => {
   );
 };
 
-// „… so wie Ong-Bak“ → Picture-in-Picture film window slides in, hit on „Ong-Bak“ with the poster's fire flaring over the screen
+// „… so wie Ong-Bak“ → a film clip playing in an iOS Picture-in-Picture window that bleeds into the scene:
+// cinematic push from fist/face to the title on the hit, heat shimmer, embers flying out, light spill + reflection.
+const PW = 600, PH = 338; const PX = 1300, PY = 560; // window size + centre
+const IMG_W = 1000, IMG_H = 1215;
 const OngBakPiP: React.FC<{ t: number }> = ({ t }) => {
-  const t0 = WS(0, 2) - 0.08, hit = WS(0, 4); const inK = spring(t, t0, 0.5); if (t < t0) return null;
-  const punch = t >= hit ? Math.exp(-(t - hit) * 7) * Math.sin((t - hit) * 26) : 0; const flare = t >= hit ? Math.exp(-(t - hit) * 3.2) : 0;
-  const [dx, dy] = hitShake(t, [hit], 18); const kb = eo(pr(t, t0, hit + 0.8));
-  const W = 360, H = 533;
+  const t0 = WS(0, 2) - 0.1, hit = WS(0, 4); if (t < t0 - 0.01) return null;
+  const inK = spring(t, t0, 0.5); const ci = cl(inK);
+  const punch = t >= hit ? Math.exp(-(t - hit) * 7) * Math.sin((t - hit) * 26) : 0; const flare = t >= hit ? Math.exp(-(t - hit) * 3) : 0;
+  const flick = 0.75 + 0.25 * Math.sin(t * 23) * Math.sin(t * 7.3);
+  const [dx, dy] = hitShake(t, [hit], 18);
+  // camera inside the clip: close on fist/face → whip down to the ONG-BAK title on the hit
+  const pre = eo(pr(t, t0, hit)), whip = eio(pr(t, hit - 0.06, hit + 0.16));
+  const scale = lerp(lerp(2.5, 2.1, pre), 1.15, whip);
+  const fx = lerp(0.58, 0.5, whip), fy = lerp(lerp(0.36, 0.33, pre), 0.86, whip); // focus point (fraction of image)
+  const iw = PW * scale, ih = iw * (IMG_H / IMG_W);
+  const ix = PW / 2 - fx * iw, iy = Math.min(0, Math.max(PH - ih, PH / 2 - fy * ih));
+  const motionBlur = Math.sin(Math.PI * pr(t, hit - 0.06, hit + 0.16)) * 10;
+  const glare = pr(t, t0 + 0.05, t0 + 0.75);
+  const left = PX - PW / 2 + dx + (1 - ci) * 760, top = PY - PH / 2 + dy;
+  const embers = Array.from({ length: 46 }, (_, i) => {
+    const born = t0 + random(`eb${i}`) * 1.4; const age = t - born; if (age < 0 || age > 1.6) return null;
+    const burst = born > hit ? 1 : 0; const sp = burst ? 260 + random(`es${i}`) * 520 : 60 + random(`es${i}`) * 120;
+    const ang = burst ? -Math.PI / 2 + (random(`ea${i}`) - 0.5) * 2.6 : -Math.PI / 2 + (random(`ea${i}`) - 0.5) * 0.9;
+    const x = left + random(`ex${i}`) * PW + Math.cos(ang) * sp * age + Math.sin(age * 6 + i) * 10;
+    const y = top + PH * (0.25 + random(`ey${i}`) * 0.6) + Math.sin(ang) * sp * age + 60 * age * age;
+    const sz = 3 + random(`ez${i}`) * 5; const o = (1 - age / 1.6) * (0.6 + 0.4 * Math.sin(age * 20 + i));
+    return <div key={i} style={{ position: "absolute", left: x, top: y, width: sz, height: sz, borderRadius: sz, background: i % 3 ? "#ffb347" : "#ffe08a", boxShadow: `0 0 ${sz * 3}px #ff7a1a`, opacity: o * ci }} />;
+  }).filter((x) => x !== null);
   return (<>
-    {/* fire from the poster spills over the whole screen on the hit */}
-    <AbsoluteFill style={{ background: `radial-gradient(55% 70% at 74% 55%, rgba(255,120,20,${0.55 * flare}), rgba(200,30,10,${0.25 * flare}) 45%, transparent 75%)`, mixBlendMode: "screen", pointerEvents: "none" }} />
-    <div style={{ position: "absolute", left: 1325 - W / 2 + dx + (1 - cl(inK)) * 700, top: 600 - H / 2 + dy, width: W, height: H, borderRadius: 28, overflow: "hidden", boxShadow: `0 40px 120px rgba(0,0,0,0.7), 0 0 ${40 + 140 * flare}px rgba(255,110,20,${0.25 + 0.6 * flare})`,
-      border: "1px solid rgba(255,255,255,0.14)", transform: `rotate(${lerp(6, -2, cl(inK))}deg) scale(${1 + 0.14 * punch + 0.04 * flare})`, filter: inK < 1 ? `blur(${(1 - cl(inK)) * 10}px)` : undefined, opacity: cl(inK * 2) }}>
-      <Img src={staticFile("alim/ongbak.jpg")} style={{ position: "absolute", left: 0, top: 0, width: W, height: H, objectFit: "cover", transformOrigin: "50% 30%", transform: `scale(${lerp(1.55, 1.02, kb)}) translateY(${lerp(18, 0, kb)}%)` }} />
-      <div style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg, rgba(0,0,0,0.35), transparent 22%, transparent 78%, rgba(0,0,0,0.55))" }} />
-      {/* iOS PiP controls */}
-      <div style={{ position: "absolute", left: 16, top: 14, display: "flex", gap: 10 }}>{[0, 1].map((i) => <div key={i} style={{ width: 34, height: 34, borderRadius: 17, background: "rgba(40,40,44,0.7)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-        <svg width={16} height={16} viewBox="0 0 24 24">{i === 0 ? <path d="M6 6l12 12M18 6 6 18" stroke="#fff" strokeWidth={2.6} strokeLinecap="round" /> : <path d="M9 4H4v5M15 20h5v-5M4 4l6 6M20 20l-6-6" stroke="#fff" strokeWidth={2.4} fill="none" strokeLinecap="round" />}</svg></div>)}</div>
-      <div style={{ position: "absolute", left: 18, right: 18, bottom: 16, height: 5, borderRadius: 3, background: "rgba(255,255,255,0.3)" }}><div style={{ width: `${lerp(38, 46, kb)}%`, height: "100%", borderRadius: 3, background: "#fff" }} /></div>
+    {/* heat shimmer filter for the clip */}
+    <svg width={0} height={0} style={{ position: "absolute" }}><filter id="heat" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.012 0.06" numOctaves={2} seed={Math.floor(t * 30) % 100} />
+      <feDisplacementMap in="SourceGraphic" scale={6 + 10 * flare} />
+    </filter></svg>
+    {/* fire light spilling onto the scene / workout card */}
+    <AbsoluteFill style={{ background: `radial-gradient(28% 40% at ${(PX / 1920) * 100}% ${((PY + 120) / 1080) * 100}%, rgba(255,120,30,${(0.16 * flick + 0.55 * flare) * ci}), transparent 70%)`, mixBlendMode: "screen", pointerEvents: "none" }} />
+    <AbsoluteFill style={{ background: `radial-gradient(60% 75% at 70% 55%, rgba(255,90,20,${0.4 * flare}), rgba(180,20,10,${0.18 * flare}) 50%, transparent 78%)`, mixBlendMode: "screen", pointerEvents: "none" }} />
+    {/* reflection on the card surface below the window */}
+    <div style={{ position: "absolute", left, top: top + PH + 14, width: PW, height: PH * 0.45, overflow: "hidden", opacity: 0.22 * ci, transform: `rotate(${lerp(5, -1.5, ci)}deg)`, maskImage: "linear-gradient(180deg, rgba(0,0,0,0.9), transparent)", WebkitMaskImage: "linear-gradient(180deg, rgba(0,0,0,0.9), transparent)", filter: "blur(6px)" }}>
+      <div style={{ position: "absolute", left: 0, top: 0, width: PW, height: PH, transform: "scaleY(-1)", transformOrigin: "50% 0%" }}>
+        <Img src={staticFile("alim/ongbak_crop.jpg")} style={{ position: "absolute", left: ix, top: iy - PH, width: iw, height: ih }} />
+      </div>
     </div>
+    {/* the PiP window */}
+    <div style={{ position: "absolute", left, top, width: PW, height: PH, borderRadius: 26, overflow: "hidden", background: "#000",
+      boxShadow: `0 40px 110px rgba(0,0,0,0.75), 0 0 ${50 + 160 * flare}px rgba(255,110,20,${(0.22 * flick + 0.6 * flare)})`, border: "1px solid rgba(255,255,255,0.16)",
+      transform: `rotate(${lerp(5, -1.5, ci)}deg) scale(${(1 + 0.12 * punch + 0.03 * flare) * lerp(0.92, 1, ci)})`, filter: ci < 1 ? `blur(${(1 - ci) * 10}px)` : undefined, opacity: cl(inK * 2) }}>
+      <div style={{ position: "absolute", inset: 0, filter: `url(#heat) contrast(1.08) saturate(1.12) brightness(${0.9 + 0.12 * flick + 0.25 * flare})${motionBlur > 0.5 ? ` blur(${motionBlur * 0.35}px)` : ""}` }}>
+        <Img src={staticFile("alim/ongbak_crop.jpg")} style={{ position: "absolute", left: ix, top: iy, width: iw, height: ih }} />
+      </div>
+      {/* grade: vignette, warm fire tint, film grain */}
+      <div style={{ position: "absolute", inset: 0, background: "radial-gradient(85% 85% at 50% 45%, transparent 50%, rgba(0,0,0,0.55))" }} />
+      <div style={{ position: "absolute", inset: 0, background: `rgba(255,90,10,${0.06 + 0.06 * flick})`, mixBlendMode: "overlay" }} />
+      <svg width={PW} height={PH} style={{ position: "absolute", inset: 0, opacity: 0.14, mixBlendMode: "overlay" }}><filter id="pg"><feTurbulence type="fractalNoise" baseFrequency="0.9" seed={Math.floor(t * 24) % 50} /></filter><rect width={PW} height={PH} filter="url(#pg)" /></svg>
+      {/* glass glare sweeping once over the window */}
+      <div style={{ position: "absolute", inset: 0, background: `linear-gradient(115deg, transparent ${glare * 140 - 40}%, rgba(255,255,255,0.22) ${glare * 140 - 30}%, transparent ${glare * 140 - 18}%)` }} />
+      {/* iOS PiP controls */}
+      <div style={{ position: "absolute", left: 14, top: 12, display: "flex", gap: 8, opacity: 1 - pr(t, hit - 0.1, hit + 0.1) * 0.6 }}>{[0, 1].map((i) => <div key={i} style={{ width: 32, height: 32, borderRadius: 16, background: "rgba(40,40,44,0.65)", backdropFilter: "blur(10px)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+        <svg width={15} height={15} viewBox="0 0 24 24">{i === 0 ? <path d="M6 6l12 12M18 6 6 18" stroke="#fff" strokeWidth={2.6} strokeLinecap="round" /> : <path d="M9 4H4v5M15 20h5v-5M4 4l6 6M20 20l-6-6" stroke="#fff" strokeWidth={2.4} fill="none" strokeLinecap="round" />}</svg></div>)}</div>
+      <div style={{ position: "absolute", left: 16, right: 16, bottom: 12, height: 4, borderRadius: 2, background: "rgba(255,255,255,0.28)" }}><div style={{ width: `${lerp(41, 44, pr(t, t0, hit + 1))}%`, height: "100%", borderRadius: 2, background: "#fff" }} /></div>
+    </div>
+    {embers}
   </>);
 };
 
