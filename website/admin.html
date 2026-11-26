@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>Warteliste Admin</title>
+  <title>visualx.mp4 – Admin</title>
   <link rel="stylesheet" href="assets/style.css" />
   <style>
     .login { max-width: 420px; margin: 12vh auto 0; padding: 34px; }
@@ -33,11 +33,12 @@
   </style>
 </head>
 <body>
+  <script src="assets/icons.js"></script>
   <div id="demo" class="demo-banner" hidden>Demo-Modus – Beispieldaten, nichts wird gespeichert.</div>
 
   <div id="loginView" class="wrap" hidden>
     <form id="loginForm" class="card login">
-      <h1 style="margin:0 0 6px;letter-spacing:-.03em">Admin</h1>
+      <h1 style="margin:0 0 6px;letter-spacing:-.03em;display:flex;align-items:center;gap:10px"><svg class="ic" style="width:30px;height:30px"><use href="#i-lock"/></svg>Admin</h1>
       <p class="muted" style="margin:0 0 20px">Melde dich mit deinem Supabase-Admin-Konto an.</p>
       <div class="field"><label for="em">E-Mail</label><input id="em" type="text" autocomplete="username" /></div>
       <div class="field"><label for="pw">Passwort</label><input id="pw" type="password" autocomplete="current-password" style="width:100%;border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;font:inherit;font-size:17px" /></div>
@@ -50,9 +51,9 @@
     <div class="top">
       <h1>Warteliste</h1>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn small ghost" id="refresh">↻ Aktualisieren</button>
-        <button class="btn small ghost" id="csv">CSV-Export</button>
-        <button class="btn small ghost" id="logout">Abmelden</button>
+        <button class="btn small ghost" id="refresh"><svg class="ic"><use href="#i-refresh"/></svg>Aktualisieren</button>
+        <button class="btn small ghost" id="csv"><svg class="ic"><use href="#i-download"/></svg>CSV-Export</button>
+        <button class="btn small ghost" id="logout"><svg class="ic"><use href="#i-logout"/></svg>Abmelden</button>
       </div>
     </div>
 
@@ -62,7 +63,7 @@
       <label class="switch"><input type="checkbox" id="open" /> <span id="openLabel">Anmeldungen offen</span></label>
       <div style="display:flex;gap:8px;flex:1;min-width:240px;justify-content:flex-end">
         <input id="closedMsg" type="text" placeholder="Text, wenn geschlossen (optional)" style="flex:1;border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;font:inherit" />
-        <button class="btn small" id="saveSettings">Speichern</button>
+        <button class="btn small" id="saveSettings"><svg class="ic"><use href="#i-save"/></svg>Speichern</button>
       </div>
     </div>
 

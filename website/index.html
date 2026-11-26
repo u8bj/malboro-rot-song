@@ -9,64 +9,77 @@
   <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
+  <script src="assets/icons.js"></script>
   <div id="demo" class="demo-banner" hidden>Demo-Modus – Supabase ist noch nicht verbunden, es wird nichts gespeichert.</div>
-  <nav class="nav"><div class="wrap"><b style="font-size:18px;letter-spacing:-.02em">visualx<span class="grad">.mp4</span></b><a class="btn small" href="#anmelden">Platz sichern</a></div></nav>
+  <nav class="nav"><div class="wrap"><a class="brand" href="#top">visualx<span class="grad">.mp4</span></a><a class="btn small glow" href="#anmelden">Platz sichern <svg class="ic"><use href="#i-arrow"/></svg></a></div></nav>
 
-  <header class="hero">
+  <header class="hero" id="top">
+    <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
     <div class="wrap">
-      <div style="display:inline-block;margin-bottom:22px;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);font-weight:800;font-size:15px;letter-spacing:.02em">by visualx<span class="grad">.mp4</span></div>
-      <h1>Dein Song verdient<br /><span class="grad">ein Musikvideo.</span></h1>
-      <p>Ich erstelle animierte Lyrics- und Musikvideos zu deinem Song – persönlich und 100&nbsp;% kostenlos.</p>
-      <a class="btn light" href="#anmelden">Jetzt auf die Warteliste</a>
-      <div class="badges"><span>Kein Abo</span><span>Keine Programme</span><span>Keine versteckten Kosten</span></div>
+      <div class="chip reveal"><svg class="ic"><use href="#i-sparkles"/></svg> by visualx<span class="grad">.mp4</span></div>
+      <h1 class="reveal d1">Dein Song verdient<br /><span class="grad anim">ein Musikvideo.</span></h1>
+      <p class="reveal d2">Ich erstelle animierte Lyrics- und Musikvideos zu deinem Song – persönlich und 100&nbsp;% kostenlos.</p>
+      <a class="btn light glow reveal d3" href="#anmelden">Jetzt auf die Warteliste <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <div class="badges reveal d4">
+        <span><svg class="ic"><use href="#i-check"/></svg>Kein Abo</span><span><svg class="ic"><use href="#i-check"/></svg>Keine Programme</span><span><svg class="ic"><use href="#i-check"/></svg>Keine versteckten Kosten</span>
+      </div>
     </div>
   </header>
 
+  <div class="marquee" aria-hidden="true"><div class="track">
+    <span>Animierte Lyrics</span><svg class="ic"><use href="#i-sparkles"/></svg><span>3D-Szenen</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Kinetic Typography</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Cinematic Übergänge</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Motion Graphics</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Persönlich erstellt</span><svg class="ic"><use href="#i-sparkles"/></svg>
+    <span>Animierte Lyrics</span><svg class="ic"><use href="#i-sparkles"/></svg><span>3D-Szenen</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Kinetic Typography</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Cinematic Übergänge</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Motion Graphics</span><svg class="ic"><use href="#i-sparkles"/></svg><span>Persönlich erstellt</span><svg class="ic"><use href="#i-sparkles"/></svg>
+  </div></div>
+
   <section>
-    <div class="wrap example">
-      <div>
+    <div class="wrap">
+      <div class="reveal" style="text-align:center">
         <div class="eyebrow">Beispiel</div>
         <h2>So kann dein Video aussehen.</h2>
-        <p class="lead">Ein Ausschnitt aus einem meiner Edits. Jeder Song bekommt seinen eigenen Look – mit animierten Lyrics, 3D-Szenen und Übergängen, die zur Musik passen.</p>
+        <p class="lead" style="margin:0 auto">Eines meiner Edits – komplett, mit Song. Jeder Song bekommt seinen eigenen Look: animierte Lyrics, Szenen und Übergänge, die zur Musik passen.</p>
       </div>
-      <div class="phone">
-        <video id="ex" src="assets/beispiel.mp4" poster="assets/beispiel.jpg" autoplay muted loop playsinline></video>
-        <span class="tag">visualx.mp4 · „Niemals“</span>
-        <button class="sound" id="sound" type="button">🔈 Ton an</button>
-      </div>
+      <div class="player-wrap reveal d2"><div class="player" id="player">
+        <video id="ex" src="assets/feuer.mp4" poster="assets/feuer.jpg" muted loop playsinline preload="metadata"></video>
+        <span class="tag">visualx.mp4 · „Feuer“</span>
+        <button class="play" id="play" type="button" aria-label="Mit Ton abspielen"><span class="pbtn"><svg class="ic" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" stroke="none"/></svg></span><span>Mit Ton abspielen</span></button>
+      </div></div>
     </div>
   </section>
 
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="eyebrow">So funktioniert's</div>
-      <h2>Drei Schritte. <span style="color:var(--sub)">Mehr nicht.</span></h2>
+      <div class="eyebrow reveal">So funktioniert's</div>
+      <h2 class="reveal d1">Drei Schritte. <span style="color:var(--sub)">Mehr nicht.</span></h2>
       <div class="steps">
-        <div class="card step"><div class="n" style="background:var(--purple)">1</div><h3>Eintragen</h3><p>Name, Kontakt, Song und Lyrics ins Formular unten.</p></div>
-        <div class="card step"><div class="n" style="background:var(--blue)">2</div><h3>Warten</h3><p>Du bist auf der Warteliste. Jeder kommt der Reihe nach dran.</p></div>
-        <div class="card step"><div class="n" style="background:var(--green)">3</div><h3>Video bekommen</h3><p>Ich melde mich über deinen Kontakt, sobald dein Video fertig ist.</p></div>
+        <div class="card step spot reveal d1"><div class="n" style="--c:var(--purple)"><svg class="ic"><use href="#i-pen"/></svg></div><small>Schritt 1</small><h3>Eintragen</h3><p>Name, Kontakt, Song und Lyrics ins Formular unten.</p></div>
+        <div class="card step spot reveal d2"><div class="n" style="--c:var(--blue)"><svg class="ic"><use href="#i-hourglass"/></svg></div><small>Schritt 2</small><h3>Warten</h3><p>Du bist auf der Warteliste. Jeder kommt der Reihe nach dran.</p></div>
+        <div class="card step spot reveal d3"><div class="n" style="--c:var(--green)"><svg class="ic"><use href="#i-film"/></svg></div><small>Schritt 3</small><h3>Video bekommen</h3><p>Ich melde mich über deinen Kontakt, sobald dein Video fertig ist.</p></div>
       </div>
     </div>
   </section>
 
   <section class="free">
     <div class="wrap">
-      <div class="eyebrow">Wirklich kostenlos</div>
-      <h2>Du lieferst den Song.<br /><span class="grad">Ich mache den Rest.</span></h2>
-      <ul><li><i>✕</i>Keine kostenpflichtigen Abonnements</li><li><i>✕</i>Keine teuren Programme</li><li><i>✕</i>Keine versteckten Kosten</li></ul>
-      <div class="card honest"><b>Ehrlich gesagt:</b> Ich erstelle jedes Video selbst. Das braucht Zeit – deshalb gibt es eine Warteliste und keine feste Lieferzeit. Wer sich früher einträgt, ist früher dran.</div>
+      <div class="eyebrow reveal">Wirklich kostenlos</div>
+      <h2 class="reveal d1">Du lieferst den Song.<br /><span class="grad anim">Ich mache den Rest.</span></h2>
+      <ul>
+        <li class="reveal d1"><i><svg class="ic"><use href="#i-x"/></svg></i>Keine kostenpflichtigen Abonnements</li>
+        <li class="reveal d2"><i><svg class="ic"><use href="#i-x"/></svg></i>Keine teuren Programme</li>
+        <li class="reveal d3"><i><svg class="ic"><use href="#i-x"/></svg></i>Keine versteckten Kosten</li>
+      </ul>
+      <div class="card honest spot reveal d2"><svg class="ic big" style="color:var(--orange)"><use href="#i-clock"/></svg><div><b>Ehrlich gesagt:</b> Ich erstelle jedes Video selbst. Das braucht Zeit – deshalb gibt es eine Warteliste und keine feste Lieferzeit. Wer sich früher einträgt, ist früher dran.</div></div>
     </div>
   </section>
 
   <section id="anmelden">
     <div class="wrap">
       <div style="text-align:center">
-        <div class="eyebrow">Warteliste</div>
-        <h2>Sichere dir deinen Platz.</h2>
-        <p class="lead" style="margin:0 auto">Dauert eine Minute. Kostet nichts.</p>
+        <div class="eyebrow reveal">Warteliste</div>
+        <h2 class="reveal d1">Sichere dir deinen Platz.</h2>
+        <p class="lead reveal d2" style="margin:0 auto">Dauert eine Minute. Kostet nichts.</p>
       </div>
 
-      <form id="form" class="card form" novalidate>
+      <form id="form" class="card form reveal d2" novalidate>
         <div class="field"><label for="username">1. Dein Benutzername</label><input id="username" type="text" maxlength="80" placeholder="z. B. @deinname" autocomplete="nickname" required /></div>
         <div class="field"><label for="contact">2. Deine Kontaktmöglichkeit</label>
           <div class="row">
@@ -75,25 +88,25 @@
           </div></div>
         <div class="field"><label for="tiktok">3. Dein TikTok-Benutzername</label><input id="tiktok" type="text" maxlength="80" placeholder="@deinname" required /></div>
         <div class="field"><label>4. Dein Song (MP3, WAV oder M4A · max. 10 MB)</label>
-          <label class="drop" id="drop"><input id="file" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" /><span style="font-size:28px">🎵</span><span id="fileText"><b>Song auswählen</b><br /><small style="color:var(--sub)">Tippe hier, um die Datei hochzuladen</small></span></label>
+          <label class="drop" id="drop"><input id="file" type="file" accept="audio/*,.mp3,.wav,.m4a,.aac,.ogg,.flac" /><span class="drop-ic" id="dropIc"><svg class="ic"><use href="#i-upload"/></svg></span><span id="fileText"><b>Song auswählen</b><br /><small style="color:var(--sub)">Tippe hier, um die Datei hochzuladen</small></span></label>
           <input id="songTitle" type="text" maxlength="200" placeholder="Songtitel (optional)" style="margin-top:10px" /></div>
         <div class="field"><label for="lyrics">5. Dein Songtext (vollständige Lyrics)</label><textarea id="lyrics" maxlength="20000" placeholder="Strophe 1 …" required></textarea></div>
         <div class="field"><label for="wishes">Wünsche zum Video (optional)</label><textarea id="wishes" maxlength="3000" style="min-height:90px" placeholder="Stimmung, Farben, Ideen …"></textarea></div>
         <input class="hp" id="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true" />
         <label class="check"><input id="c16" type="checkbox" /> <span>Ich bin mindestens 16 Jahre alt – oder meine Eltern sind einverstanden.</span></label>
         <label class="check"><input id="crights" type="checkbox" /> <span>Der Song ist von mir bzw. ich darf ihn für ein Musikvideo verwenden.</span></label>
-        <label class="check"><input id="cprivacy" type="checkbox" /> <span>Ich habe die <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> gelesen und bin mit der Speicherung meiner Angaben einverstanden.</span></label>
         <div class="err" id="err"></div>
-        <button class="btn" id="submit" type="submit" style="width:100%">Auf die Warteliste</button>
+        <button class="btn glow" id="submit" type="submit" style="width:100%"><span>Auf die Warteliste</span><svg class="ic"><use href="#i-arrow"/></svg></button>
         <div class="progress" id="prog"><div></div></div>
       </form>
 
       <div class="card form done" id="done">
-        <div class="ok">✓</div>
+        <svg class="okmark" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" /><path d="M15 27l7 7 15-16" /></svg>
         <h2 style="font-size:36px">Du bist auf der Warteliste.</h2>
         <p class="lead" style="margin:0 auto" id="posText">Ich melde mich bei dir, sobald du an der Reihe bist.</p>
       </div>
       <div class="card form closed" id="closed">
+        <svg class="ic big" style="color:var(--sub);margin-bottom:10px"><use href="#i-lock"/></svg>
         <h2 style="font-size:34px">Die Warteliste ist gerade geschlossen.</h2>
         <p class="lead" style="margin:0 auto" id="closedMsg">Schau bald wieder vorbei.</p>
       </div>
@@ -102,15 +115,15 @@
 
   <section class="faq" style="padding-top:0">
     <div class="wrap" style="max-width:760px">
-      <h2 style="font-size:40px">Fragen</h2>
-      <details><summary>Was kostet das?</summary><p>Nichts. Kein Abo, keine versteckten Kosten.</p></details>
-      <details><summary>Wie lange dauert es?</summary><p>Das hängt von der Warteliste ab. Ich mache jedes Video selbst, deshalb kann es dauern. Du kommst der Reihe nach dran und ich melde mich über deinen Kontakt.</p></details>
-      <details><summary>Welche Songs gehen?</summary><p>Eigene Songs oder Songs, für die du die Rechte hast bzw. die du verwenden darfst.</p></details>
-      <details><summary>Was passiert mit meinen Daten?</summary><p>Deine Angaben und dein Song werden nur für die Erstellung deines Videos genutzt. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. Du kannst jederzeit die Löschung verlangen.</p></details>
+      <h2 class="reveal" style="font-size:40px">Fragen</h2>
+      <details class="reveal d1"><summary>Was kostet das?<svg class="ic"><use href="#i-chevron"/></svg></summary><p>Nichts. Kein Abo, keine versteckten Kosten.</p></details>
+      <details class="reveal d2"><summary>Wie lange dauert es?<svg class="ic"><use href="#i-chevron"/></svg></summary><p>Das hängt von der Warteliste ab. Ich mache jedes Video selbst, deshalb kann es dauern. Du kommst der Reihe nach dran und ich melde mich über deinen Kontakt.</p></details>
+      <details class="reveal d3"><summary>Welche Songs gehen?<svg class="ic"><use href="#i-chevron"/></svg></summary><p>Eigene Songs oder Songs, für die du die Rechte hast bzw. die du verwenden darfst.</p></details>
+      <details class="reveal d4"><summary>Was passiert mit meinen Daten?<svg class="ic"><use href="#i-chevron"/></svg></summary><p>Deine Angaben und dein Song werden nur für die Erstellung deines Videos genutzt. Mehr dazu in der <a href="datenschutz.html">Datenschutzerklärung</a>. Du kannst jederzeit die Löschung verlangen.</p></details>
     </div>
   </section>
 
-  <footer><div style="font-weight:900;font-size:20px;color:var(--ink);letter-spacing:-.02em;margin-bottom:10px">visualx<span class="grad">.mp4</span></div><span id="handle"></span><span>© visualx.mp4</span><a href="datenschutz.html">Datenschutz</a></footer>
+  <footer><div class="brand" style="font-size:20px;margin-bottom:10px">visualx<span class="grad">.mp4</span></div><span id="handle"></span><span>© visualx.mp4</span><a href="datenschutz.html">Datenschutz</a></footer>
 
   <script src="config.js"></script>
   <script src="assets/supabase.js"></script>

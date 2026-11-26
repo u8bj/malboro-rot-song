@@ -9,8 +9,27 @@ if (!DEMO) {
 } else $("demo").hidden = false;
 if (CFG.HANDLE) $("handle").textContent = CFG.HANDLE;
 
-// sound toggle for the example clip
-$("sound").onclick = () => { const v = $("ex"); v.muted = !v.muted; if (!v.muted) { v.currentTime = 0; v.play(); } $("sound").textContent = v.muted ? "🔈 Ton an" : "🔊 Ton aus"; };
+// example video: silent preview loop, real playback with sound + controls on tap
+const vid = $("ex");
+const vio = new IntersectionObserver((es) => es.forEach((e) => { if (vid.muted) { if (e.isIntersecting) vid.play().catch(() => {}); else vid.pause(); } }), { threshold: 0.3 });
+vio.observe(vid);
+$("play").onclick = () => {
+  vid.muted = false; vid.volume = 1; vid.loop = false; vid.currentTime = 0; vid.controls = true;
+  vid.play().catch(() => { vid.muted = false; });
+  $("play").classList.add("gone"); $("player").classList.add("playing");
+};
+
+// scroll reveal
+const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: 0.12 });
+document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+// spotlight hover on cards
+document.querySelectorAll(".spot").forEach((el) => el.addEventListener("pointermove", (e) => { const r = el.getBoundingClientRect(); el.style.setProperty("--mx", `${e.clientX - r.left}px`); el.style.setProperty("--my", `${e.clientY - r.top}px`); }));
+// 3D tilt of the example phone (mouse only)
+const ph = $("player");
+if (matchMedia("(hover: hover)").matches) {
+  ph.parentElement.addEventListener("pointermove", (e) => { if (ph.classList.contains("playing")) return; const r = ph.getBoundingClientRect(); const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5; ph.style.transform = `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`; });
+  ph.parentElement.addEventListener("pointerleave", () => { ph.style.transform = ""; });
+}
 
 // open / closed
 (async () => {
@@ -26,7 +45,7 @@ $("file").onchange = (e) => {
   file = e.target.files[0] || null;
   if (!file) return;
   $("drop").classList.add("has");
-  $("fileText").innerHTML = `<b>${file.name.replace(/[<>&"]/g, "")}</b><br /><small style="color:var(--sub)">${(file.size / 1024 / 1024).toFixed(1)} MB · tippe zum Ändern</small>`;
+  $("fileText").innerHTML = `<b>${file.name.replace(/[<>&"]/g, "")}</b><br /><small style="color:var(--sub)">${(file.size / 1024 / 1024).toFixed(1)} MB · tippe zum Ändern</small>`; $("dropIc").innerHTML = ic("music");
 };
 
 const err = (m) => { $("err").textContent = m || ""; if (m) $("err").scrollIntoView({ block: "center", behavior: "smooth" }); };
@@ -46,9 +65,8 @@ $("form").onsubmit = async (e) => {
   if (!(file.type.startsWith("audio/") || EXT_TYPES[ext])) return err("Bitte lade eine Audiodatei hoch (MP3, WAV, M4A …).");
   if (!d.lyrics) return err("Bitte füge deinen Songtext ein.");
   if (!$("crights").checked) return err("Bitte bestätige, dass du den Song verwenden darfst.");
-  if (!$("cprivacy").checked) return err("Bitte stimme der Datenschutzerklärung zu.");
 
-  const btn = $("submit"); btn.disabled = true; btn.textContent = "Wird gesendet …"; setProg(0.1);
+  const btn = $("submit"); btn.disabled = true; btn.firstElementChild.textContent = "Wird gesendet …"; setProg(0.1);
   try {
     const id = crypto.randomUUID();
     if (DEMO) { await new Promise((r) => setTimeout(r, 900)); setProg(1); return success(7); }
@@ -64,7 +82,7 @@ $("form").onsubmit = async (e) => {
   } catch (x) {
     console.error(x);
     err("Das hat leider nicht geklappt. Bitte versuch es gleich nochmal." + (String(x.message || "").includes("mime") ? " (Dateiformat nicht erlaubt)" : ""));
-    btn.disabled = false; btn.textContent = "Auf die Warteliste";
+    btn.disabled = false; btn.firstElementChild.textContent = "Auf die Warteliste";
   }
 };
 

@@ -73,25 +73,25 @@ async function openDetail(id) {
   let audio = "";
   if (!DEMO && r.song_path) { const s = await sb.storage.from("songs").createSignedUrl(r.song_path, 3600); if (s.data) audio = s.data.signedUrl; }
   $("panel").innerHTML = `
-    <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font-size:30px;margin:0">${esc(r.username)}</h2><button class="btn small ghost" id="close">✕</button></div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><h2 style="font-size:30px;margin:0">${esc(r.username)}</h2><button class="btn small ghost" id="close" aria-label="Schließen">${ic("x")}</button></div>
     <div class="muted" style="margin-top:4px">${pos ? `Platz #${pos} · ` : ""}eingetragen am ${new Date(r.created_at).toLocaleString("de-DE")}</div>
     <div class="kv">
       <div>Kontakt</div><div>${esc(r.contact_platform)}: <b>${esc(r.contact_handle)}</b></div>
       <div>TikTok</div><div>${esc(r.tiktok)}</div>
       <div>Songtitel</div><div>${esc(r.song_title || "–")}</div>
-      <div>16+ / Eltern ok</div><div>${r.is_16_plus ? "Ja" : "<b style='color:var(--red)'>Nein / nicht bestätigt</b>"}</div>
+      <div>16+ / Eltern ok</div><div>${r.is_16_plus ? "Ja" : `<b style='color:var(--red);display:inline-flex;align-items:center;gap:6px'>${ic("alert")}Nein / nicht bestätigt</b>`}</div>
       <div>Rechte am Song</div><div>${r.rights_ok ? "bestätigt" : "–"}</div>
       <div>Wünsche</div><div>${esc(r.wishes || "–")}</div>
     </div>
-    <div class="card" style="padding:16px;margin-bottom:14px">${audio ? `<audio controls src="${esc(audio)}" style="width:100%"></audio><div class="actions"><a class="btn small ghost" href="${esc(audio)}" download>⬇ Song herunterladen</a></div>` : `<span class="muted">${DEMO ? "Im Demo-Modus gibt es keinen Song." : "Kein Song gefunden."}</span>`}</div>
-    <div style="display:flex;justify-content:space-between;align-items:center"><b>Lyrics</b><button class="btn small ghost" id="cpLyrics">Kopieren</button></div>
+    <div class="card" style="padding:16px;margin-bottom:14px">${audio ? `<audio controls src="${esc(audio)}" style="width:100%"></audio><div class="actions"><a class="btn small ghost" href="${esc(audio)}" download>${ic("download")}Song herunterladen</a></div>` : `<span class="muted">${DEMO ? "Im Demo-Modus gibt es keinen Song." : "Kein Song gefunden."}</span>`}</div>
+    <div style="display:flex;justify-content:space-between;align-items:center"><b>Lyrics</b><button class="btn small ghost" id="cpLyrics">${ic("copy")}Kopieren</button></div>
     <pre class="lyrics">${esc(r.lyrics)}</pre>
     <div class="field" style="margin-top:16px"><label>Status</label><select id="st">${Object.entries(STATUS).map(([k, v]) => `<option value="${k}" ${k === r.status ? "selected" : ""}>${v}</option>`).join("")}</select></div>
     <div class="field"><label>Interne Notizen (sieht nur du)</label><textarea id="nt" style="min-height:90px">${esc(r.notes || "")}</textarea></div>
     <div class="actions">
-      <button class="btn small" id="save">Speichern</button>
-      <button class="btn small ghost" id="cpContact">Kontakt kopieren</button>
-      <button class="btn small danger" id="del" style="margin-left:auto">Löschen</button>
+      <button class="btn small" id="save">${ic("save")}Speichern</button>
+      <button class="btn small ghost" id="cpContact">${ic("copy")}Kontakt kopieren</button>
+      <button class="btn small danger" id="del" style="margin-left:auto">${ic("trash")}Löschen</button>
     </div>`;
   $("drawer").style.display = "block";
   const close = () => { $("drawer").style.display = "none"; };
