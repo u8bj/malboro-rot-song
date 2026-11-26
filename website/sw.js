@@ -1,4 +1,4 @@
-// visualx.mp4 Service Worker: zeigt Push-Mitteilungen an (Nachricht, Video fertig, Status-Update).
+// visualx.mp4 Service Worker v3: zeigt Push-Mitteilungen an (Nachricht, Video fertig, Status-Update).
 self.window = self;
 try { importScripts("config.js"); } catch (e) {}
 const CFG = self.APP_CONFIG || {};
@@ -28,7 +28,7 @@ self.addEventListener("push", (e) => e.waitUntil((async () => {
       }
     }
   } catch (err) {}
-  await self.registration.showNotification(title, { body, icon: "assets/app/icon-192.png?v=2", badge: "assets/app/badge-96.png?v=2", tag: "vx-update", renotify: true, data: { url: "status.html" } });
+  await self.registration.showNotification(title, { body, icon: "assets/app/icon-192.png?v=2", badge: "assets/app/badge-96.png?v=2", tag: "vx-" + Date.now(), data: { url: "status.html" } });
 })()));
 
 self.addEventListener("notificationclick", (e) => {
