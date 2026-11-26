@@ -1,0 +1,54 @@
+{
+ "gap_same": 0.22,
+ "gap_change": 0.22,
+ "voices": {
+  "N": {
+   "id": "keqaIOtp0ePlmN5jgQfy",
+   "stability": 0.4,
+   "style": 0.45,
+   "speed": 1.06
+  }
+ },
+ "lines": [
+  [
+   "N",
+   "Du willst ein Musikvideo zu deinem Song?"
+  ],
+  [
+   "N",
+   "Aber keiner verrät dir, wie es geht?"
+  ],
+  [
+   "N",
+   "Und wenn doch, kostet es Geld."
+  ],
+  [
+   "N",
+   "Ich mache es anders."
+  ],
+  [
+   "N",
+   "Dein Song, dein Musikvideo. Komplett kostenlos."
+  ],
+  [
+   "N",
+   "Zum Beispiel so:"
+  ],
+  [
+   "N",
+   "Trag dich einfach über den Link in meiner Bio ein."
+  ],
+  [
+   "N",
+   "Ich mache jedes Video persönlich. Deshalb gibt es eine Warteliste."
+  ],
+  [
+   "N",
+   "Keine Abos. Keine versteckten Kosten."
+  ],
+  [
+   "N",
+   "Link in der Bio. Sichere dir jetzt deinen Platz."
+  ]
+ ]
+}

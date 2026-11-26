@@ -2,7 +2,7 @@
 Timeline (s): 0-11 dark ambient build · 11 drop (bright house, 120 BPM) · 31-31.5 break · 31.5 finale · ends ~35.5"""
 import numpy as np, soundfile as sf, subprocess
 from scipy.signal import lfilter, butter, fftconvolve
-SR = 48000; DROP = 9.0; FIN = 26.5; L = FIN + 4.2; N = int(L * SR); t = np.arange(N) / SR; BEAT = 0.5
+SR = 48000; DROP = 6.987; FIN = 28.579; L = FIN + 4.2; N = int(L * SR); t = np.arange(N) / SR; BEAT = 0.5
 rng = np.random.default_rng(7)
 def hz(m): return 440 * 2 ** ((m - 69) / 12)
 def env(n, a, d, s=0.0, r=0.0, sus=0.0):

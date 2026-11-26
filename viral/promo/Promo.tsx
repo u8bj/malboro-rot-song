@@ -2,9 +2,15 @@
 import React from "react";
 import { AbsoluteFill, Audio, Loop, OffthreadVideo, Sequence, staticFile, useVideoConfig } from "remotion";
 import { SANS, cl, pr, eo, lerp, spring, useT } from "../shared/StoryKit";
+import vo from "./vo/timed.json";
 
-export const PROMO_S = 30.0;
-const T = { q1: 0.3, q2: 2.0, phone: 3.5, why1: 6.0, why2: 7.5, anders: 9.0, song: 10.2, free: 11.4, show: 12.5, lyr: 15.0, look: 16.5, form: 18.0, wait: 21.8, cost: 24.0, rest: 25.2, cta: 26.5 };
+type VW = { w: string; s: number; e: number; ln: number };
+const VO = vo as VW[]; const OFF = 0.4;
+const LS = (n: number) => VO.find((x) => x.ln === n)!.s + OFF, LE = (n: number) => [...VO].reverse().find((x) => x.ln === n)!.e + OFF, WS = (i: number) => VO[i].s + OFF;
+const CLIP0 = LE(5) + 0.45, CLIP_LEN = 4.6;
+
+export const PROMO_S = LE(9) + 1.6;
+const T = { q1: LS(0), q2: LS(1), phone: LS(1) - 0.1, why1: LS(2) - 0.1, why2: LS(3) - 0.75, anders: LS(3) - 0.05, song: LS(4) - 0.05, free: WS(28) - 0.05, show: LS(5) - 0.1, form: LS(6) - 0.2, wait: LS(7) - 0.1, cost: LS(8) - 0.1, rest: 999, cta: LS(9) - 0.1 };
 const CX = 540, TW = 780; // text column 150…930 → inside TikTok safe zone, visually centered
 const INK = "#0b0b0f", GREY = "#86868b", BLUE = "#0a84ff";
 const GRAD = "linear-gradient(90deg,#5e5ce6,#0a84ff 35%,#30d158 70%,#ffd60a)";
@@ -28,8 +34,7 @@ const Glow: React.FC<{ t: number; color?: string; op?: number }> = ({ t, color =
 /* ───── scenes ───── */
 const S1: React.FC<{ t: number }> = ({ t }) => (<AbsoluteFill style={{ background: "#000" }}>
   <Glow t={t} op={0.25 + 0.15 * pr(t, 0, 4)} />
-  <Line t={t} t0={T.q1} t1={T.q2} top={760} size={92}>Du willst ein animiertes Musikvideo?</Line>
-  <Line t={t} t0={T.q2} t1={T.phone} top={760} size={92}>Weißt aber nicht, <span style={{ color: GREY }}>wie es geht?</span></Line>
+  <Line t={t} t0={T.q1 - 0.1} top={760} size={92}>Du willst ein Musikvideo <span style={{ color: GREY }}>zu deinem Song?</span></Line>
 </AbsoluteFill>);
 
 const COMMENTS = [["lena.music", "Wie macht man solche Musikvideos?", "2.481"], ["beatsbykev", "Kannst du ein Tutorial machen? 🙏", "1.906"], ["jxnas_", "Welche Programme benutzt du?", "1.233"], ["melody.mp3", "Wie bekommt man diese Animationen hin?", "987"]];
@@ -43,7 +48,7 @@ const SPhone: React.FC<{ t: number }> = ({ t }) => {
       <div style={{ position: "absolute", left: 210, top: 22, width: 160, height: 46, borderRadius: 23, background: "#000" }} />
       <div style={{ position: "absolute", left: 0, right: 0, bottom: 0, height: 690, borderRadius: "40px 40px 0 0", background: "rgba(255,255,255,0.97)", padding: "26px 30px", boxSizing: "border-box", fontFamily: SANS }}>
         <div style={{ textAlign: "center", fontSize: 26, fontWeight: 700, color: INK, marginBottom: 18 }}>4.127 Kommentare</div>
-        {COMMENTS.map(([u, c, l], i) => { const kk = spring(t, T.phone + 0.4 + i * 0.5, 0.35); return (
+        {COMMENTS.map(([u, c, l], i) => { const kk = spring(t, T.phone + 0.25 + i * 0.4, 0.3); return (
           <div key={i} style={{ display: "flex", gap: 16, alignItems: "flex-start", marginBottom: 26, opacity: cl(kk * 2), transform: `translateY(${(1 - kk) * 40}px) scale(${0.9 + 0.1 * kk})`, transformOrigin: "left center" }}>
             <div style={{ width: 62, height: 62, borderRadius: 31, flexShrink: 0, background: ["linear-gradient(135deg,#ff9a9e,#fad0c4)", "linear-gradient(135deg,#a18cd1,#fbc2eb)", "linear-gradient(135deg,#84fab0,#8fd3f4)", "linear-gradient(135deg,#fccb90,#d57eeb)"][i] }} />
             <div style={{ flex: 1 }}><div style={{ fontSize: 22, color: GREY, fontWeight: 600 }}>{u}</div><div style={{ fontSize: 31, color: INK, fontWeight: 600, lineHeight: 1.2, marginTop: 2 }}>{c}</div></div>
@@ -56,16 +61,15 @@ const SPhone: React.FC<{ t: number }> = ({ t }) => {
 
 const PRICES = [["Tutorial", "49,99 €"], ["KI-Abo", "29,99 € / Monat"], ["Software", "299 €"], ["Geheime Methode", "🔒"]];
 const SWhy: React.FC<{ t: number }> = ({ t }) => {
-  const spread = eo(pr(t, T.why1, T.why2 + 1.2)); const open = eo(pr(t, T.why2 + 0.8, T.why2 + 1.2)); const wipe = eo(pr(t, T.anders - 0.35, T.anders));
+  const spread = eo(pr(t, T.why1, T.anders)); const open = eo(pr(t, T.why2 + 0.25, T.why2 + 0.55)); const wipe = eo(pr(t, T.anders - 0.35, T.anders));
   return (<AbsoluteFill style={{ background: "#000", perspective: 1600 }}>
     <Glow t={t} color="#ff375f" op={0.18} />
     {PRICES.map(([a, b], i) => { const ang = (i / 4) * Math.PI * 2 + 0.6; const r = 120 + spread * 330; const k = spring(t, T.why1 + 0.1 + i * 0.12, 0.45);
       return <div key={i} style={{ position: "absolute", left: CX + Math.cos(ang) * r * 1.1 - 170, top: 1000 + Math.sin(ang) * r * 0.55 - 60, width: 340, padding: "22px 26px", borderRadius: 30, background: "rgba(255,255,255,0.07)", border: "1.5px solid rgba(255,255,255,0.14)", boxShadow: "0 20px 60px rgba(0,0,0,0.5)", fontFamily: SANS, color: "#fff",
-        transform: `rotateY(${Math.cos(ang) * 22}deg) rotateX(${Math.sin(ang) * 10}deg) scale(${0.8 + 0.2 * k})`, opacity: cl(k * 2) * (t > T.why2 ? 0.35 : 1), filter: t > T.why2 ? "blur(3px)" : undefined }}>
+        transform: `rotateY(${Math.cos(ang) * 22}deg) rotateX(${Math.sin(ang) * 10}deg) scale(${0.8 + 0.2 * k})`, opacity: cl(k * 2) * (t > T.why2 - 0.3 ? 0.35 : 1), filter: t > T.why2 - 0.3 ? "blur(3px)" : undefined }}>
         <div style={{ fontSize: 24, color: "rgba(255,255,255,0.55)", fontWeight: 600 }}>{a}</div><div style={{ fontSize: 40, fontWeight: 800, marginTop: 4 }}>{b}</div></div>; })}
-    <Line t={t} t0={T.why1 + 0.1} t1={T.why2} top={430} size={86}>Warum muss eigentlich <span style={{ color: "#ff375f" }}>alles Geld kosten?</span></Line>
-    <Line t={t} t0={T.why2} top={430} size={78}>Warum Wissen zurückhalten, wenn man es <span style={{ background: GRAD, WebkitBackgroundClip: "text", color: "transparent" }}>teilen kann?</span></Line>
-    {t > T.why2 + 0.2 && <svg width={200} height={240} viewBox="0 0 100 120" style={{ position: "absolute", left: CX - 100, top: 900, opacity: pr(t, T.why2 + 0.2, T.why2 + 0.5) }}>
+    <Line t={t} t0={T.why1 + 0.05} top={430} size={86}>Warum muss eigentlich <span style={{ color: "#ff375f" }}>alles Geld kosten?</span></Line>
+    {t > T.why2 - 0.3 && <svg width={200} height={240} viewBox="0 0 100 120" style={{ position: "absolute", left: CX - 100, top: 900, opacity: pr(t, T.why2 - 0.3, T.why2) }}>
       <path d={`M30 55 V35 a20 20 0 0 1 40 0 V${lerp(55, 40, open)}`} stroke="#fff" strokeWidth={9} fill="none" strokeLinecap="round" transform={`translate(${open * 18} ${-open * 10}) rotate(${open * 25} 70 40)`} />
       <rect x={18} y={52} width={64} height={56} rx={12} fill="#fff" /><circle cx={50} cy={76} r={7} fill="#000" /><rect x={47} y={78} width={6} height={14} rx={3} fill="#000" />
     </svg>}
@@ -79,9 +83,9 @@ const SAnders: React.FC<{ t: number }> = ({ t }) => {
     <AbsoluteFill style={{ background: "radial-gradient(50% 35% at 50% 70%, rgba(94,92,230,0.12), transparent 70%)" }} />
     <div style={{ position: "absolute", left: CX - 260, top: 1020, width: 520, height: 520, borderRadius: "50%", background: "conic-gradient(from 0deg, #5e5ce6, #0a84ff, #30d158, #ffd60a, #ff375f, #5e5ce6)", filter: "blur(2px)",
       transform: `rotateX(68deg) rotateZ(${rot}deg) scale(${0.6 + 0.4 * eo(pr(t, T.anders, T.anders + 0.8))})`, opacity: 0.85 - 0.6 * pr(t, T.free, T.free + 0.4), boxShadow: "0 0 120px rgba(94,92,230,0.4)" }} />
-    <Line t={t} t0={T.anders + 0.05} t1={T.song} top={640} size={112} color={INK}>Ich mache es anders.</Line>
+    <Line t={t} t0={T.anders} t1={T.song} top={640} size={112} color={INK}>Ich mache es anders.</Line>
     {t >= T.song && t < T.free && <div style={{ position: "absolute", left: CX - TW / 2, width: TW, top: 560, textAlign: "center", fontFamily: SANS, fontWeight: 800, fontSize: 100, letterSpacing: "-0.045em", lineHeight: 1.06, color: INK }}>
-      {["Dein Song.", "Deine Texte.", "Dein Musikvideo."].map((s, i) => { const k = eo(pr(t, T.song + 0.05 + i * 0.4, T.song + 0.5 + i * 0.4)); return <div key={i} style={{ opacity: k, transform: `translateY(${(1 - k) * 40}px)`, filter: k < 1 ? `blur(${(1 - k) * 10}px)` : undefined, ...(i === 2 ? { background: GRAD, WebkitBackgroundClip: "text", color: "transparent" } : {}) }}>{s}</div>; })}
+      {["Dein Song.", "Deine Texte.", "Dein Musikvideo."].map((s, i) => { const k = eo(pr(t, T.song + i * 0.35, T.song + 0.4 + i * 0.35)); return <div key={i} style={{ opacity: k, transform: `translateY(${(1 - k) * 40}px)`, filter: k < 1 ? `blur(${(1 - k) * 10}px)` : undefined, ...(i === 2 ? { background: GRAD, WebkitBackgroundClip: "text", color: "transparent" } : {}) }}>{s}</div>; })}
     </div>}
     {t >= T.free && <div style={{ position: "absolute", left: CX - TW / 2, width: TW, top: 520, textAlign: "center", fontFamily: SANS, transform: `scale(${0.8 + 0.2 * free})`, opacity: cl(free * 2) }}>
       <div style={{ fontSize: 250, fontWeight: 900, letterSpacing: "-0.06em", lineHeight: 1, whiteSpace: "nowrap", background: GRAD, WebkitBackgroundClip: "text", color: "transparent" }}>100 %</div>
@@ -91,43 +95,22 @@ const SAnders: React.FC<{ t: number }> = ({ t }) => {
   </AbsoluteFill>);
 };
 
-const CAR = ["mr_title", "ni_eye", "mr_car", "ni_heart", "ni_city"];
-const SShow: React.FC<{ t: number }> = ({ t }) => {
-  // phase 1: 9:16 carousel · phase 2: 16:9 glass panel · phase 3: 3D wall
-  const step = 0.5; const raw = (t - T.show - 0.15) / step; const p = Math.floor(raw) + eo(cl((raw - Math.floor(raw)) / 0.45));
-  const ph2 = eo(pr(t, T.lyr - 0.15, T.lyr + 0.35)), ph3 = eo(pr(t, T.look - 0.15, T.look + 0.35));
-  const fe = ["fe_map", "fe_ich", "fe_balls"]; const fi = Math.min(2, Math.max(0, Math.floor((t - T.lyr) / 0.5)));
-  return (<AbsoluteFill style={{ background: "#f5f5f7", perspective: 1800, overflow: "hidden" }}>
-    <AbsoluteFill style={{ background: "radial-gradient(45% 30% at 20% 15%, #e3e2ff, transparent 70%), radial-gradient(45% 30% at 85% 85%, #dff4ff, transparent 70%)" }} />
-    {/* phase 1 */}
-    {t < T.lyr + 0.4 && <AbsoluteFill style={{ opacity: 1 - ph2, transform: `scale(${1 - 0.1 * ph2})` }}>
-      {CAR.map((c, i) => { const o = i - cl(p / (CAR.length - 1)) * (CAR.length - 1); const a = Math.abs(o); if (a > 2.2) return null;
-        return <div key={c} style={{ position: "absolute", left: CX - 230 + o * 470, top: 450, width: 460, height: 818, borderRadius: 56, overflow: "hidden", background: "#000", border: "6px solid #1c1c1e", boxShadow: "0 50px 100px rgba(20,20,60,0.3)",
-          transform: `rotateY(${-o * 28}deg) scale(${1 - 0.22 * Math.min(1, a)})`, opacity: 1 - 0.45 * Math.min(1, a), zIndex: 10 - Math.round(a) }}><Clip name={c} from={T.show} /></div>; })}
-      <Line t={t} t0={T.show + 0.1} t1={T.lyr} top={300} size={60} color={INK}>Aus deiner Musik wird ein <span style={{ color: BLUE }}>visuelles Erlebnis.</span></Line>
-    </AbsoluteFill>}
-    {/* phase 2 */}
-    {t > T.lyr - 0.2 && t < T.look + 0.4 && <AbsoluteFill style={{ opacity: ph2 * (1 - ph3) }}>
-      <div style={{ position: "absolute", left: CX - 440, top: 620, width: 880, height: 495, borderRadius: 40, overflow: "hidden", boxShadow: "0 50px 120px rgba(20,20,60,0.28)", border: "1.5px solid rgba(255,255,255,0.9)",
-        transform: `rotateX(${lerp(14, 4, pr(t, T.lyr, T.look))}deg) rotateY(${lerp(-10, 6, pr(t, T.lyr, T.look))}deg) scale(${0.92 + 0.08 * ph2})` }}>
-        {fe.map((c, i) => <div key={c} style={{ position: "absolute", inset: 0, opacity: i === fi ? 1 : 0 }}><Clip name={c} from={T.lyr - 0.2} /></div>)}
-      </div>
-      <div style={{ position: "absolute", left: CX - 440, top: 1140, width: 880, height: 60, borderRadius: 30, background: "radial-gradient(50% 50% at 50% 50%, rgba(20,20,60,0.18), transparent 70%)" }} />
-      <Line t={t} t0={T.lyr} t1={T.look} top={330} size={66} color={INK}>Deine Lyrics. <span style={{ color: GREY }}>Kreativ in Szene gesetzt.</span></Line>
-    </AbsoluteFill>}
-    {/* phase 3: 3D wall */}
-    {t > T.look - 0.2 && <AbsoluteFill style={{ opacity: ph3 }}>
-      <div style={{ position: "absolute", left: CX - 750, top: 380, width: 1500, height: 1300, transform: `rotateX(28deg) rotateZ(-12deg) translateY(${-(t - T.look) * 90}px)`, transformStyle: "preserve-3d", display: "grid", gridTemplateColumns: "repeat(5, 270px)", gap: 30 }}>
-        {["mr_par", "ni_glass", "mr_title", "ni_city", "mr_car", "ni_heart", "ni_eye", "mr_par", "ni_glass", "mr_title"].map((c, i) => <div key={i} style={{ width: 270, height: 480, borderRadius: 30, overflow: "hidden", boxShadow: "0 30px 60px rgba(20,20,60,0.25)", background: "#000" }}><Clip name={c} from={T.look - 0.2 - (i % 3) * 0.4} /></div>)}
-      </div>
-      <div style={{ position: "absolute", left: CX - 400, width: 800, top: 270, padding: "26px 0", borderRadius: 40, background: "rgba(255,255,255,0.72)", backdropFilter: "blur(20px)", boxShadow: "0 20px 60px rgba(20,20,60,0.15)", textAlign: "center", fontFamily: SANS, fontWeight: 800, fontSize: 56, letterSpacing: "-0.035em", color: INK,
-        opacity: eo(pr(t, T.look, T.look + 0.4)), transform: `translateY(${(1 - eo(pr(t, T.look, T.look + 0.4))) * 30}px)` }}>Jeder Song verdient<br />seinen eigenen Look.</div>
-    </AbsoluteFill>}
+const SClipShow: React.FC<{ t: number }> = ({ t }) => {
+  const { fps } = useVideoConfig(); const k = eo(pr(t, T.show, CLIP0)); const out = eo(pr(t, CLIP0 + CLIP_LEN - 0.25, CLIP0 + CLIP_LEN + 0.1));
+  return (<AbsoluteFill style={{ background: "#000", perspective: 1800 }}>
+    <Glow t={t} op={0.4} />
+    <Line t={t} t0={T.show} t1={CLIP0 + 0.2} top={300} size={70}>Zum Beispiel so:</Line>
+    <div style={{ position: "absolute", left: CX - 380, top: 250, width: 760, height: 1351, borderRadius: 64, overflow: "hidden", background: "#000", border: "6px solid #2a2a2e", boxShadow: "0 60px 160px rgba(94,92,230,0.35)",
+      transform: `translateY(${(1 - k) * 700}px) rotateX(${(1 - k) * 25}deg) scale(${lerp(0.75, 1, k) * (1 - out * 0.08)})`, opacity: cl(k * 1.5) * (1 - out) }}>
+      <Sequence from={Math.round(CLIP0 * fps)} durationInFrames={Math.round(CLIP_LEN * fps)} layout="none"><OffthreadVideo src={staticFile("promo/clips/niemals_song.mp4")} volume={0.5} style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} /></Sequence>
+    </div>
+    <div style={{ position: "absolute", left: CX - 220, width: 440, top: 290, padding: "14px 0", borderRadius: 30, background: "rgba(0,0,0,0.45)", border: "1px solid rgba(255,255,255,0.2)", textAlign: "center", fontFamily: SANS, fontWeight: 700, fontSize: 30, color: "#fff",
+      opacity: pr(t, CLIP0 + 0.2, CLIP0 + 0.5) * (1 - out) }}>Eines meiner Edits · „Niemals“</div>
   </AbsoluteFill>);
 };
 
 const FIELDS: [string, string, "text" | "file" | "lyrics"][] = [["Dein Benutzername", "@deinname", "text"], ["Kontakt (Instagram, Snapchat oder TikTok)", "Instagram: @deinname", "text"], ["Dein TikTok-Benutzername", "@deinname", "text"], ["Song hochladen", "mein_song.mp3", "file"], ["Songtext einfügen", "Strophe 1 – deine Lyrics …", "lyrics"]];
-const F0 = T.form + 0.35, FD = 0.42;
+const F0 = T.form + 0.3, FD = 0.38;
 const SForm: React.FC<{ t: number }> = ({ t }) => {
   const k = eo(pr(t, T.form, T.form + 0.6)); const click = F0 + FIELDS.length * FD + 0.45; const done = t > click + 0.15;
   const focus = Math.min(FIELDS.length - 1, Math.floor((t - F0) / FD)); const camY = done ? 0 : lerp(0, -40, cl((t - F0) / (FIELDS.length * FD)));
@@ -182,14 +165,14 @@ const SWait: React.FC<{ t: number }> = ({ t }) => {
 };
 
 const SCost: React.FC<{ t: number }> = ({ t }) => (<AbsoluteFill style={{ background: "#fff" }}>
-  {["Keine kostenpflichtigen Abonnements.", "Keine teuren Programme.", "Keine versteckten Kosten."].map((s, i) => { const t0 = T.cost + 0.05 + i * 0.35; const k = eo(pr(t, t0, t0 + 0.35)); const o = pr(t, T.rest - 0.25, T.rest);
+  {["Keine kostenpflichtigen Abonnements.", "Keine teuren Programme.", "Keine versteckten Kosten."].map((s, i) => { const t0 = T.cost + 0.05 + i * 0.5; const k = eo(pr(t, t0, t0 + 0.35)); const o = 0;
     return <div key={i} style={{ position: "absolute", left: CX - TW / 2, width: TW, top: 470 + i * 150, display: "flex", alignItems: "center", gap: 24, fontFamily: SANS, fontWeight: 800, fontSize: 54, letterSpacing: "-0.03em", color: INK, opacity: k * (1 - o), transform: `translateX(${(1 - k) * -60}px)`, filter: o ? `blur(${o * 10}px)` : undefined }}>
       <span style={{ flexShrink: 0, width: 76, height: 76, borderRadius: 38, background: "#ff375f", color: "#fff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 42, fontWeight: 900 }}>✕</span>{s}</div>; })}
   <Line t={t} t0={T.rest} top={620} size={92} color={INK}>Du lieferst deinen Song.<br /><span style={{ background: GRAD, WebkitBackgroundClip: "text", color: "transparent" }}>Ich kümmere mich um den Rest.</span></Line>
 </AbsoluteFill>);
 
 const SCta: React.FC<{ t: number }> = ({ t }) => {
-  const k = eo(pr(t, T.cta, T.cta + 0.7)); const sweep = pr(t, T.cta + 0.5, T.cta + 1.6); const bio = spring(t, T.cta + 1.2, 0.45);
+  const k = eo(pr(t, T.cta, T.cta + 0.7)); const sweep = pr(t, T.cta + 0.5, T.cta + 1.6); const bio = spring(t, WS(58) + 0.05, 0.4);
   const depth = Array.from({ length: 10 }, (_, i) => `0 ${i + 1}px 0 rgba(${90 - i * 6},${90 - i * 6},${110 - i * 6},1)`).join(",") + ", 0 26px 50px rgba(0,0,0,0.6)";
   return (<AbsoluteFill style={{ background: "#000", perspective: 1600 }}>
     {Array.from({ length: 40 }, (_, i) => { const x = (i * 137.5) % 1080, y0 = (i * 263) % 1920; const y = (y0 - (t - T.cta) * (20 + (i % 5) * 8) + 1920) % 1920; return <div key={i} style={{ position: "absolute", left: x, top: y, width: 3, height: 3, borderRadius: 2, background: "#fff", opacity: 0.15 + (i % 4) * 0.08 }} />; })}
@@ -199,7 +182,7 @@ const SCta: React.FC<{ t: number }> = ({ t }) => {
       DEIN SONG<br />VERDIENT EIN<br /><span style={{ background: GRAD, WebkitBackgroundClip: "text", color: "transparent", textShadow: "none" }}>MUSIKVIDEO.</span>
       <div style={{ position: "absolute", inset: 0, background: `linear-gradient(105deg, transparent ${sweep * 160 - 40}%, rgba(255,255,255,0.35) ${sweep * 160 - 30}%, transparent ${sweep * 160 - 20}%)`, mixBlendMode: "overlay", pointerEvents: "none" }} />
     </div>
-    <Line t={t} t0={T.cta + 0.7} top={900} size={54} color="rgba(255,255,255,0.75)" weight={700} ls="-0.02em">Jetzt kostenlos anmelden.</Line>
+    <Line t={t} t0={WS(62) - 0.1} top={900} size={54} color="rgba(255,255,255,0.75)" weight={700} ls="-0.02em">Jetzt kostenlos anmelden.</Line>
     <div style={{ position: "absolute", left: CX - 270, width: 540, top: 1060, height: 120, borderRadius: 60, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", gap: 18, fontFamily: SANS, fontWeight: 900, fontSize: 52, letterSpacing: "0.02em", color: INK,
       boxShadow: "0 0 80px rgba(255,255,255,0.25)", transform: `scale(${0.7 + 0.3 * bio})`, opacity: cl(bio * 2) }}>
       <span style={{ display: "inline-block", transform: `translateY(${-Math.abs(Math.sin((t - T.cta) * 4)) * 10}px)` }}>↑</span> LINK IN DER BIO</div>
@@ -209,22 +192,23 @@ const SCta: React.FC<{ t: number }> = ({ t }) => {
 type S = { from: number; to: number; C: React.FC<{ t: number }>; cut?: boolean };
 const SCENES: S[] = [
   { from: 0, to: T.phone, C: S1 }, { from: T.phone, to: T.why1, C: SPhone }, { from: T.why1, to: T.anders, C: SWhy, cut: true }, { from: T.anders, to: T.show, C: SAnders },
-  { from: T.show, to: T.form, C: SShow }, { from: T.form, to: T.wait, C: SForm }, { from: T.wait, to: T.cost, C: SWait }, { from: T.cost, to: T.cta, C: SCost }, { from: T.cta, to: 999, C: SCta },
+  { from: T.show, to: T.form, C: SClipShow }, { from: T.form, to: T.wait, C: SForm }, { from: T.wait, to: T.cost, C: SWait }, { from: T.cost, to: T.cta, C: SCost }, { from: T.cta, to: 999, C: SCta },
 ];
 
 export const Promo: React.FC = () => {
   const t = useT(); const { fps } = useVideoConfig(); const fr = (s: number) => Math.max(0, Math.round(s * fps));
   const sfx: [number, string, number][] = [
-    ...[0, 1, 2, 3].map((i) => [T.phone + 0.4 + i * 0.5, "pop.mp3", 0.35] as [number, string, number]),
-    ...[T.phone, T.why1, T.show, T.form, T.wait, T.cost].map((s) => [s - 0.12, "whoosh.mp3", 0.3] as [number, string, number]),
-    [T.why2 + 0.8, "click.wav", 0.6], [T.free, "impact.mp3", 0.35],
+    ...[0, 1, 2, 3].map((i) => [T.phone + 0.25 + i * 0.4, "pop.mp3", 0.3] as [number, string, number]),
+    ...[T.phone, T.why1, T.show, T.form, T.wait, T.cost, CLIP0 + CLIP_LEN].map((s) => [s - 0.12, "whoosh.mp3", 0.3] as [number, string, number]),
+    [T.why2 + 0.25, "click.wav", 0.6], [T.free, "impact.mp3", 0.35],
     ...FIELDS.flatMap((_, i) => Array.from({ length: 5 }, (_, j) => [F0 + i * FD + 0.05 + j * 0.1, "click.wav", 0.18] as [number, string, number])),
     [F0 + FIELDS.length * FD + 0.45, "click.wav", 0.7], [F0 + FIELDS.length * FD + 0.6, "confirm.wav", 0.45],
-    ...[0, 1, 2].map((i) => [T.cost + 0.05 + i * 0.35, "tick.wav", 0.35] as [number, string, number]),
+    ...[0, 1, 2].map((i) => [T.cost + 0.05 + i * 0.5, "tick.wav", 0.35] as [number, string, number]),
   ];
   return (
     <AbsoluteFill style={{ background: "#000" }}>
-      <Audio src={staticFile("promo/music.mp3")} volume={(f) => Math.min(1, (PROMO_S - f / fps) / 0.6)} />
+      <Sequence from={fr(OFF)}><Audio src={staticFile("promo/vo.mp3")} volume={1.0} /></Sequence>
+      <Audio src={staticFile("promo/music.mp3")} volume={(f) => { const s = f / fps; const clip = s > CLIP0 - 0.25 && s < CLIP0 + CLIP_LEN + 0.15 ? 0 : 1; const talk = VO.some((x) => s > x.s + OFF - 0.15 && s < x.e + OFF + 0.2) ? 0.32 : 0.75; return clip * talk * Math.min(1, (PROMO_S - s) / 0.6); }} />
       {sfx.map(([s, n, v], i) => <Sequence key={i} from={fr(s)}><Audio src={staticFile(`promo/${n}`)} volume={v} /></Sequence>)}
       {SCENES.map((s, i) => {
         if (t < s.from - 0.01 || t >= s.to + 0.3) return null;
