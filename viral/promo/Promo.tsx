@@ -122,7 +122,7 @@ const SForm: React.FC<{ t: number }> = ({ t }) => {
       transform: `translateY(${(1 - k) * 200}px) rotateX(${(1 - k) * 18}deg) scale(${0.94 + 0.06 * k})`, opacity: k }}>
       <div style={{ display: "flex", alignItems: "center", gap: 12, padding: "18px 26px", borderBottom: "1px solid #ececf0", background: "#fafafc" }}>
         {["#ff5f57", "#febc2e", "#28c840"].map((c) => <span key={c} style={{ width: 16, height: 16, borderRadius: 8, background: c }} />)}
-        <div style={{ marginLeft: 16, flex: 1, height: 40, borderRadius: 12, background: "#efeff4", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontSize: 22, color: GREY, fontWeight: 600 }}>🔒 Link in meiner Bio</div>
+        <div style={{ marginLeft: 16, flex: 1, height: 40, borderRadius: 12, background: "#efeff4", display: "flex", alignItems: "center", justifyContent: "center", gap: 8, fontSize: 22, color: GREY, fontWeight: 600 }}>🔒 u8bj.xyz/visualx.mp4</div>
       </div>
       <div style={{ padding: "34px 44px 40px" }}>
         <div style={{ fontSize: 46, fontWeight: 800, letterSpacing: "-0.03em" }}>Dein kostenloses Musikvideo</div>
@@ -186,6 +186,12 @@ const SCta: React.FC<{ t: number }> = ({ t }) => {
     <div style={{ position: "absolute", left: CX - 270, width: 540, top: 1060, height: 120, borderRadius: 60, background: "#fff", display: "flex", alignItems: "center", justifyContent: "center", gap: 18, fontFamily: SANS, fontWeight: 900, fontSize: 52, letterSpacing: "0.02em", color: INK,
       boxShadow: "0 0 80px rgba(255,255,255,0.25)", transform: `scale(${0.7 + 0.3 * bio})`, opacity: cl(bio * 2) }}>
       <span style={{ display: "inline-block", transform: `translateY(${-Math.abs(Math.sin((t - T.cta) * 4)) * 10}px)` }}>↑</span> LINK IN DER BIO</div>
+    {(() => { const u = spring(t, WS(62) + 0.1, 0.45); return (
+      <div style={{ position: "absolute", left: CX - 330, width: 660, top: 1215, padding: "18px 0", borderRadius: 30, textAlign: "center", fontFamily: SANS, background: "rgba(255,255,255,0.07)", border: "1.5px solid rgba(255,255,255,0.18)",
+        transform: `translateY(${(1 - u) * 40}px) scale(${0.9 + 0.1 * u})`, opacity: cl(u * 2) }}>
+        <div style={{ fontSize: 24, fontWeight: 700, color: "rgba(255,255,255,0.55)", letterSpacing: "0.08em" }}>ODER DIREKT</div>
+        <div style={{ fontSize: 54, fontWeight: 900, letterSpacing: "-0.02em", marginTop: 2 }}><span style={{ color: "#fff" }}>u8bj.xyz/</span><span style={{ background: GRAD, WebkitBackgroundClip: "text", color: "transparent" }}>visualx.mp4</span></div>
+      </div>); })()}
   </AbsoluteFill>);
 };
 
