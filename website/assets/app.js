@@ -65,7 +65,6 @@ $("form").onsubmit = async (e) => {
   const ext = (file.name.split(".").pop() || "").toLowerCase();
   if (!(file.type.startsWith("audio/") || EXT_TYPES[ext])) return err("Bitte lade eine Audiodatei hoch (MP3, WAV, M4A …).");
   if (!d.lyrics) return err("Bitte füge deinen Songtext ein.");
-  if (!$("crights").checked) return err("Bitte bestätige, dass du den Song verwenden darfst.");
 
   const btn = $("submit"); btn.disabled = true; btn.firstElementChild.textContent = "Wird gesendet …"; setProg(0.1);
   try {
@@ -75,7 +74,7 @@ $("form").onsubmit = async (e) => {
     const up = await sb.storage.from("songs").upload(path, file, { upsert: false, contentType: file.type || EXT_TYPES[ext] || "audio/mpeg" });
     if (up.error) throw new Error(up.error.message);
     setProg(0.75);
-    const ins = await sb.from("submissions").insert({ id, ...d, song_path: path, is_16_plus: $("c16").checked, rights_ok: true, privacy_ok: true });
+    const ins = await sb.from("submissions").insert({ id, ...d, song_path: path });
     if (ins.error) throw new Error(ins.error.message);
     setProg(1);
     const pos = await sb.rpc("waitlist_position", { sub_id: id });

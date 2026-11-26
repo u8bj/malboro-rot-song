@@ -16,9 +16,9 @@ create table if not exists public.submissions (
   song_path        text not null check (song_path like 'uploads/%'),
   lyrics           text not null check (char_length(lyrics) between 1 and 20000),
   wishes           text check (char_length(wishes) <= 3000),
-  is_16_plus       boolean not null default false,
-  rights_ok        boolean not null check (rights_ok),
-  privacy_ok       boolean not null check (privacy_ok),
+  is_16_plus       boolean,
+  rights_ok        boolean,
+  privacy_ok       boolean,
   status           text not null default 'neu' check (status in ('neu', 'wartet', 'in_arbeit', 'fertig', 'abgelehnt')),
   notes            text
 );

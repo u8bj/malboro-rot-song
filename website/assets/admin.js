@@ -78,8 +78,6 @@ async function openDetail(id) {
       <div>Kontakt</div><div>${esc(r.contact_platform)}: <b>${esc(r.contact_handle)}</b></div>
       <div>TikTok</div><div>${esc(r.tiktok)}</div>
       <div>Songtitel</div><div>${esc(r.song_title || "–")}</div>
-      <div>16+ / Eltern ok</div><div>${r.is_16_plus ? "Ja" : `<b style='color:var(--red);display:inline-flex;align-items:center;gap:6px'>${ic("alert")}Nein / nicht bestätigt</b>`}</div>
-      <div>Rechte am Song</div><div>${r.rights_ok ? "bestätigt" : "–"}</div>
       <div>Wünsche</div><div>${esc(r.wishes || "–")}</div>
     </div>
     <div class="card" style="padding:16px;margin-bottom:14px">${audio ? `<audio controls src="${esc(audio)}" style="width:100%"></audio><div class="actions"><a class="btn small ghost" href="${esc(audio)}" download>${ic("download")}Song herunterladen</a></div>` : `<span class="muted">${DEMO ? "Im Demo-Modus gibt es keinen Song." : "Kein Song gefunden."}</span>`}</div>
@@ -120,7 +118,7 @@ $("saveSettings").onclick = async () => {
 $("open").onchange = () => { $("openLabel").textContent = $("open").checked ? "Anmeldungen offen (noch speichern)" : "Anmeldungen geschlossen (noch speichern)"; };
 
 $("csv").onclick = () => {
-  const pos = positions(); const cols = ["platz", "created_at", "status", "username", "contact_platform", "contact_handle", "tiktok", "song_title", "is_16_plus", "wishes", "notes", "lyrics"];
+  const pos = positions(); const cols = ["platz", "created_at", "status", "username", "contact_platform", "contact_handle", "tiktok", "song_title", "wishes", "notes", "lyrics"];
   const q = (v) => `"${String(v ?? "").replace(/"/g, '""')}"`;
   const csv = [cols.join(";"), ...rows.map((r) => cols.map((c) => q(c === "platz" ? pos[r.id] || "" : r[c])).join(";"))].join("\n");
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv" })); a.download = `warteliste_${new Date().toISOString().slice(0, 10)}.csv`; a.click();
