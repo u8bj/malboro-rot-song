@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>visualx.mp4 – Mein Status</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#0b0b0c" />
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <script src="assets/icons.js"></script>
+  <div id="demo" class="demo-banner" hidden>Demo-Modus – Supabase ist noch nicht verbunden.</div>
+  <nav class="nav"><div class="wrap"><a class="brand" href="./">visualx<span class="grad">.mp4</span></a><a class="btn small ghost" id="logoutBtn" href="#" hidden><svg class="ic"><use href="#i-logout"/></svg>Abmelden</a></div></nav>
+
+  <!-- Code-Login -->
+  <main id="loginView" class="wrap" style="max-width:560px;padding-top:56px;padding-bottom:80px">
+    <div class="card form" style="text-align:center;padding:34px 26px">
+      <div class="code-ic"><svg class="ic"><use href="#i-lock"/></svg></div>
+      <h1 style="font-size:34px;letter-spacing:-.03em;margin:14px 0 6px">Mein Status</h1>
+      <p style="color:var(--sub);margin:0 0 24px">Gib deinen 6-stelligen Code ein. Du hast ihn nach dem Eintragen bekommen.</p>
+      <form id="codeForm" autocomplete="off">
+        <input id="code" class="code-input" type="text" inputmode="text" maxlength="7" placeholder="ABC-123" autocapitalize="characters" spellcheck="false" aria-label="Dein Code" />
+        <div class="err" id="codeErr"></div>
+        <button class="btn glow" style="width:100%" type="submit"><span>Status ansehen</span><svg class="ic"><use href="#i-arrow"/></svg></button>
+      </form>
+      <p style="color:var(--sub);font-size:14px;margin:20px 0 0">Noch nicht eingetragen? <a href="./#anmelden">Zur Warteliste</a></p>
+    </div>
+  </main>
+
+  <!-- Portal -->
+  <main id="portal" class="wrap portal" hidden>
+    <div class="card status-card">
+      <div class="hello"><small>Hallo</small><h1 id="pName">–</h1><div id="pSong" class="muted"></div></div>
+      <div class="steps-line" id="stepsLine">
+        <div class="st" data-s="neu"><span><svg class="ic"><use href="#i-pen"/></svg></span>Eingetragen</div>
+        <div class="st" data-s="wartet"><span><svg class="ic"><use href="#i-hourglass"/></svg></span>Warteliste</div>
+        <div class="st" data-s="in_arbeit"><span><svg class="ic"><use href="#i-sparkles"/></svg></span>In Arbeit</div>
+        <div class="st" data-s="fertig"><span><svg class="ic"><use href="#i-film"/></svg></span>Fertig</div>
+      </div>
+      <div class="pos" id="pPos"></div>
+    </div>
+
+    <div class="card video-card" id="videoCard" hidden>
+      <div class="vc-head"><svg class="ic" style="color:var(--green)"><use href="#i-check"/></svg><b>Dein Video ist fertig!</b></div>
+      <div class="player"><video id="pVideo" controls playsinline preload="metadata"></video></div>
+      <a class="btn" id="pDownload" href="#" style="width:100%;margin-top:14px"><svg class="ic"><use href="#i-download"/></svg><span>Video herunterladen</span></a>
+    </div>
+
+    <div class="card chat" id="chat">
+      <div class="chat-head"><div class="avatar">v</div><div><b>visualx.mp4</b><small>Schreib mir, wenn du Fragen oder Wünsche hast.</small></div></div>
+      <div class="chat-body" id="chatBody"><div class="chat-empty" id="chatEmpty">Noch keine Nachrichten. Schreib einfach los.</div></div>
+      <form class="chat-input" id="chatForm"><textarea id="chatText" rows="1" maxlength="2000" placeholder="Nachricht schreiben …"></textarea><button class="send" type="submit" aria-label="Senden"><svg class="ic"><use href="#i-arrow"/></svg></button></form>
+    </div>
+  </main>
+
+  <script src="config.js"></script>
+  <script src="assets/supabase.js"></script>
+  <script src="assets/status.js"></script>
+</body>
+</html>

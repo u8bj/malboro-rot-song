@@ -5,3 +5,11 @@ account_id = "cd5ae30ae6de2d3743d0db11652fff89"
 workers_dev = false
 no_bundle = true
 routes = [{ pattern = "u8bj.xyz/visualx.mp4*", zone_name = "u8bj.xyz" }]
+
+[[r2_buckets]]
+binding = "VIDEOS"
+bucket_name = "visualx-videos"
+
+[vars]
+SUPABASE_URL = "https://gxdfzlsaicjnxvlslzqr.supabase.co"
+SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd4ZGZ6bHNhaWNqbnh2bHNsenFyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTU2NDczNTgsImV4cCI6MjExMTIyMzM1OH0.i-Z4OKSAYqwdiHThPHEvcqV-bW8Fqgf5KUB-eE7KXv0"

@@ -250,3 +250,52 @@ input[type=text], textarea, select { font-size: 17px; }
   .free li { font-size: 19px; }
   .marquee span { font-size: 17px; }
 }
+
+/* ═════ Status-Seite & Chat ═════ */
+.code-ic { width: 64px; height: 64px; margin: 0 auto; border-radius: 20px; display: flex; align-items: center; justify-content: center; background: rgba(94, 92, 230, .16); color: #8e8cff; }
+.code-ic .ic { width: 28px; height: 28px; }
+.code-input { width: 100%; text-align: center; font: inherit; font-size: 34px !important; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; padding: 16px; border-radius: 20px; border: 1.5px solid var(--line); background: var(--card2); color: var(--ink); outline: none; }
+.code-input:focus { border-color: var(--blue); box-shadow: 0 0 0 5px rgba(10, 132, 255, .22); }
+.portal { max-width: 720px; padding-top: 28px; padding-bottom: 60px; display: grid; gap: 16px; }
+.status-card { padding: 26px; }
+.hello small { color: var(--sub); font-weight: 700; } .hello h1 { margin: 2px 0 2px; font-size: 32px; letter-spacing: -.03em; word-break: break-word; }
+.muted { color: var(--sub); font-size: 15px; }
+.steps-line { --p: 0%; position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin: 26px 0 18px; }
+.steps-line::before, .steps-line::after { content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 21px; height: 3px; border-radius: 2px; background: var(--line); }
+.steps-line::after { right: auto; width: calc((75%) * var(--p) / 100%); background: var(--grad); transition: width .8s ease; }
+.steps-line .st { position: relative; z-index: 1; text-align: center; font-size: 12.5px; font-weight: 700; color: var(--sub); }
+.steps-line .st span { width: 44px; height: 44px; margin: 0 auto 8px; border-radius: 22px; display: flex; align-items: center; justify-content: center; background: var(--card2); border: 1.5px solid var(--line); color: var(--sub); transition: all .3s; }
+.steps-line .st.past span { background: rgba(48, 209, 88, .16); border-color: var(--green); color: var(--green); }
+.steps-line .st.now span { background: rgba(10, 132, 255, .18); border-color: var(--blue); color: #6cb6ff; animation: pulseBlue 2s ease-out infinite; }
+.steps-line .st.past, .steps-line .st.now { color: var(--ink); }
+@keyframes pulseBlue { 0% { box-shadow: 0 0 0 0 rgba(10, 132, 255, .5); } 100% { box-shadow: 0 0 0 14px rgba(10, 132, 255, 0); } }
+.pos { padding: 16px 18px; border-radius: 18px; background: var(--card2); color: var(--ink); line-height: 1.45; }
+.video-card { padding: 20px; } .vc-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 18px; }
+.video-card .player { aspect-ratio: auto; max-width: none; } .video-card video { max-height: 70vh; background: #000; }
+.chat { display: flex; flex-direction: column; overflow: hidden; height: min(620px, 78vh); }
+.chat-head { display: flex; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+.chat-head small { display: block; color: var(--sub); font-size: 13px; }
+.avatar { width: 42px; height: 42px; border-radius: 21px; flex-shrink: 0; background: var(--grad); background-size: 200% 100%; animation: gradShift 6s ease-in-out infinite; color: #0b0b0c; font-weight: 900; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.chat-body { flex: 1; overflow-y: auto; padding: 18px; display: flex; flex-direction: column; gap: 10px; scroll-behavior: smooth; }
+.chat-empty { margin: auto; color: var(--sub); text-align: center; font-size: 15px; }
+.msg { display: flex; flex-direction: column; max-width: 82%; animation: pop .25s ease-out; }
+.msg .b { padding: 11px 15px; border-radius: 20px; font-size: 16px; line-height: 1.4; word-wrap: break-word; overflow-wrap: anywhere; }
+.msg time { font-size: 11px; color: var(--sub); margin: 4px 8px 0; }
+.msg.me { align-self: flex-end; align-items: flex-end; } .msg.me .b { background: var(--blue); color: #fff; border-bottom-right-radius: 6px; }
+.msg.them { align-self: flex-start; } .msg.them .b { background: var(--card2); color: var(--ink); border-bottom-left-radius: 6px; border: 1px solid var(--line); }
+.chat-input { display: flex; gap: 10px; align-items: flex-end; padding: 12px; border-top: 1px solid var(--line); background: var(--card); }
+.chat-input textarea { flex: 1; resize: none; border: 1.5px solid var(--line); border-radius: 22px; padding: 11px 16px; font: inherit; font-size: 16px; background: var(--card2); color: var(--ink); outline: none; max-height: 140px; }
+.chat-input textarea:focus { border-color: var(--blue); }
+.chat-input .send { width: 46px; height: 46px; border-radius: 23px; border: 0; background: var(--blue); color: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform .2s; }
+.chat-input .send:hover { transform: scale(1.08); } .chat-input .send .ic { width: 20px; height: 20px; transform: rotate(-90deg); }
+.codebox { margin: 22px auto 6px; max-width: 360px; padding: 18px; border-radius: 22px; background: var(--card2); border: 1.5px dashed #3a3a3c; }
+.codebox small { display: block; color: var(--sub); font-weight: 700; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; }
+.codebox .c { font-size: 40px; font-weight: 900; letter-spacing: .14em; margin: 6px 0 10px; }
+.nav .actions { display: flex; gap: 8px; }
+@media (max-width: 480px) { .steps-line .st { font-size: 11px; } .steps-line .st span { width: 38px; height: 38px; } .steps-line::before, .steps-line::after { top: 18px; } .chat { height: 72vh; } .nav .btn.small { padding: 9px 12px; font-size: 13px; } }
+
+.nav .btn.small { white-space: nowrap; }
+@media (max-width: 400px) { .nav .hide-xs { display: none; } .nav .actions { gap: 6px; } .nav .btn.small { padding: 9px 11px; font-size: 13px; } .brand { font-size: 16px; } }
+.steps-line .st span { background: var(--card2); }
+.steps-line .st.past span { background: linear-gradient(rgba(48, 209, 88, .16), rgba(48, 209, 88, .16)), var(--card); }
+.steps-line .st.now span { background: linear-gradient(rgba(10, 132, 255, .18), rgba(10, 132, 255, .18)), var(--card); }

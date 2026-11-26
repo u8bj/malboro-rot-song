@@ -16,7 +16,7 @@
 <body>
   <script src="assets/icons.js"></script>
   <div id="demo" class="demo-banner" hidden>Demo-Modus – Supabase ist noch nicht verbunden, es wird nichts gespeichert.</div>
-  <nav class="nav"><div class="wrap"><a class="brand" href="#top">visualx<span class="grad">.mp4</span></a><a class="btn small glow" href="#anmelden">Platz sichern <svg class="ic"><use href="#i-arrow"/></svg></a></div></nav>
+  <nav class="nav"><div class="wrap"><a class="brand" href="#top">visualx<span class="grad">.mp4</span></a><div class="actions"><a class="btn small ghost" href="status.html"><svg class="ic"><use href="#i-lock"/></svg><span class="hide-xs">Mein&nbsp;</span>Status</a><a class="btn small glow" href="#anmelden">Platz sichern</a></div></div></nav>
 
   <header class="hero" id="top">
     <div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
@@ -107,6 +107,9 @@
         <svg class="okmark" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24" /><path d="M15 27l7 7 15-16" /></svg>
         <h2 style="font-size:36px">Du bist auf der Warteliste.</h2>
         <p class="lead" style="margin:0 auto" id="posText">Ich melde mich bei dir, sobald du an der Reihe bist.</p>
+        <div class="codebox" id="codeBox" hidden><small>Dein Code</small><div class="c" id="codeVal">–</div><button class="btn small ghost" type="button" id="copyCode"><svg class="ic"><use href="#i-copy"/></svg><span>Code kopieren</span></button></div>
+        <p class="lead" style="margin:10px auto 0;font-size:15px;max-width:460px" id="codeHint" hidden>Mach dir einen Screenshot! Mit dem Code siehst du oben unter <b>„Mein Status“</b> jederzeit deinen Platz, bekommst dein fertiges Video und kannst mir schreiben.</p>
+        <a class="btn glow" id="toStatus" href="status.html" style="margin-top:20px" hidden><span>Zu meinem Status</span><svg class="ic"><use href="#i-arrow"/></svg></a>
       </div>
       <div class="card form closed" id="closed">
         <svg class="ic big" style="color:var(--sub);margin-bottom:10px"><use href="#i-lock"/></svg>

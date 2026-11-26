@@ -73,16 +73,23 @@ $("form").onsubmit = async (e) => {
   const btn = $("submit"); btn.disabled = true; btn.firstElementChild.textContent = "Wird gesendet …"; setProg(0.1);
   try {
     const id = crypto.randomUUID();
-    if (DEMO) { await new Promise((r) => setTimeout(r, 900)); setProg(1); return success(7); }
+    if (DEMO) { await new Promise((r) => setTimeout(r, 900)); setProg(1); return success(7, "ABC123"); }
     const path = `uploads/${id}/song.${EXT_TYPES[ext] ? ext : "mp3"}`;
     const up = await sb.storage.from("songs").upload(path, file, { upsert: false, contentType: file.type || EXT_TYPES[ext] || "audio/mpeg" });
     if (up.error) throw new Error(up.error.message);
     setProg(0.75);
-    const ins = await sb.from("submissions").insert({ id, ...d, song_path: path });
-    if (ins.error) throw new Error(ins.error.message);
+    let res = await sb.rpc("submit_entry", { p: { id, ...d, song_path: path } });
+    if (res.error && /submit_entry|PGRST202|function/i.test(res.error.message + (res.error.code || ""))) {
+      // Fallback, falls das Datenbank-Update (update_portal.sql) noch nicht ausgeführt wurde
+      const ins = await sb.from("submissions").insert({ id, ...d, song_path: path });
+      if (ins.error) throw new Error(ins.error.message);
+      const pos = await sb.rpc("waitlist_position", { sub_id: id });
+      res = { data: { position: pos.data } };
+    }
+    if (res.error) throw new Error(res.error.message);
+    if (res.data && res.data.error === "closed") { location.reload(); return; }
     setProg(1);
-    const pos = await sb.rpc("waitlist_position", { sub_id: id });
-    success(pos.data);
+    success(res.data && res.data.position, res.data && res.data.code);
   } catch (x) {
     console.error(x);
     err("Das hat leider nicht geklappt. Bitte versuch es gleich nochmal." + (String(x.message || "").includes("mime") ? " (Dateiformat nicht erlaubt)" : ""));
@@ -90,8 +97,15 @@ $("form").onsubmit = async (e) => {
   }
 };
 
-function success(pos) {
+function success(pos, code) {
   $("form").style.display = "none"; $("done").style.display = "block";
   if (pos) $("posText").innerHTML = `Du bist auf <b>Platz ${pos}</b>. Ich melde mich bei dir, sobald du an der Reihe bist.`;
+  if (code) {
+    const f = code.slice(0, 3) + "-" + code.slice(3);
+    $("codeVal").textContent = f; $("codeBox").hidden = false; $("codeHint").hidden = false; $("toStatus").hidden = false;
+    $("toStatus").href = "status.html?code=" + encodeURIComponent(code);
+    try { localStorage.setItem("vx_code", code); } catch (e) {}
+    $("copyCode").onclick = () => { navigator.clipboard && navigator.clipboard.writeText(f); $("copyCode").lastElementChild.textContent = "Kopiert!"; };
+  }
   $("done").scrollIntoView({ block: "center", behavior: "smooth" });
 }
