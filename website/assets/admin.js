@@ -72,7 +72,7 @@ function render() {
 const fmtCode = (c) => (c ? c.slice(0, 3) + "-" + c.slice(3) : "–");
 const vidSrc = (key) => "api/v/" + key.split("/").map(encodeURIComponent).join("/");
 async function token() { if (DEMO) return ""; const { data } = await sb.auth.getSession(); return data.session ? data.session.access_token : ""; }
-function bubbleA(m) { const d = new Date(m.created_at); return `<div class="msg ${m.sender === "admin" ? "me" : "them"}"><div class="b">${esc(m.body).replace(/\n/g, "<br>")}</div><time>${d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" })} · ${d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })}</time></div>`; }
+const bubbleA = (m) => VXChat.bubble(m, m.sender === "admin");
 
 async function openDetail(id) {
   const r = rows.find((x) => x.id === id); if (!r) return; const pos = positions()[r.id];
@@ -92,7 +92,7 @@ async function openDetail(id) {
     <div class="card admin-chat chat">
       <div class="chat-head"><div class="avatar">${esc((r.username || "?").replace("@", "").slice(0, 1).toUpperCase())}</div><div><b>Chat mit ${esc(r.username)}</b><small>Die Person sieht den Chat auf ihrer Status-Seite.</small></div></div>
       <div class="chat-body" id="aChat"><div class="chat-empty" id="aEmpty">Noch keine Nachrichten.</div></div>
-      <form class="chat-input" id="aForm"><textarea id="aText" rows="1" maxlength="2000" placeholder="Antwort schreiben …"></textarea><button class="send" type="submit" aria-label="Senden">${ic("arrow")}</button></form>
+      <form class="chat-input" id="aForm"><textarea id="aText" rows="1" maxlength="2000" placeholder="Antwort …"></textarea><button class="send" type="submit" aria-label="Senden">${ic("arrow")}</button></form>
     </div>
 
     <div class="card" style="padding:16px;margin:14px 0">
@@ -125,7 +125,7 @@ async function openDetail(id) {
   const loadChat = async () => {
     let list = [];
     if (DEMO) list = lastId ? [] : [{ id: 1, created_at: new Date().toISOString(), sender: "user", body: "Hey, wann ist mein Video ungefähr fertig?" }];
-    else { const m = await sb.from("messages").select("id,created_at,sender,body").eq("submission_id", r.id).gt("id", lastId).order("id"); list = m.data || []; }
+    else { const m = await sb.from("messages").select("id,created_at,sender,body,kind,attachment_key,attachment_type").eq("submission_id", r.id).gt("id", lastId).order("id"); list = m.data || []; }
     if (!list.length) return;
     $("aEmpty").hidden = true; const box = $("aChat");
     box.insertAdjacentHTML("beforeend", list.map(bubbleA).join("")); lastId = list[list.length - 1].id; box.scrollTop = box.scrollHeight;
@@ -134,8 +134,10 @@ async function openDetail(id) {
   };
   await loadChat(); clearInterval(chatTimer); chatTimer = setInterval(() => { if (!document.hidden) loadChat().catch(() => {}); }, 4000);
   const ta = $("aText");
-  ta.addEventListener("input", () => { ta.style.height = "auto"; ta.style.height = Math.min(140, ta.scrollHeight) + "px"; });
-  ta.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("aForm").requestSubmit(); } });
+  const comp = VXChat.mountComposer($("aForm"), {
+    upload: async (file, kind) => { if (DEMO) throw new Error("Im Demo-Modus können keine Dateien gesendet werden."); const tk = await token(); return comp.uploadVia(`api/upload?kind=${kind}&name=${encodeURIComponent(file.name)}`, { Authorization: "Bearer " + tk, "X-Sid": r.id }, file); },
+    send: async (m) => { const ins = await sb.from("messages").insert({ submission_id: r.id, sender: "admin", body: m.body || "", kind: m.kind, attachment_key: m.key, attachment_type: m.type, read_by_admin: true }); if (ins.error) throw new Error("Senden fehlgeschlagen: " + ins.error.message); await loadChat(); },
+  });
   const sendAdmin = async (text) => {
     if (DEMO) { $("aEmpty").hidden = true; $("aChat").insertAdjacentHTML("beforeend", bubbleA({ created_at: new Date().toISOString(), sender: "admin", body: text })); return true; }
     const ins = await sb.from("messages").insert({ submission_id: r.id, sender: "admin", body: text, read_by_admin: true });
@@ -184,7 +186,9 @@ async function openDetail(id) {
     if (!confirm(`Eintrag von ${r.username} inkl. Song, Video und Chat endgültig löschen?`)) return;
     if (!DEMO) {
       if (r.song_path) await sb.storage.from("songs").remove([r.song_path]);
-      if (r.video_key) { const tk = await token(); await fetch("api/admin/video?key=" + encodeURIComponent(r.video_key), { method: "DELETE", headers: { Authorization: "Bearer " + tk } }); }
+      const tk = await token();
+      if (r.video_key) await fetch("api/admin/video?key=" + encodeURIComponent(r.video_key), { method: "DELETE", headers: { Authorization: "Bearer " + tk } });
+      await fetch("api/admin/purge?sid=" + encodeURIComponent(r.id), { method: "DELETE", headers: { Authorization: "Bearer " + tk } });
       const d = await sb.from("submissions").delete().eq("id", r.id); if (d.error) return alert("Löschen fehlgeschlagen: " + d.error.message);
     }
     rows = rows.filter((x) => x.id !== r.id); close(); render();

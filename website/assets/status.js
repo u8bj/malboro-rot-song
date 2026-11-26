@@ -55,10 +55,7 @@
     } else $("videoCard").hidden = true;
   }
 
-  function bubble(m) {
-    const d = new Date(m.created_at);
-    return `<div class="msg ${m.sender === "user" ? "me" : "them"}"><div class="b">${esc(m.body).replace(/\n/g, "<br>")}</div><time>${d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit" })} · ${d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" })}</time></div>`;
-  }
+  const bubble = (m) => VXChat.bubble(m, m.sender === "user");
   async function loadMessages() {
     const r = await rpc("portal_messages", { p_code: code, p_after: lastId });
     if (r.error) return;
@@ -80,8 +77,16 @@
   }
 
   const ta = $("chatText");
-  ta.addEventListener("input", () => { ta.style.height = "auto"; ta.style.height = Math.min(140, ta.scrollHeight) + "px"; });
-  ta.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey && matchMedia("(hover: hover)").matches) { e.preventDefault(); $("chatForm").requestSubmit(); } });
+  const comp = VXChat.mountComposer($("chatForm"), {
+    upload: async (file, kind) => {
+      if (DEMO) throw new Error("Im Demo-Modus können keine Dateien gesendet werden.");
+      const t = await rpc("portal_upload_ticket", { p_code: code });
+      if (t.error === "rate") throw new Error("Du hast gerade viele Dateien geschickt. Bitte warte kurz.");
+      if (t.error) throw new Error("Upload nicht möglich.");
+      return comp.uploadVia(`api/upload?kind=${kind}&name=${encodeURIComponent(file.name)}`, { "X-Ticket": t.ticket }, file);
+    },
+    send: async (m) => { const r = await rpc("portal_send", { p_code: code, p_body: m.body, p_kind: m.kind, p_key: m.key, p_type: m.type }); if (r.error) throw new Error("Senden fehlgeschlagen."); await loadMessages(); $("chatBody").scrollTop = $("chatBody").scrollHeight; },
+  });
   $("chatForm").onsubmit = async (e) => {
     e.preventDefault(); const text = ta.value.trim(); if (!text) return;
     ta.value = ""; ta.style.height = "auto"; ta.disabled = true;
