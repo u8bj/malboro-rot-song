@@ -7,4 +7,9 @@ cp ./*.html config.js deploy/dist/visualx.mp4/
 cp -r assets deploy/dist/visualx.mp4/
 # optional live config (not committed): deploy/config.live.js overrides config.js
 if [ -f deploy/config.live.js ]; then cp deploy/config.live.js deploy/dist/visualx.mp4/config.js; fi
-find deploy/dist -type f | sed 's|deploy/dist||' | sort
+
+# cache-busting: every build gets a version tag on CSS/JS links so browsers always load the new files
+V=$(date +%s)
+for f in deploy/dist/visualx.mp4/*.html; do
+  sed -i -E "s#(href|src)=\"(assets/[^\"?]+\.(css|js)|config\.js)\"#\1=\"\2?v=$V\"#g" "$f"
+done
