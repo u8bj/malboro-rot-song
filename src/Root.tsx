@@ -20,6 +20,7 @@ import { Anruf, AN_DURATION_S, AnrufCover } from "../viral/anruf/Anruf";
 import { Promo, PROMO_S } from "../viral/promo/Promo";
 import { Alim, ALIM_S } from "../alim/Alim";
 import { Batal, BATAL_S } from "../viral/batal/Batal";
+import { BatalEN, BATAL_EN_S } from "../viral/batal_en/BatalEN";
 import { AUDIO_S as FEUER_S } from "../feuer/timing";
 import { TEST_END_S, END_S } from "../niemals/timeline";
 
@@ -27,6 +28,7 @@ export const RemotionRoot: React.FC = () => (
   <>
     <Composition id="TestScene" component={TestScene} durationInFrames={TEST_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
     <Composition id="FullVideo" component={FullVideo} durationInFrames={FULL_DURATION} fps={VIDEO.fps} width={VIDEO.width} height={VIDEO.height} />
+    <Composition id="BatalEN" component={BatalEN} durationInFrames={Math.ceil(BATAL_EN_S * 30)} fps={30} width={1080} height={1920} />
     <Composition id="Batal" component={Batal} durationInFrames={Math.ceil(BATAL_S * 30)} fps={30} width={1080} height={1920} />
     <Composition id="Alim" component={Alim} durationInFrames={Math.ceil(ALIM_S * 60)} fps={60} width={1920} height={1080} />
     <Composition id="Promo" component={Promo} durationInFrames={Math.ceil(PROMO_S * 60)} fps={60} width={1080} height={1920} />
